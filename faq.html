@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সাধারণ জিজ্ঞাসা (FAQ) | Red Agro</title>
+  <meta name="description" content="Red Agro এর পণ্য, ডেলিভারি এবং আমাদের খামার সম্পর্কে আপনার সব প্রশ্নের উত্তর।" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#f0fdf0',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+            amber:   { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706' },
+          },
+          fontFamily: { bangla:['"Hind Siliguri"','sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family:'Inter',sans-serif; }
+    .bangla { font-family:'Hind Siliguri',sans-serif; }
+    
+    /* FAQ Accordion Transitions */
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease-in-out;
+    }
+    .faq-answer > div {
+      overflow: hidden;
+    }
+    .faq-item.active .faq-answer {
+      grid-template-rows: 1fr;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 antialiased selection:bg-primary-200 selection:text-primary-900">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
+            <i class="fa-solid fa-leaf text-white text-xl"></i>
+          </div>
+          <span class="font-black text-2xl tracking-tight text-gray-900">Red<span class="text-primary-600">Agro</span></span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-primary-600 bangla transition-colors">হোম</a>
+        <a href="products.html" class="text-sm font-semibold text-gray-600 hover:text-primary-600 bangla transition-colors">সব পণ্য</a>
+        <a href="about.html" class="text-sm font-semibold text-gray-600 hover:text-primary-600 bangla transition-colors">আমাদের গল্প</a>
+        <a href="faq.html" class="text-sm font-semibold text-primary-600 bangla transition-colors">প্রশ্নোত্তর</a>
+        <a href="index.html#advice" class="text-sm font-semibold text-gray-600 hover:text-primary-600 bangla transition-colors">যোগাযোগ</a>
+      </div>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-full transition-all hover:scale-105 shadow-md shadow-green-500/20">
+          <i class="fa-brands fa-whatsapp text-lg"></i> <span class="bangla">কথা বলুন</span>
+        </a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pt-4 pb-6 space-y-1 shadow-lg">
+    <a href="index.html"    class="block py-2.5 text-sm font-medium text-gray-600 bangla border-b border-gray-50">হোম</a>
+    <a href="products.html" class="block py-2.5 text-sm font-medium text-gray-600 border-b border-gray-50 bangla">সব পণ্য</a>
+    <a href="about.html"    class="block py-2.5 text-sm font-medium text-gray-600 border-b border-gray-50 bangla">আমাদের গল্প</a>
+    <a href="faq.html"      class="block py-2.5 text-sm font-semibold text-primary-700 border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
+    <a href="index.html#advice" class="block py-2.5 text-sm font-medium text-gray-600 bangla">যোগাযোগ</a>
+    <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+       class="mt-3 flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-full text-sm">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp করুন
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="pt-24 md:pt-32 pb-16 md:pb-24 bg-primary-900 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l1.43 1.43-56.056 56.056-1.43-1.43L54.627 0zm-33.94 0l1.43 1.43-22.118 22.117-1.43-1.43L20.686 0zm33.941 33.941l1.43 1.43-22.118 22.117-1.43-1.43 22.118-22.117z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-primary-500 blur-3xl opacity-20 pointer-events-none"></div>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 bangla">
+      <i class="fa-solid fa-circle-question text-primary-300"></i> আপনার প্রশ্ন, আমাদের উত্তর
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black text-white mb-4 bangla">সাধারণ জিজ্ঞাসা (FAQ)</h1>
+    <p class="text-primary-100 bangla text-lg md:text-xl leading-relaxed">
+      আমাদের পণ্য, ডেলিভারি এবং মান নিয়ে আপনার মনের সব দ্বিধা দূর করুন।
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FAQ CONTENT ═══ -->
+<section class="py-16 md:py-24 bg-white relative">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-12">
+
+    <!-- Category 1 -->
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 bangla border-b border-gray-100 pb-3">
+        <i class="fa-solid fa-seedling text-primary-600"></i> খাবার ও মান সম্পর্কে
+      </h2>
+      <div class="space-y-4">
+        
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">আপনাদের খাবার যে ১০০% রাসায়নিকমুক্ত তার প্রমাণ কী?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                আমরা বাজার থেকে কোনো পণ্য কিনে আনি না। আমাদের ঘি আমাদের নিজস্ব গাভীর দুধ থেকে তৈরি এবং আমাদের ডাল ও মশলা সম্পূর্ণ নিজস্ব জমিতে উৎপাদিত। আপনারা চাইলে যেকোনো সময় আমাদের খামার পরিদর্শন করতে পারেন। আমরা নো-রিস্ক গ্যারান্টি দিচ্ছি—বিন্দুমাত্র ভেজাল প্রমাণ হলে পুরো টাকা ফেরত।
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">মধু কি সত্যিই খাঁটি? এটি কি জমে যায়?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                আমাদের মধু সুন্দরবনের প্রাকৃতিকভাবে সংগৃহীত মধু, যাতে কোনো কৃত্রিম চিনি বা ফ্লেভার মেশানো হয় না। মনে রাখবেন, খাঁটি মধু (বিশেষ করে সরিষা ফুলের) তাপমাত্রার কারণে জমে যেতে পারে, এটি খাঁটি হওয়ারই একটি লক্ষণ।
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Category 2 -->
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 bangla border-b border-gray-100 pb-3">
+        <i class="fa-solid fa-truck-fast text-amber-500"></i> ডেলিভারি ও পেমেন্ট
+      </h2>
+      <div class="space-y-4">
+        
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">ডেলিভারি পেতে কত দিন সময় লাগে?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                ঢাকার ভেতরে সাধারণত ২৪-৪৮ ঘণ্টার মধ্যে আমরা হোম ডেলিভারি দিয়ে থাকি। ঢাকার বাইরে কুরিয়ারের মাধ্যমে ২-৩ দিন সময় লাগতে পারে।
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">পেমেন্ট মেথড কী কী? ক্যাশ অন ডেলিভারি কি আছে?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                হ্যাঁ, আপনার সুবিধার জন্য আমাদের <strong>১০০% ক্যাশ অন ডেলিভারি (COD)</strong> সুবিধা রয়েছে। আপনি পণ্য হাতে পেয়ে, চেক করে তারপর পেমেন্ট করতে পারবেন। এছাড়া বিকাশ বা নগদের মাধ্যমেও পেমেন্ট করা যায়।
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Category 3 -->
+    <div>
+      <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 bangla border-b border-gray-100 pb-3">
+        <i class="fa-solid fa-trowel text-primary-500"></i> নিজে চাষের সরঞ্জাম (Path 1)
+      </h2>
+      <div class="space-y-4">
+        
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">আমার তো কোনো অভিজ্ঞতা নেই, আমি কি ছাদবাগান করতে পারব?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                অবশ্যই! আমাদের সরঞ্জামগুলো এমনভাবে ডিজাইন করা যে একদম নতুনরাও সহজে শুরু করতে পারবে। এছাড়া আমাদের হোয়াটসঅ্যাপ সাপোর্ট টিম যেকোনো দরকারে আপনাকে সঠিক পরামর্শ দেওয়ার জন্য প্রস্তুত।
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 cursor-pointer overflow-hidden transition-colors hover:border-primary-200">
+          <div class="faq-header flex items-center justify-between p-5 md:p-6">
+            <h3 class="font-bold text-gray-900 bangla pr-4">খামার থেকে সরাসরি চারা বা বীজ কেনা যায় কি?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-400 faq-icon transition-transform duration-300"></i>
+          </div>
+          <div class="faq-answer">
+            <div>
+              <div class="px-5 pb-6 md:px-6 md:pb-7 text-gray-600 bangla leading-relaxed text-sm">
+                হ্যাঁ, আমাদের নিজস্ব খামারে প্রস্তুতকৃত রাসায়নিকমুক্ত জৈব বীজ এবং উন্নত মানের চারা আমরা সরবরাহ করি। স্টকের উপর ভিত্তি করে এগুলো পাওয়া যায়, বিস্তারিত জানতে আমাদের হোয়াটসঅ্যাপে মেসেজ করুন।
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CALL TO ACTION ═══ -->
+<section class="py-16 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+      <i class="fa-regular fa-comments"></i>
+    </div>
+    <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-4 bangla">আপনার প্রশ্নের উত্তর পাননি?</h2>
+    <p class="text-gray-500 text-lg mb-8 bangla">
+      কোনো চিন্তা নেই! আমাদের সাপোর্ট টিমের সাথে সরাসরি কথা বলুন। কোনো কেনাকাটার চাপ নেই।
+    </p>
+    <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="inline-flex bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-full transition-colors bangla items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+      <i class="fa-brands fa-whatsapp text-xl"></i> হোয়াটসঅ্যাপে মেসেজ দিন
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+          <i class="fa-solid fa-leaf text-white text-sm"></i>
+        </div>
+        <span class="font-black text-xl tracking-tight text-white">Red<span class="text-primary-400">Agro</span></span>
+      </div>
+      <div class="flex items-center gap-4 text-sm bangla text-gray-400">
+        <a href="about.html" class="hover:text-white transition-colors">আমাদের গল্প</a>
+        <a href="faq.html" class="hover:text-white transition-colors">প্রশ্নোত্তর</a>
+      </div>
+      <p class="text-gray-400 text-sm bangla">© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('fa-bars');
+      menuIcon.classList.toggle('fa-xmark');
+    });
+  }
+
+  // FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const header = item.querySelector('.faq-header');
+    header.addEventListener('click', () => {
+      // Optional: Close others
+      const currentlyActive = document.querySelector('.faq-item.active');
+      if (currentlyActive && currentlyActive !== item) {
+        currentlyActive.classList.remove('active');
+        currentlyActive.classList.remove('border-primary-300', 'shadow-md');
+      }
+      
+      // Toggle current
+      item.classList.toggle('active');
+      if (item.classList.contains('active')) {
+        item.classList.add('border-primary-300', 'shadow-md');
+      } else {
+        item.classList.remove('border-primary-300', 'shadow-md');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

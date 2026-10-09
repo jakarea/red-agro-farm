@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সব পণ্য | Red Agro — বিষমুক্ত খাবার ও চাষের সরঞ্জাম</title>
+  <meta name="description" content="Red Agro — নিজে চাষের সরঞ্জাম অথবা আমাদের ফার্মের ১০০% রাসায়নিকমুক্ত খাবার। বাজারের বিষ থেকে পরিবারকে বাঁচান।" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#f0fdf0',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+            amber:   { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706' },
+          },
+          fontFamily: { bangla:['"Hind Siliguri"','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family:'Inter',sans-serif; }
+    .bangla { font-family:'Hind Siliguri',sans-serif; }
+    html { scroll-behavior:smooth; }
+    .card-hover { transition:transform 0.3s ease,box-shadow 0.3s ease; }
+    .card-hover:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(22,163,74,0.12); }
+    .filter-btn.active { background:#22c55e; color:#fff; border-color:#22c55e; }
+    .product-item.hidden-item { display:none; }
+    .nav-link { position:relative; }
+    .nav-link::after { content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#22c55e;transition:width 0.3s ease; }
+    .nav-link:hover::after { width:100%; }
+    .whatsapp-pulse { animation:pulse2 2.5s ease-in-out infinite; }
+    @keyframes pulse2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .path-tag-a { background:linear-gradient(135deg,#15803d,#16a34a); }
+    .path-tag-b { background:linear-gradient(135deg,#92400e,#b45309); }
+    .badge-green { background:linear-gradient(135deg,#22c55e,#16a34a); }
+    .badge-amber { background:linear-gradient(135deg,#fbbf24,#d97706); }
+    .feature-pill { display:inline-flex;align-items:center;gap:0.5rem;background:#f0fdf0;border:1px solid #bbf7d0;color:#15803d;font-size:0.75rem;font-weight:600;padding:0.35rem 0.85rem;border-radius:999px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/96 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-xl badge-green flex items-center justify-center shadow group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-seedling text-white text-base"></i>
+        </div>
+        <div>
+          <span class="text-gray-900 font-black text-xl tracking-tight">Red</span><span class="text-primary-600 font-black text-xl"> Agro</span>
+          <p class="text-[9px] text-primary-600 bangla font-medium leading-none tracking-wide">বিষমুক্ত খাবার, সুস্থ জীবন</p>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">হোম</a>
+        <a href="products.html" class="nav-link text-sm font-semibold text-primary-700 bangla">সব পণ্য</a>
+        <a href="about.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">আমাদের গল্প</a>
+        <a href="faq.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
+        <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">যোগাযোগ</a>
+      </div>
+      <div class="hidden md:block">
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all shadow-md hover:scale-105">
+          <i class="fa-brands fa-whatsapp"></i> 01XXXXXXXXX
+        </a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-gray-700 p-2">
+        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-4 pb-6 space-y-1 shadow-lg">
+    <a href="index.html" class="block text-gray-600 font-medium py-2 bangla border-b border-gray-50">হোম</a>
+    <a href="products.html" class="block text-primary-700 font-semibold py-2 bangla border-b border-gray-50">সব পণ্য</a>
+    <a href="about.html" class="block text-gray-600 py-2 bangla border-b border-gray-50">আমাদের গল্প</a>
+    <a href="faq.html" class="block text-gray-600 py-2 bangla border-b border-gray-50">প্রশ্নোত্তর</a>
+    <a href="index.html#advice" class="block text-gray-600 py-2 bangla">যোগাযোগ</a>
+    <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 text-white font-semibold px-4 py-3 rounded-full w-full justify-center mt-2">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp করুন
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="pt-20 bg-primary-900 border-b border-primary-800 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l1.43 1.43-56.056 56.056-1.43-1.43L54.627 0zm-33.94 0l1.43 1.43-22.118 22.117-1.43-1.43L20.686 0zm33.941 33.941l1.43 1.43-22.118 22.117-1.43-1.43 22.118-22.117z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-primary-500 blur-3xl opacity-20 pointer-events-none"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 relative z-10">
+    <div class="flex items-center gap-2 text-primary-200 text-sm mb-3">
+      <a href="index.html" class="hover:text-white transition-colors bangla">হোম</a>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      <span class="text-white font-medium bangla">সব পণ্য</span>
+    </div>
+    <h1 class="text-3xl md:text-5xl font-black text-white mb-4 bangla">বিষমুক্ত জীবনের সব সমাধান</h1>
+    <p class="text-primary-100 bangla text-base max-w-2xl mb-8 leading-relaxed">বাজারের রাসায়নিক খাবার থেকে মুক্তির দুটি পথ — একই জায়গায়। নিজের হাতে চাষ করুন অথবা আমাদের ফার্ম থেকে নিশ্চিন্তে সংগ্রহ করুন।</p>
+
+    <!-- Two path pills -->
+    <div class="flex flex-wrap gap-3 mb-10">
+      <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-5 py-2.5 rounded-full bangla shadow-lg">
+        <i class="fa-solid fa-seedling text-primary-300 text-sm"></i>
+        পথ ১: নিজে চাষের সরঞ্জাম
+      </div>
+      <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-5 py-2.5 rounded-full bangla shadow-lg">
+        <i class="fa-solid fa-jar text-amber-300 text-sm"></i>
+        পথ ২: ফার্মের বিষমুক্ত খাবার
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="max-w-lg relative">
+      <input type="text" id="search-input" placeholder="পণ্য খুঁজুন..." class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-primary-200 rounded-2xl pl-12 pr-4 py-3.5 text-sm focus:outline-none focus:border-white focus:bg-white/20 transition-all bangla shadow-inner" />
+      <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-primary-200 text-lg"></i>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MINI FEAR BANNER ═══ -->
+<div class="bg-red-50 border-b border-red-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+    <div class="flex items-center justify-center gap-3 text-sm flex-wrap">
+      <i class="fa-solid fa-triangle-exclamation text-red-500 flex-shrink-0"></i>
+      <span class="text-red-700 bangla text-xs md:text-sm">গবেষণা বলছে: বাজারের <strong class="text-red-600">৬৮% শাকসবজিতে</strong> অনুমোদিত মাত্রার বেশি কীটনাশক পাওয়া গেছে।</span>
+      <a href="index.html#wake-up" class="text-red-600 hover:text-red-800 text-xs font-bold underline bangla flex-shrink-0">সত্যটা জানুন →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="lg:w-64 flex-shrink-0">
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-20">
+        <h3 class="font-bold text-gray-900 mb-5 flex items-center gap-2">
+          <i class="fa-solid fa-filter text-primary-500 text-sm"></i> Filters
+        </h3>
+
+        <!-- Path / Category -->
+        <div class="mb-6">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 bangla">পথ বেছে নিন</p>
+          <div class="space-y-2">
+            <button class="filter-btn active w-full text-left text-sm px-3 py-2 rounded-xl border border-primary-200 font-medium transition-all flex items-center gap-2" data-filter="all" id="filter-all">
+              <i class="fa-solid fa-border-all text-xs"></i>
+              <span class="bangla">সব পণ্য</span>
+              <span class="ml-auto text-xs bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-bold">৮+</span>
+            </button>
+            <button class="filter-btn w-full text-left text-sm px-3 py-2 rounded-xl border border-gray-200 text-gray-600 font-medium transition-all hover:border-primary-200 hover:text-primary-700 flex items-center gap-2" data-filter="gardening" id="filter-gardening">
+              <i class="fa-solid fa-seedling text-primary-500 text-xs"></i>
+              <span class="bangla">পথ ১: চাষের সরঞ্জাম</span>
+              <span class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">৪</span>
+            </button>
+            <button class="filter-btn w-full text-left text-sm px-3 py-2 rounded-xl border border-gray-200 text-gray-600 font-medium transition-all hover:border-primary-200 hover:text-primary-700 flex items-center gap-2" data-filter="foods" id="filter-foods">
+              <i class="fa-solid fa-jar text-amber-500 text-xs"></i>
+              <span class="bangla">পথ ২: ফার্মের খাবার</span>
+              <span class="ml-auto text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">৪</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Subcategory -->
+        <div class="mb-6">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 bangla">উপ-বিভাগ</p>
+          <div class="space-y-1.5">
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="honey" id="sub-honey" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors bangla">🍯 খাঁটি মধু</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="ghee" id="sub-ghee" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors bangla">🥄 ঘি ও তেল</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="rice" id="sub-rice" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors bangla">🌾 চাল ও ডাল</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="spices" id="sub-spices" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors bangla">🌶 মশলা ও বীজ</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="soil" id="sub-soil" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors">Soil & Testing</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="watering" id="sub-watering" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors">Watering</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="pots" id="sub-pots" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors">Pots & Bags</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer group">
+              <input type="checkbox" class="subcat-check w-4 h-4 rounded border-gray-300 text-primary-500 focus:ring-primary-500" data-subcat="tools" id="sub-tools" />
+              <span class="text-sm text-gray-600 group-hover:text-primary-700 transition-colors">Tools & Pruning</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Sort -->
+        <div class="mb-6">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Sort By</p>
+          <select id="sort-select" class="w-full text-sm border border-gray-200 rounded-xl px-3 py-2.5 text-gray-600 focus:outline-none focus:border-primary-400 cursor-pointer bg-white">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="name-asc">Name: A → Z</option>
+          </select>
+        </div>
+
+        <!-- Farm Fresh Only -->
+        <div class="border-t border-gray-100 pt-4">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <div class="relative">
+              <input type="checkbox" id="farmfresh-toggle" class="sr-only peer" />
+              <div class="w-11 h-6 bg-gray-200 peer-checked:bg-primary-500 rounded-full transition-colors"></div>
+              <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5"></div>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-800 bangla">🌿 ফার্মের খাবার শুধু</div>
+              <div class="text-xs text-gray-400 bangla">রাসায়নিকমুক্ত গ্যারান্টি সহ</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── PRODUCTS LIST ── -->
+    <main class="flex-1">
+      <div class="flex items-center justify-between mb-6">
+        <p class="text-gray-500 text-sm bangla">
+          <span id="result-count" class="font-bold text-gray-800">৮</span> টি বিষমুক্ত পণ্য
+        </p>
+        <div class="flex items-center gap-2">
+          <button id="list-view-btn" class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary-400 text-primary-600 bg-primary-50">
+            <i class="fa-solid fa-list text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="products-container" class="space-y-4">
+
+        <!-- ═══ FARM FOODS ═══ -->
+
+        <!-- HONEY -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="foods" data-subcat="honey" data-price="450" data-name="সুন্দরবনের খাঁটি মধু" data-farmfresh="true" id="item-honey">
+          <a href="product.html?id=honey" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/farm-foods.jpg')" block>
+            <div class="absolute top-3 left-3 flex flex-col gap-1">
+              <span class="bg-accent-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
+              <span class="path-tag-b text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ২</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-yellow-600 font-bold uppercase tracking-widest bangla">খাঁটি মধু · রাসায়নিকমুক্ত</span>
+                  <a href="product.html?id=honey" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base bangla">সুন্দরবনের খাঁটি মধু</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Raw, unfiltered honey | 500g jar</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৪৫০</div>
+                  <div class="text-gray-400 text-xs">per 500g</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">বাজারের মধুতে চিনির সিরাপ, গ্লুকোজ বা কৃত্রিম রং মেশানো থাকে। আমাদের মধু সরাসরি প্রাকৃতিক মৌচাক থেকে সংগৃহীত — কোনো প্রক্রিয়াকরণ নেই, কোনো ভেজাল নেই।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(৪৭ রিভিউ)</span>
+                <span class="ml-2 text-[10px] text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full bangla">✓ ফরমালিনমুক্ত</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=honey" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=খাঁটি%20মধু%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- GHEE -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="foods" data-subcat="ghee" data-price="750" data-name="দেশি গাওয়া ঘি" data-farmfresh="true" id="item-ghee">
+          <a href="product.html?id=ghee" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-bottom relative" style="background-image:url('images/farm-foods.jpg')" block>
+            <div class="absolute top-3 left-3 flex flex-col gap-1">
+              <span class="bg-accent-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
+              <span class="path-tag-b text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ২</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-yellow-600 font-bold uppercase tracking-widest bangla">ঘি ও তেল · ভেজালমুক্ত</span>
+                  <a href="product.html?id=ghee" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base bangla">দেশি গাওয়া ঘি</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Pure clarified butter | 250g jar</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৭৫০</div>
+                  <div class="text-gray-400 text-xs">per 250g</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">বাজারের অধিকাংশ ঘিতে ভেজিটেবল ফ্যাট, ডালডা বা কৃত্রিম ঘি-এর গন্ধ মেশানো হয়। আমাদের ঘি শুধুমাত্র আমাদের ফার্মের গাভীর দুধ থেকে, ঐতিহ্যবাহী পদ্ধতিতে তৈরি।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(৩১ রিভিউ)</span>
+                <span class="ml-2 text-[10px] text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full bangla">✓ ভেজালমুক্ত</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=ghee" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=দেশি%20ঘি%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- LENTILS -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="foods" data-subcat="rice" data-price="180" data-name="লাল মসুর ডাল" data-farmfresh="true" id="item-lentils">
+          <a href="product.html?id=lentils" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/farm-foods.jpg')" block>
+            <div class="absolute top-3 left-3 flex flex-col gap-1">
+              <span class="bg-accent-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
+              <span class="path-tag-b text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ২</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-yellow-600 font-bold uppercase tracking-widest bangla">চাল, আটা ও ডাল · কীটনাশকমুক্ত</span>
+                  <a href="product.html?id=lentils" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base bangla">লাল মসুর ডাল</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Organic Red Lentils | 1kg pack</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ১৮০</div>
+                  <div class="text-gray-400 text-xs">per 1kg</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">বাজারের ডালে রং এবং কৃত্রিম উজ্জ্বলতা বাড়ানোর রাসায়নিক মেশানো হয়। আমাদের ডাল সরাসরি আমাদের ক্ষেত থেকে — কোনো প্রক্রিয়াকরণ বা সংযোজন ছাড়াই।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-regular fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(১৮ রিভিউ)</span>
+                <span class="ml-2 text-[10px] text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full bangla">✓ রং ও রাসায়নিকমুক্ত</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=lentils" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=মসুর%20ডাল%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TURMERIC -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="foods" data-subcat="spices" data-price="120" data-name="জৈব হলুদ গুঁড়া" data-farmfresh="true" id="item-spices">
+          <a href="product.html?id=turmeric" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-right relative" style="background-image:url('images/farm-foods.jpg')" block>
+            <div class="absolute top-3 left-3 flex flex-col gap-1">
+              <span class="bg-accent-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
+              <span class="path-tag-b text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ২</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-yellow-600 font-bold uppercase tracking-widest bangla">মশলা ও বীজ · জৈব</span>
+                  <a href="product.html?id=turmeric" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base bangla">জৈব হলুদ গুঁড়া</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Organic Turmeric Powder | 200g</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ১২০</div>
+                  <div class="text-gray-400 text-xs">per 200g</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">বাজারের হলুদে কৃত্রিম রং (metanil yellow) মেশানো হয় যা লিভারের জন্য ক্ষতিকর। আমাদের হলুদ নিজের জমিতে চাষ করা, রোদে শুকানো, কোনো রং বা সংযোজন ছাড়া।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(২২ রিভিউ)</span>
+                <span class="ml-2 text-[10px] text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full bangla">✓ কৃত্রিম রংমুক্ত</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=turmeric" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=হলুদ%20গুঁড়া%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ GARDENING TOOLS ═══ -->
+
+        <!-- SOIL METER -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="gardening" data-subcat="soil" data-price="450" data-name="3-in-1 Soil Meter" data-farmfresh="false" id="item-soil-meter">
+          <a href="product.html?id=soil-meter" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/gardening.jpg')" block>
+            <div class="absolute top-3 left-3 flex flex-col gap-1">
+              <span class="path-tag-a text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১: নিজে চাষ</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-primary-600 font-bold uppercase tracking-widest">Soil Testing Tool</span>
+                  <a href="product.html?id=soil-meter" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base">3-in-1 Soil Meter</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">pH · Moisture · Light — no battery needed</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৪৫০</div>
+                  <div class="text-green-500 text-xs font-semibold bangla">⭐ সবচেয়ে জনপ্রিয়</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">নিজে চাষ করতে হলে প্রথমে দরকার সঠিক মাটি। এই মিটার দিয়ে মাটির pH, আর্দ্রতা ও আলো মাপুন — রাসায়নিক ছাড়াই সুস্থ গাছ জন্মান।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(৪৫৮ বিক্রি)</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=soil-meter" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Soil%20Meter%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRIP KIT -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-primary-200 card-hover overflow-hidden flex relative" data-category="gardening" data-subcat="watering" data-price="3800" data-name="LCD Drip Timer Kit" data-farmfresh="false" id="item-drip-kit">
+          <div class="absolute top-0 right-0 bg-primary-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl bangla">🏆 সেরা বিক্রেতা</div>
+          <a href="product.html?id=drip-kit" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/gardening.jpg')" block>
+            <div class="absolute top-3 left-3">
+              <span class="path-tag-a text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১: নিজে চাষ</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-primary-600 font-bold uppercase tracking-widest">Smart Watering System</span>
+                  <a href="product.html?id=drip-kit" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base">LCD Drip Timer Kit</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Auto-watering for 6–8 pots · USB rechargeable</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৩,৮০০</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">শহুরে ব্যস্ত জীবনেও নিজের চাষ করা সম্ভব। এই স্বয়ংক্রিয় সেচ কিট আপনার ৬-৮টি গাছকে নিজেই পানি দেবে — আপনি অফিসে থাকুন বা ভ্রমণে।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star-half-stroke text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(২১ বিক্রি)</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=drip-kit" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Drip%20Timer%20Kit%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROW BAG -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="gardening" data-subcat="pots" data-price="550" data-name="Fabric Grow Bag" data-farmfresh="false" id="item-grow-bag">
+          <a href="product.html?id=grow-bag" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/gardening.jpg')" block>
+            <div class="absolute top-3 left-3">
+              <span class="path-tag-a text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১: নিজে চাষ</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-primary-600 font-bold uppercase tracking-widest">Pots & Containers</span>
+                  <a href="product.html?id=grow-bag" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base">Fabric Grow Bag (3pc Set)</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">10 Gallon · Harvest window · 35×45cm</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৫৫০</div>
+                  <div class="text-gray-400 text-xs">3pc set</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">ছোট্ট জায়গাতেও চাষ করুন — ব্যালকনি, ছাদ বা উঠোনে। হার্ভেস্ট উইন্ডো সহ এই ব্যাগে আলু, টমেটো যেকোনো সবজি নিজে জন্মান।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-regular fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(৩৬ রিভিউ)</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=grow-bag" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Fabric%20Grow%20Bag%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRUNING SCISSORS -->
+        <div class="product-item bg-white rounded-2xl shadow-sm border border-gray-100 card-hover overflow-hidden flex" data-category="gardening" data-subcat="tools" data-price="350" data-name="Mini Pruning Scissors" data-farmfresh="false" id="item-pruner">
+          <a href="product.html?id=pruner" class="w-48 sm:w-64 md:w-72 flex-shrink-0 bg-cover bg-center relative" style="background-image:url('images/gardening.jpg')" block>
+            <div class="absolute top-3 left-3">
+              <span class="path-tag-a text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১: নিজে চাষ</span>
+            </div>
+          </a>
+          <div class="flex-1 p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <span class="text-[10px] text-primary-600 font-bold uppercase tracking-widest">Pruning Tools</span>
+                  <a href="product.html?id=pruner" class="hover:text-primary-600 transition-colors"><h3 class="font-bold text-gray-900 text-base">Mini Pruning Scissors (2-Pack)</h3></a>
+                  <p class="text-sm text-gray-500 mt-0.5">Stainless steel · Spring-loaded · Safety lock</p>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-primary-700 font-black text-xl">৳ ৩৫০</div>
+                  <div class="text-green-500 text-xs font-semibold bangla">৮৭১ বিক্রি ⭐</div>
+                </div>
+              </div>
+              <p class="text-gray-500 text-sm mt-2 bangla">সঠিক সময়ে সঠিকভাবে ছাঁটাই করলে গাছ দ্রুত বাড়ে ও বেশি ফল দেয়। স্টেইনলেস স্টিলের ২-প্যাক কাঁচি — দীর্ঘস্থায়ী ও নির্ভরযোগ্য।</p>
+              <div class="flex items-center gap-1 mt-2">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i><i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-gray-400 text-xs ml-1 bangla">(৪.৭ রেটিং)</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4">
+              <a href="product.html?id=pruner" class="flex-1 text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">বিস্তারিত দেখুন</a>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Pruning%20Scissors%20অর্ডার%20করতে%20চাই" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-colors bangla">
+                <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- No results -->
+        <div id="no-results" class="hidden text-center py-16">
+          <i class="fa-solid fa-leaf text-primary-200 text-5xl mb-4"></i>
+          <p class="text-gray-400 bangla text-lg">কোনো পণ্য পাওয়া যায়নি</p>
+          <button onclick="resetFilters()" class="mt-4 text-primary-600 font-semibold text-sm hover:underline bangla">সব ফিল্টার রিসেট করুন</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Bottom advice strip -->
+<div class="bg-gradient-to-r from-primary-700 to-primary-800 py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <p class="text-white font-black text-xl bangla mb-2">আজই কথা বলুন — সম্পূর্ণ বিনামূল্যে, কোনো শর্ত ছাড়াই</p>
+    <p class="text-primary-200 bangla text-sm mb-5">আপনার পরিস্থিতি সবার থেকে আলাদা — ব্যালকনিতে চাষ শুরু করবেন, নাকি সরাসরি ফার্ম থেকে নেবেন? আমরা আপনার কথা শুনব, আপনার জায়গা, সময়, পরিবারের চাহিদা বুঝে সঠিক পথটা বলে দেব। এটা আমাদের পক্ষ থেকে ছোট্ট একটা উপহার — বিনিময়ে কিছুই চাই না।</p>
+    <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20জানতে%20চাই%20কোন%20পণ্যটি%20আমার%20জন্য%20সঠিক" target="_blank" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-3.5 rounded-full transition-all hover:scale-105 shadow-xl bangla">
+      <i class="fa-brands fa-whatsapp text-xl"></i> চলুন, কথা বলি →
+    </a>
+    <p class="text-primary-300 text-xs mt-4 bangla">📞 01XXXXXXXXX · সকাল ৮টা – রাত ১০টা, সপ্তাহে ৭ দিন · কোনো বিক্রির চাপ থাকবে না, শুধু সত্যিকারের পরামর্শ।</p>
+  </div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 transition-all hover:scale-110 whatsapp-pulse">
+  <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+</a>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-xmark');
+  });
+
+  let activeCategory = 'all', activeSubcats = [], farmFreshOnly = false, searchTerm = '', sortOrder = 'default';
+
+  function applyFilters() {
+    const items = document.querySelectorAll('.product-item');
+    let count = 0;
+    items.forEach(item => {
+      const show =
+        (activeCategory === 'all' || item.dataset.category === activeCategory) &&
+        (activeSubcats.length === 0 || activeSubcats.includes(item.dataset.subcat)) &&
+        (!farmFreshOnly || item.dataset.farmfresh === 'true') &&
+        (!searchTerm || item.dataset.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      item.classList.toggle('hidden-item', !show);
+      if (show) count++;
+    });
+    document.getElementById('result-count').textContent = count;
+    document.getElementById('no-results').classList.toggle('hidden', count > 0);
+
+    if (sortOrder !== 'default') {
+      const container = document.getElementById('products-container');
+      const visible = [...container.querySelectorAll('.product-item:not(.hidden-item)')];
+      if (sortOrder === 'price-asc') visible.sort((a,b) => +a.dataset.price - +b.dataset.price);
+      else if (sortOrder === 'price-desc') visible.sort((a,b) => +b.dataset.price - +a.dataset.price);
+      else if (sortOrder === 'name-asc') visible.sort((a,b) => a.dataset.name.localeCompare(b.dataset.name));
+      visible.forEach(el => container.appendChild(el));
+    }
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+  document.querySelectorAll('.subcat-check').forEach(cb => {
+    cb.addEventListener('change', () => {
+      activeSubcats = [...document.querySelectorAll('.subcat-check:checked')].map(c => c.dataset.subcat);
+      applyFilters();
+    });
+  });
+  document.getElementById('farmfresh-toggle').addEventListener('change', e => { farmFreshOnly = e.target.checked; applyFilters(); });
+  document.getElementById('search-input').addEventListener('input', e => { searchTerm = e.target.value; applyFilters(); });
+  document.getElementById('sort-select').addEventListener('change', e => { sortOrder = e.target.value; applyFilters(); });
+
+  function resetFilters() {
+    activeCategory = 'all'; activeSubcats = []; farmFreshOnly = false; searchTerm = '';
+    document.getElementById('search-input').value = '';
+    document.getElementById('farmfresh-toggle').checked = false;
+    document.querySelectorAll('.subcat-check').forEach(c => c.checked = false);
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('[data-filter="all"]').classList.add('active');
+    applyFilters();
+  }
+
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if (urlCat) {
+    const btn = document.querySelector(`[data-filter="${urlCat}"]`);
+    if (btn) btn.click();
+  }
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 50);
+  });
+</script>
+</body>
+</html>
