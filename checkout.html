@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>চেকআউট | Red Agro — অর্ডার নিশ্চিত করুন</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bangla { font-family: 'Hind Siliguri', sans-serif; }
+    .payment-card.active {
+      border-color: #16a34a;
+      background-color: #f0fdf4;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden pb-24 md:pb-12">
+
+<!-- ═══ MINIMAL CHECKOUT HEADER ═══ -->
+<header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-xs">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-primary-700 flex items-center justify-center shadow">
+        <i class="fa-solid fa-seedling text-white text-base"></i>
+      </div>
+      <div>
+        <div class="font-black text-xl tracking-tight leading-none text-gray-900">Red <span class="text-primary-600">Agro</span></div>
+        <div class="text-[9px] bangla font-medium tracking-wide text-primary-700">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+      </div>
+    </a>
+
+    <!-- Step Indicator (Desktop) -->
+    <div class="hidden md:flex items-center gap-3 text-xs bangla font-bold">
+      <a href="cart.html" class="flex items-center gap-1.5 text-gray-400 hover:text-primary-600">
+        <span class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-[10px]">১</span>
+        <span>কার্ট</span>
+      </a>
+      <i class="fa-solid fa-chevron-right text-[10px] text-gray-300"></i>
+      <div class="flex items-center gap-1.5 text-primary-700">
+        <span class="w-5 h-5 rounded-full bg-primary-600 text-white flex items-center justify-center text-[10px]">২</span>
+        <span>চেকআউট ও পেমেন্ট</span>
+      </div>
+      <i class="fa-solid fa-chevron-right text-[10px] text-gray-300"></i>
+      <div class="flex items-center gap-1.5 text-gray-400">
+        <span class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-[10px]">৩</span>
+        <span>অর্ডার সম্পন্ন</span>
+      </div>
+    </div>
+
+    <!-- Security Badge & Cart link -->
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1.5 text-xs text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full bangla">
+        <i class="fa-solid fa-lock text-green-600"></i>
+        <span>১০০% নিরাপদ চেকআউট</span>
+      </div>
+      <a href="cart.html" class="text-xs font-bold text-primary-700 hover:underline bangla flex items-center gap-1">
+        <i class="fa-solid fa-arrow-left"></i> কার্টে ফিরুন
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══ MAIN CHECKOUT LAYOUT ═══ -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+  
+  <div class="mb-6">
+    <h1 class="text-2xl sm:text-3xl font-black text-gray-900 bangla">ডেলিভারির তথ্য ও অর্ডার নিশ্চিতকরণ</h1>
+    <p class="text-gray-500 text-xs sm:text-sm mt-1 bangla">আপনার ঠিকানা প্রদান করুন এবং ক্যাশ অন ডেলিভারিতে অর্ডার নিশ্চিত করুন।</p>
+  </div>
+
+  <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT: Shipping & Payment Form (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Customer Info Card -->
+        <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-gray-100">
+          <h2 class="text-base sm:text-lg font-bold text-gray-900 bangla flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+            <span class="w-7 h-7 rounded-lg bg-primary-100 text-primary-700 flex items-center justify-center text-xs">১</span>
+            <span>আপনার ব্যক্তিগত তথ্য</span>
+          </h2>
+
+          <div class="space-y-4">
+            <div>
+              <label for="cust-name" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                আপনার পূর্ণ নাম <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="cust-name" required placeholder="যেমন: মো: রফিকুল ইসলাম"
+                     class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all bangla">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cust-phone" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                  মোবাইল নম্বর <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-mono">+88</span>
+                  <input type="tel" id="cust-phone" required pattern="[0-9]{11}" placeholder="01XXXXXXXXX"
+                         class="w-full bg-gray-50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all font-mono">
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1 bangla">১১ ডিজিটের সচল নম্বর লিখুন, ডেলিভারি রাইডার কল করবেন</p>
+              </div>
+
+              <div>
+                <label for="cust-alt-phone" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                  বিকল্প ফোন নম্বর (ঐচ্ছিক)
+                </label>
+                <input type="tel" id="cust-alt-phone" placeholder="01XXXXXXXXX"
+                       class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all font-mono">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery Address Card -->
+        <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-gray-100">
+          <h2 class="text-base sm:text-lg font-bold text-gray-900 bangla flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+            <span class="w-7 h-7 rounded-lg bg-primary-100 text-primary-700 flex items-center justify-center text-xs">২</span>
+            <span>ডেলিভারি ঠিকানা</span>
+          </h2>
+
+          <div class="space-y-4">
+            <!-- Area Selector -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 bangla mb-2">ডেলিভারি অঞ্চল নির্বাচন করুন <span class="text-red-500">*</span></label>
+              <div class="grid grid-cols-2 gap-3 bangla">
+                <label class="payment-card active flex items-start gap-3 p-3.5 border rounded-2xl cursor-pointer transition-all border-primary-500 bg-primary-50/40" id="card-area-dhaka">
+                  <input type="radio" name="checkout-area" value="dhaka" checked onchange="handleAreaChange('dhaka')" class="mt-0.5 text-primary-600 focus:ring-primary-500">
+                  <div>
+                    <span class="font-bold text-gray-900 text-sm block">ঢাকা সিটির ভিতরে</span>
+                    <span class="text-gray-500 text-xs">চার্জ: ৳ ৬০ · ১-২ কার্যদিবস</span>
+                  </div>
+                </label>
+
+                <label class="payment-card flex items-start gap-3 p-3.5 border rounded-2xl cursor-pointer transition-all border-gray-200 hover:border-gray-300" id="card-area-outside">
+                  <input type="radio" name="checkout-area" value="outside" onchange="handleAreaChange('outside')" class="mt-0.5 text-primary-600 focus:ring-primary-500">
+                  <div>
+                    <span class="font-bold text-gray-900 text-sm block">ঢাকার বাইরে (সারা দেশ)</span>
+                    <span class="text-gray-500 text-xs">চার্জ: ৳ ১২০ · ২-৩ কার্যদিবস</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- District & Thana -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="cust-district" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                  জেলা নির্বাচন করুন <span class="text-red-500">*</span>
+                </label>
+                <select id="cust-district" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all bangla">
+                  <option value="ঢাকা" selected>ঢাকা</option>
+                  <option value="চট্টগ্রাম">চট্টগ্রাম</option>
+                  <option value="সিলেট">সিলেট</option>
+                  <option value="রাজশাহী">রাজশাহী</option>
+                  <option value="খুলনা">খুলনা</option>
+                  <option value="বরিশাল">বরিশাল</option>
+                  <option value="রংপুর">রংপুর</option>
+                  <option value="ময়মনসিংহ">ময়মনসিংহ</option>
+                  <option value="গাজীপুর">গাজীপুর</option>
+                  <option value="নারায়ণগঞ্জ">নারায়ণগঞ্জ</option>
+                  <option value="কুমিল্লা">কুমিল্লা</option>
+                  <option value="অন্যান্য জেলা">অন্যান্য জেলা</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cust-thana" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                  থানা / উপজেলা <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="cust-thana" required placeholder="যেমন: ধানমন্ডি / মিরপুর"
+                       class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all bangla">
+              </div>
+            </div>
+
+            <!-- Full Address -->
+            <div>
+              <label for="cust-address" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                সম্পূর্ণ ঠিকানা (বাসা/রোড/এলাকা) <span class="text-red-500">*</span>
+              </label>
+              <textarea id="cust-address" required rows="2" placeholder="বাড়ি নম্বর, রোড নম্বর, ফ্ল্যাট/মহল্লা বা পরিচিত কোনো ল্যান্ডমার্ক"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:bg-white transition-all bangla"></textarea>
+            </div>
+
+            <!-- Delivery Note -->
+            <div>
+              <label for="cust-note" class="block text-xs font-bold text-gray-700 bangla mb-1.5">
+                বিশেষ কোনো নির্দেশনা (ঐচ্ছিক)
+              </label>
+              <input type="text" id="cust-note" placeholder="যেমন: ৩টার পরে ডেলিভারি দিলে ভালো হয়"
+                     class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-primary-500 focus:bg-white transition-all bangla">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method Card -->
+        <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-gray-100">
+          <h2 class="text-base sm:text-lg font-bold text-gray-900 bangla flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+            <span class="w-7 h-7 rounded-lg bg-primary-100 text-primary-700 flex items-center justify-center text-xs">৩</span>
+            <span>মূল্য পরিশোধের মাধ্যম (Payment Method)</span>
+          </h2>
+
+          <div class="space-y-3">
+            
+            <!-- Cash on Delivery (COD) -->
+            <label class="payment-card active flex items-start gap-3.5 p-4 border rounded-2xl cursor-pointer transition-all border-primary-500 bg-primary-50/40" id="card-pay-cod">
+              <input type="radio" name="payment-method" value="cod" checked onchange="handlePaymentChange('cod')" class="mt-1 text-primary-600 focus:ring-primary-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-black text-gray-900 text-sm bangla flex items-center gap-2">
+                    <i class="fa-solid fa-hand-holding-dollar text-green-600 text-base"></i>
+                    <span>ক্যাশ অন ডেলিভারি (Cash on Delivery)</span>
+                  </span>
+                  <span class="text-[10px] bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded-full bangla">জনপ্রিয়</span>
+                </div>
+                <p class="text-gray-500 text-xs bangla mt-1">পণ্য হাতে পেয়ে দেখে মূল্য পরিশোধ করুন। কোনো আগাম পেমেন্ট প্রয়োজন নেই।</p>
+              </div>
+            </label>
+
+            <!-- bKash -->
+            <label class="payment-card flex items-start gap-3.5 p-4 border rounded-2xl cursor-pointer transition-all border-gray-200 hover:border-gray-300" id="card-pay-bkash">
+              <input type="radio" name="payment-method" value="bkash" onchange="handlePaymentChange('bkash')" class="mt-1 text-primary-600 focus:ring-primary-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-black text-gray-900 text-sm bangla flex items-center gap-2">
+                    <span class="w-5 h-5 bg-[#e2136e] rounded text-white text-[10px] font-bold flex items-center justify-center">b</span>
+                    <span>বিকাশ পেমেন্ট (bKash)</span>
+                  </span>
+                  <span class="text-[10px] text-gray-400 bangla">Send Money</span>
+                </div>
+                <p class="text-gray-500 text-xs bangla mt-1">বিকাশ পার্সোনাল নম্বরে সেন্ড মানি করুন: <strong class="font-mono text-gray-800">01XXXXXXXXX</strong></p>
+                
+                <!-- bKash TrxID input (hidden by default) -->
+                <div id="bkash-extra" class="hidden mt-3 pt-3 border-t border-pink-100">
+                  <label class="block text-xs font-bold text-gray-700 bangla mb-1">বিকাশ Transaction ID (TrxID):</label>
+                  <input type="text" id="bkash-trx" placeholder="যেমন: 9J37LKQ9" class="w-full bg-white border border-pink-200 rounded-xl px-3 py-2 text-xs uppercase font-mono focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-gray-500 bangla mt-1">টাকা পাঠানোর পর বিকাশ থেকে পাওয়া ট্রানজেকশন আইডিটি এখানে লিখুন</p>
+                </div>
+              </div>
+            </label>
+
+            <!-- Nagad -->
+            <label class="payment-card flex items-start gap-3.5 p-4 border rounded-2xl cursor-pointer transition-all border-gray-200 hover:border-gray-300" id="card-pay-nagad">
+              <input type="radio" name="payment-method" value="nagad" onchange="handlePaymentChange('nagad')" class="mt-1 text-primary-600 focus:ring-primary-500">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-black text-gray-900 text-sm bangla flex items-center gap-2">
+                    <span class="w-5 h-5 bg-[#f7941d] rounded text-white text-[10px] font-bold flex items-center justify-center">N</span>
+                    <span>নগদ পেমেন্ট (Nagad)</span>
+                  </span>
+                  <span class="text-[10px] text-gray-400 bangla">Send Money</span>
+                </div>
+                <p class="text-gray-500 text-xs bangla mt-1">নগদ পার্সোনাল নম্বরে সেন্ড মানি করুন: <strong class="font-mono text-gray-800">01XXXXXXXXX</strong></p>
+                
+                <!-- Nagad TrxID input -->
+                <div id="nagad-extra" class="hidden mt-3 pt-3 border-t border-amber-100">
+                  <label class="block text-xs font-bold text-gray-700 bangla mb-1">নগদ Transaction ID (TrxID):</label>
+                  <input type="text" id="nagad-trx" placeholder="যেমন: 7K21LMN0" class="w-full bg-white border border-amber-200 rounded-xl px-3 py-2 text-xs uppercase font-mono focus:outline-none focus:border-amber-500">
+                </div>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Order Summary & Confirmation CTA (5 cols) -->
+      <div class="lg:col-span-5">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border border-gray-100 sticky top-24">
+          
+          <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+            <h3 class="font-black text-gray-900 text-base sm:text-lg bangla">আপনার অর্ডারের বিবরণ</h3>
+            <span id="checkout-item-count" class="text-xs bg-gray-100 text-gray-700 font-bold px-2 py-0.5 rounded-full bangla">০ পণ্য</span>
+          </div>
+
+          <!-- Items list in checkout -->
+          <div id="checkout-items-list" class="divide-y divide-gray-100 my-4 max-h-64 overflow-y-auto pr-1">
+            <!-- Populated by JavaScript -->
+          </div>
+
+          <!-- Price Calculations -->
+          <div class="space-y-2.5 pt-4 border-t border-gray-100 text-xs sm:text-sm bangla">
+            <div class="flex justify-between text-gray-600">
+              <span>পণ্য সাবটোটাল:</span>
+              <span class="font-bold text-gray-900" id="checkout-subtotal">৳ ০</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+              <span>ডেলিভারি চার্জ:</span>
+              <span class="font-bold text-gray-900" id="checkout-shipping">৳ ৬০</span>
+            </div>
+            <div id="checkout-discount-row" class="hidden flex justify-between text-green-600 font-semibold">
+              <span>কুপন ডিসকাউন্ট:</span>
+              <span id="checkout-discount">- ৳ ০</span>
+            </div>
+            <div class="flex justify-between items-center text-base sm:text-lg font-black pt-3 border-t border-gray-200 text-gray-900">
+              <span>সর্বমোট প্রদেয়:</span>
+              <span class="text-primary-700 text-xl font-black" id="checkout-total">৳ ০</span>
+            </div>
+          </div>
+
+          <!-- Big Place Order Button -->
+          <div class="mt-6 space-y-3">
+            <button type="submit" id="place-order-btn" class="w-full flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-black text-base py-4 px-4 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all bangla">
+              <i class="fa-solid fa-check-circle text-lg"></i>
+              <span>অর্ডার নিশ্চিত করুন</span>
+            </button>
+
+            <button type="button" onclick="confirmViaWhatsAppDirect()" class="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-xs sm:text-sm py-3 px-4 rounded-2xl shadow transition-all bangla">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>WhatsApp-এ সরাসরি অর্ডার নিশ্চিত করুন</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges Strip -->
+          <div class="mt-6 pt-5 border-t border-gray-100 space-y-2 text-gray-500 text-xs bangla">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-check text-green-600 text-sm"></i>
+              <span>১০০% বিষ ও ফরমালিনমুক্ত খাঁটি পণ্যের নিশ্চয়তা</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-box-open text-primary-600 text-sm"></i>
+              <span>পণ্য যাচাই করে মূল্য পরিশোধের সুযোগ</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-headset text-amber-500 text-sm"></i>
+              <span>২৪/৭ কাস্টমার সাপোর্ট ও দ্রুত রিপ্লেসমেন্ট</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-900 text-white pt-12 pb-24 md:pb-8 border-t border-gray-800 mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <div class="w-7 h-7 bg-primary-600 rounded-lg flex items-center justify-center">
+        <i class="fa-solid fa-leaf text-white text-xs"></i>
+      </div>
+      <span class="font-black text-lg text-white">Red<span class="text-primary-400">Agro</span></span>
+    </div>
+    <p class="text-xs text-gray-400 bangla">বিষমুক্ত খাবার, সুস্থ আগামী 🌿 · হটলাইন: 01XXXXXXXXX</p>
+    <p class="text-[11px] text-gray-500 mt-2 bangla">© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত।</p>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="js/cart.js"></script>
+<script>
+  let selectedArea = 'dhaka';
+  let selectedPayment = 'cod';
+
+  function handleAreaChange(area) {
+    selectedArea = area;
+    const cDhaka = document.getElementById('card-area-dhaka');
+    const cOutside = document.getElementById('card-area-outside');
+    if (area === 'dhaka') {
+      cDhaka.classList.add('active', 'border-primary-500', 'bg-primary-50/40');
+      cOutside.classList.remove('active', 'border-primary-500', 'bg-primary-50/40');
+      cOutside.classList.add('border-gray-200');
+    } else {
+      cOutside.classList.add('active', 'border-primary-500', 'bg-primary-50/40');
+      cDhaka.classList.remove('active', 'border-primary-500', 'bg-primary-50/40');
+      cDhaka.classList.add('border-gray-200');
+    }
+    renderCheckoutSummary();
+  }
+
+  function handlePaymentChange(method) {
+    selectedPayment = method;
+    ['cod', 'bkash', 'nagad'].forEach(m => {
+      const card = document.getElementById(`card-pay-${m}`);
+      if (m === method) {
+        card.classList.add('active', 'border-primary-500', 'bg-primary-50/40');
+        card.classList.remove('border-gray-200');
+      } else {
+        card.classList.remove('active', 'border-primary-500', 'bg-primary-50/40');
+        card.classList.add('border-gray-200');
+      }
+    });
+
+    const bkExtra = document.getElementById('bkash-extra');
+    const ngExtra = document.getElementById('nagad-extra');
+    bkExtra.classList.toggle('hidden', method !== 'bkash');
+    ngExtra.classList.toggle('hidden', method !== 'nagad');
+  }
+
+  function renderCheckoutSummary() {
+    const cart = RedAgroCart.getCart();
+    const listEl = document.getElementById('checkout-items-list');
+    const countEl = document.getElementById('checkout-item-count');
+    const subtotalEl = document.getElementById('checkout-subtotal');
+    const shippingEl = document.getElementById('checkout-shipping');
+    const totalEl = document.getElementById('checkout-total');
+
+    if (cart.length === 0) {
+      listEl.innerHTML = `
+        <div class="py-6 text-center bangla text-gray-500 text-xs">
+          কার্ট খালি! <a href="products.html" class="text-primary-600 font-bold underline">পণ্য যোগ করুন</a>
+        </div>
+      `;
+      countEl.textContent = '০ পণ্য';
+      subtotalEl.textContent = '৳ ০';
+      shippingEl.textContent = '৳ ০';
+      totalEl.textContent = '৳ ০';
+      return;
+    }
+
+    const count = RedAgroCart.getCartItemCount();
+    const subtotal = RedAgroCart.getCartSubtotal();
+    const shipping = subtotal >= 1000 ? 0 : (selectedArea === 'dhaka' ? 60 : 120);
+    const total = subtotal + shipping;
+
+    countEl.textContent = `${count} টি পণ্য`;
+
+    let html = '';
+    cart.forEach(item => {
+      html += `
+        <div class="py-3 flex items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <img src="${item.image || 'images/farm-foods.jpg'}" alt="" class="w-11 h-11 rounded-xl object-cover border border-gray-100 flex-shrink-0">
+            <div class="min-w-0">
+              <h5 class="font-bold text-gray-900 bangla truncate">${item.name}</h5>
+              <p class="text-[11px] text-gray-500 bangla">${item.size || ''} × ${item.quantity}</p>
+            </div>
+          </div>
+          <div class="font-black text-gray-900 text-right flex-shrink-0">
+            ৳ ${(item.price * item.quantity).toLocaleString('bn-BD')}
+          </div>
+        </div>
+      `;
+    });
+    listEl.innerHTML = html;
+
+    subtotalEl.textContent = `৳ ${subtotal.toLocaleString('bn-BD')}`;
+    shippingEl.innerHTML = shipping === 0 ? '<span class="text-green-600 font-bold">ফ্রি!</span>' : `৳ ${shipping.toLocaleString('bn-BD')}`;
+    totalEl.textContent = `৳ ${total.toLocaleString('bn-BD')}`;
+  }
+
+  function handlePlaceOrder(e) {
+    e.preventDefault();
+    const cart = RedAgroCart.getCart();
+    if (cart.length === 0) {
+      alert('আপনার কার্ট খালি! অনুগ্রহ করে আগে কিছু পণ্য যোগ করুন।');
+      window.location.href = 'products.html';
+      return;
+    }
+
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const altPhone = document.getElementById('cust-alt-phone').value.trim();
+    const district = document.getElementById('cust-district').value;
+    const thana = document.getElementById('cust-thana').value.trim();
+    const address = document.getElementById('cust-address').value.trim();
+    const note = document.getElementById('cust-note').value.trim();
+
+    let trxId = '';
+    if (selectedPayment === 'bkash') {
+      trxId = document.getElementById('bkash-trx').value.trim();
+    } else if (selectedPayment === 'nagad') {
+      trxId = document.getElementById('nagad-trx').value.trim();
+    }
+
+    // Generate Order ID e.g. RA-2026-7842
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const orderId = `RA-2026-${randomNum}`;
+
+    const subtotal = RedAgroCart.getCartSubtotal();
+    const shipping = subtotal >= 1000 ? 0 : (selectedArea === 'dhaka' ? 60 : 120);
+    const total = subtotal + shipping;
+
+    const orderData = {
+      orderId,
+      createdAt: new Date().toISOString(),
+      customer: {
+        name,
+        phone,
+        altPhone,
+        district,
+        thana,
+        address,
+        note
+      },
+      payment: {
+        method: selectedPayment,
+        trxId
+      },
+      shipping: {
+        area: selectedArea,
+        charge: shipping
+      },
+      items: cart,
+      subtotal,
+      total
+    };
+
+    // Save order
+    localStorage.setItem('red_agro_latest_order', JSON.stringify(orderData));
+    
+    // Clear cart
+    RedAgroCart.clearCart();
+
+    // Redirect to Order Success Page
+    window.location.href = `order-success.html?orderId=${orderId}`;
+  }
+
+  function confirmViaWhatsAppDirect() {
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const address = document.getElementById('cust-address').value.trim();
+    const district = document.getElementById('cust-district').value;
+
+    const cart = RedAgroCart.getCart();
+    if (cart.length === 0) {
+      alert('আপনার কার্ট খালি!');
+      return;
+    }
+
+    const subtotal = RedAgroCart.getCartSubtotal();
+    const shipping = subtotal >= 1000 ? 0 : (selectedArea === 'dhaka' ? 60 : 120);
+    const total = subtotal + shipping;
+
+    let msg = `*Red Agro নতুন অর্ডার*\n\n`;
+    if (name) msg += `*গ্রাহকের নাম:* ${name}\n`;
+    if (phone) msg += `*মোবাইল:* ${phone}\n`;
+    if (address) msg += `*ঠিকানা:* ${address}, ${district}\n`;
+    msg += `*পেমেন্ট মাধ্যম:* ${selectedPayment === 'cod' ? 'ক্যাশ অন ডেলিভারি' : selectedPayment.toUpperCase()}\n\n`;
+    msg += `*অর্ডারের পণ্যসমূহ:*\n`;
+    cart.forEach((i, idx) => {
+      msg += `${idx + 1}. ${i.name} (${i.size || 'স্ট্যান্ডার্ড'}) x ${i.quantity} = ৳ ${(i.price * i.quantity)}\n`;
+    });
+    msg += `\n*সাবটোটাল:* ৳ ${subtotal}\n`;
+    msg += `*ডেলিভারি চার্জ:* ৳ ${shipping}\n`;
+    msg += `*সর্বমোট:* ৳ ${total}\n\n`;
+    msg += `দয়া করে অর্ডারটি নিশ্চিত করুন।`;
+
+    const waUrl = `https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+</script>
+</body>
+</html>

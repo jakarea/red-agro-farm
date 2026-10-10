@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>শপিং কার্ট | Red Agro — বিষমুক্ত খাবার ও সরঞ্জাম</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bangla { font-family: 'Hind Siliguri', sans-serif; }
+    .cart-gradient { background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%); }
+    .item-row { transition: all 0.25s ease; }
+    .item-row:hover { background-color: #fafafa; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden pb-20 md:pb-0">
+
+<!-- ═══ TOP ANNOUNCEMENT BAR ═══ -->
+<div class="bg-primary-900 text-primary-100 text-xs py-2 px-4 text-center border-b border-primary-800">
+  <p class="bangla font-medium flex items-center justify-center gap-2 flex-wrap">
+    <span>🚚 <strong class="text-white">১,০০০ টাকার অর্ডারে</strong> সারা দেশে ডেলিভারি চার্জ সম্পূর্ণ ফ্রি!</span>
+    <span class="hidden md:inline text-primary-400">|</span>
+    <span class="text-primary-200">💵 ক্যাশ অন ডেলিভারি সুবিধা উপলব্ধ</span>
+  </p>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-primary-700 flex items-center justify-center shadow group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-seedling text-white text-base"></i>
+        </div>
+        <div>
+          <div class="font-black text-xl tracking-tight leading-none text-gray-900">Red <span class="text-primary-600">Agro</span></div>
+          <div class="text-[9px] bangla font-medium tracking-wide text-primary-700">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">হোম</a>
+        <a href="products.html" class="text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">সব পণ্য</a>
+        <a href="about.html" class="text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">আমাদের গল্প</a>
+        <a href="faq.html" class="text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
+      </div>
+
+      <!-- Right Actions: Cart & WhatsApp -->
+      <div class="flex items-center gap-3">
+        <!-- Active Cart Button -->
+        <a href="cart.html" class="relative flex items-center gap-2 bg-primary-50 text-primary-700 px-3.5 py-2 rounded-xl font-bold text-sm border border-primary-200 shadow-sm transition-all">
+          <i class="fa-solid fa-cart-shopping text-base text-primary-700"></i>
+          <span class="hidden sm:inline bangla text-xs">কার্ট</span>
+          <span class="cart-badge bg-primary-600 text-white text-[11px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center leading-none">0</span>
+        </a>
+
+        <!-- Desktop WhatsApp -->
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+           class="hidden sm:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all shadow hover:scale-105">
+          <i class="fa-brands fa-whatsapp text-sm"></i> 01XXXXXXXXX
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button id="menu-btn" class="md:hidden p-2 text-gray-700 hover:text-primary-700 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pt-3 pb-5 space-y-1">
+    <a href="index.html" class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">হোম</a>
+    <a href="products.html" class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">সব পণ্য</a>
+    <a href="about.html" class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">আমাদের গল্প</a>
+    <a href="faq.html" class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
+    <a href="cart.html" class="block py-2.5 text-sm font-bold text-primary-700 bangla">🛒 শপিং কার্ট</a>
+  </div>
+</nav>
+
+<!-- ═══ BREADCRUMB & HEADER ═══ -->
+<div class="bg-white border-b border-gray-100 py-6 sm:py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-2 text-xs text-gray-400 mb-2 bangla">
+      <a href="index.html" class="hover:text-primary-600">হোম</a>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      <a href="products.html" class="hover:text-primary-600">পণ্যসমূহ</a>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      <span class="text-gray-700 font-semibold">শপিং কার্ট</span>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-black text-gray-900 bangla flex items-center gap-2">
+          <span>আপনার শপিং কার্ট</span>
+          <span id="cart-item-count-badge" class="text-xs bg-primary-100 text-primary-800 font-bold px-2.5 py-1 rounded-full">0 টি পণ্য</span>
+        </h1>
+        <p class="text-gray-500 text-xs sm:text-sm mt-1 bangla">পণ্য নির্বাচন পর্যালোচনা করুন এবং সহজে ডেলিভারির তথ্য দিন।</p>
+      </div>
+      <a href="products.html" class="inline-flex items-center gap-1.5 text-primary-700 hover:text-primary-800 text-xs sm:text-sm font-bold bangla self-start sm:self-auto">
+        <i class="fa-solid fa-arrow-left text-xs"></i> আরও পণ্য যোগ করুন
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN CART CONTENT ═══ -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+  
+  <!-- Free shipping progress bar -->
+  <div id="free-shipping-card" class="bg-white rounded-2xl p-4 sm:p-5 border border-primary-100 shadow-sm mb-8">
+    <div class="flex items-center justify-between text-xs sm:text-sm font-bold bangla mb-2">
+      <span id="free-shipping-text" class="text-primary-900 flex items-center gap-2">
+        <i class="fa-solid fa-truck-fast text-primary-600"></i>
+        <span>আর ৳ <span id="free-shipping-remaining">৩০০</span> টাকার পণ্য যোগ করলেই ডেলিভারি <strong>সম্পূর্ণ ফ্রি!</strong></span>
+      </span>
+      <span id="free-shipping-percent" class="text-primary-700 font-black">70%</span>
+    </div>
+    <div class="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+      <div id="free-shipping-bar" class="bg-primary-600 h-2.5 rounded-full transition-all duration-500" style="width: 70%"></div>
+    </div>
+  </div>
+
+  <!-- Cart Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    
+    <!-- LEFT: Cart Items (8 cols) -->
+    <div class="lg:col-span-8 space-y-6">
+      
+      <!-- Items Container -->
+      <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        
+        <!-- Items Header (Desktop) -->
+        <div class="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50/70 border-b border-gray-100 text-xs font-bold text-gray-500 bangla uppercase tracking-wider">
+          <div class="col-span-6">পণ্য বিবরণ</div>
+          <div class="col-span-2 text-center">মূল্য</div>
+          <div class="col-span-2 text-center">পরিমাণ</div>
+          <div class="col-span-2 text-right">মোট</div>
+        </div>
+
+        <!-- Dynamic Items List -->
+        <div id="cart-items-list" class="divide-y divide-gray-100">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Empty Cart Message (Hidden by default) -->
+        <div id="empty-cart-state" class="hidden py-16 px-6 text-center">
+          <div class="w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4 text-primary-600 text-3xl">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <h3 class="text-xl font-black text-gray-900 bangla mb-2">আপনার কার্ট বর্তমানে খালি আছে</h3>
+          <p class="text-gray-500 text-sm bangla max-w-md mx-auto mb-6">আমাদের শতভাগ বিষমুক্ত ফার্মের খাবার অথবা ছাদবাগানের সেরা সরঞ্জামগুলো সংগ্রহ করতে পণ্যের তালিকা দেখুন।</p>
+          <a href="products.html" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-full bangla text-sm shadow-lg hover:shadow-xl transition-all">
+            <i class="fa-solid fa-store"></i> কেনাকাটা শুরু করুন
+          </a>
+        </div>
+
+        <!-- Cart Footer Actions -->
+        <div id="cart-footer-actions" class="p-4 sm:p-6 bg-gray-50/60 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+          <button onclick="clearCartConfirm()" class="text-xs text-red-600 hover:text-red-700 font-bold bangla flex items-center gap-1.5 transition-colors">
+            <i class="fa-solid fa-trash-can"></i> সম্পূর্ণ কার্ট খালি করুন
+          </button>
+          <a href="products.html" class="text-xs sm:text-sm text-primary-700 hover:text-primary-800 font-bold bangla flex items-center gap-1.5">
+            <i class="fa-solid fa-plus"></i> আরও পণ্য যোগ করুন
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Trust Features Strip -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 text-lg flex-shrink-0">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs text-gray-900 bangla">১০০% বিষ ও ফরমালিনমুক্ত</h4>
+            <p class="text-[11px] text-gray-500 bangla mt-0.5">সরাসরি প্রাকৃতিক উৎস থেকে সংগ্রহ</p>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 text-lg flex-shrink-0">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs text-gray-900 bangla">ক্যাশ অন ডেলিভারি</h4>
+            <p class="text-[11px] text-gray-500 bangla mt-0.5">পণ্য হাতে পেয়ে মূল্য পরিশোধ</p>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 text-lg flex-shrink-0">
+            <i class="fa-solid fa-rotate-left"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs text-gray-900 bangla">৭ দিনের গ্যারান্টি</h4>
+            <p class="text-[11px] text-gray-500 bangla mt-0.5">পছন্দ না হলে নিঃশর্ত ফেরত</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Order Summary Card (4 cols) -->
+    <div class="lg:col-span-4">
+      <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 sticky top-24">
+        <h3 class="font-black text-gray-900 text-lg bangla pb-4 border-b border-gray-100 flex items-center justify-between">
+          <span>অর্ডারের সারসংক্ষেপ</span>
+          <i class="fa-solid fa-receipt text-primary-600"></i>
+        </h3>
+
+        <!-- Delivery Area Select -->
+        <div class="my-5">
+          <label class="block text-xs font-bold text-gray-700 bangla mb-2">ডেলিভারি এলাকা নির্বাচন করুন:</label>
+          <div class="grid grid-cols-2 gap-2 text-xs bangla">
+            <label class="flex items-center gap-2 p-3 border rounded-xl cursor-pointer transition-all border-primary-500 bg-primary-50/50" id="label-area-dhaka">
+              <input type="radio" name="delivery-area" value="dhaka" checked onchange="updateDeliveryArea('dhaka')" class="text-primary-600 focus:ring-primary-500">
+              <div>
+                <span class="font-bold text-gray-900 block">ঢাকার ভিতরে</span>
+                <span class="text-gray-500 text-[10px]">চার্জ: ৳ ৬০</span>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 p-3 border rounded-xl cursor-pointer transition-all border-gray-200 hover:border-gray-300" id="label-area-outside">
+              <input type="radio" name="delivery-area" value="outside" onchange="updateDeliveryArea('outside')" class="text-primary-600 focus:ring-primary-500">
+              <div>
+                <span class="font-bold text-gray-900 block">ঢাকার বাইরে</span>
+                <span class="text-gray-500 text-[10px]">চার্জ: ৳ ১২০</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Coupon Input -->
+        <div class="mb-5">
+          <label class="block text-xs font-bold text-gray-700 bangla mb-1.5">ডিসকাউন্ট কুপন কোড:</label>
+          <div class="flex gap-2">
+            <input type="text" id="coupon-code-input" placeholder="যেমন: PURE10" class="flex-1 uppercase bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-primary-500 font-mono">
+            <button onclick="applyCoupon()" class="bg-gray-800 hover:bg-gray-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-colors bangla">
+              প্রয়োগ
+            </button>
+          </div>
+          <div id="coupon-message" class="text-[11px] mt-1.5 bangla hidden"></div>
+          <p class="text-[10px] text-gray-400 mt-1 bangla">💡 টিপ: ১০% ছাড় পেতে ট্রাই করুন <strong class="text-primary-700">PURE10</strong></p>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="space-y-3 pt-4 border-t border-gray-100 text-xs sm:text-sm bangla">
+          <div class="flex justify-between text-gray-600">
+            <span>পণ্য সাবটোটাল:</span>
+            <span class="font-bold text-gray-900" id="summary-subtotal">৳ ০</span>
+          </div>
+          <div class="flex justify-between text-gray-600">
+            <span>ডেলিভারি চার্জ:</span>
+            <span class="font-bold text-gray-900" id="summary-shipping">৳ ৬০</span>
+          </div>
+          <div id="discount-row" class="hidden flex justify-between text-green-600 font-semibold">
+            <span>কুপন ছাড় (<span id="discount-code-name"></span>):</span>
+            <span id="summary-discount">- ৳ ০</span>
+          </div>
+          <div class="flex justify-between items-center text-base sm:text-lg font-black pt-3 border-t border-gray-200 text-gray-900">
+            <span>সর্বমোট প্রদেয়:</span>
+            <span class="text-primary-700 text-xl font-black" id="summary-total">৳ ০</span>
+          </div>
+        </div>
+
+        <!-- Checkout CTAs -->
+        <div class="mt-6 space-y-3">
+          <a href="checkout.html" id="proceed-checkout-btn" class="w-full flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-black text-sm sm:text-base py-3.5 px-4 rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all bangla">
+            <span>অর্ডার সম্পন্ন করতে এগিয়ে যান</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+
+          <button onclick="orderViaWhatsApp()" class="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm py-3 px-4 rounded-2xl shadow transition-all bangla">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>WhatsApp-এ সরাসরি অর্ডার পাঠান</span>
+          </button>
+        </div>
+
+        <p class="text-center text-gray-400 text-[11px] mt-4 bangla flex items-center justify-center gap-1">
+          <i class="fa-solid fa-lock text-[10px]"></i> সম্পূর্ণ নিরাপদ ও সুরক্ষিত অর্ডার প্রক্রিয়া
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-900 text-white pt-16 pb-24 md:pb-8 border-t border-gray-800 mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+          <i class="fa-solid fa-leaf text-white text-sm"></i>
+        </div>
+        <span class="font-black text-xl tracking-tight text-white">Red<span class="text-primary-400">Agro</span></span>
+      </div>
+      <div class="flex items-center gap-4 text-sm bangla text-gray-400">
+        <a href="products.html" class="hover:text-white transition-colors">সব পণ্য</a>
+        <a href="about.html" class="hover:text-white transition-colors">আমাদের গল্প</a>
+        <a href="faq.html" class="hover:text-white transition-colors">প্রশ্নোত্তর</a>
+      </div>
+      <p class="text-gray-400 text-sm bangla">© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING WHATSAPP ═══ -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+   class="fixed bottom-20 right-4 md:bottom-6 md:right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all z-40"
+   title="WhatsApp-এ যোগাযোগ করুন">
+  <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i>
+</a>
+
+<!-- ═══ MOBILE BOTTOM NAVIGATION APP BAR ═══ -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 px-3 py-2 z-50 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+  <a href="index.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-house text-lg"></i>
+    <span class="text-[11px] font-medium bangla">হোম</span>
+  </a>
+  <a href="products.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-store text-lg"></i>
+    <span class="text-[11px] font-medium bangla">পণ্যসমূহ</span>
+  </a>
+  <a href="cart.html" class="flex flex-col items-center gap-1 text-primary-600 font-bold relative">
+    <div class="relative">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
+      <span class="cart-badge absolute -top-1 -right-2 bg-primary-600 text-white text-[9px] font-black px-1 rounded-full min-w-[15px] text-center">0</span>
+    </div>
+    <span class="text-[11px] font-bold bangla">কার্ট</span>
+  </a>
+  <a href="about.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-shield-halved text-lg"></i>
+    <span class="text-[11px] font-medium bangla">আমাদের গল্প</span>
+  </a>
+  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center gap-1 text-green-600">
+    <i class="fa-brands fa-whatsapp text-lg"></i>
+    <span class="text-[11px] font-medium bangla">অর্ডার</span>
+  </a>
+</div>
+
+<!-- Scripts -->
+<script src="js/cart.js"></script>
+<script>
+  let deliveryArea = 'dhaka';
+  let activeCoupon = null;
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('fa-bars');
+      menuIcon.classList.toggle('fa-xmark');
+    });
+  }
+
+  function updateDeliveryArea(area) {
+    deliveryArea = area;
+    const lDhaka = document.getElementById('label-area-dhaka');
+    const lOutside = document.getElementById('label-area-outside');
+    if (area === 'dhaka') {
+      lDhaka.classList.add('border-primary-500', 'bg-primary-50/50');
+      lOutside.classList.remove('border-primary-500', 'bg-primary-50/50');
+      lOutside.classList.add('border-gray-200');
+    } else {
+      lOutside.classList.add('border-primary-500', 'bg-primary-50/50');
+      lDhaka.classList.remove('border-primary-500', 'bg-primary-50/50');
+      lDhaka.classList.add('border-gray-200');
+    }
+    renderCart();
+  }
+
+  function applyCoupon() {
+    const code = document.getElementById('coupon-code-input').value.trim().toUpperCase();
+    const msgEl = document.getElementById('coupon-message');
+    msgEl.classList.remove('hidden', 'text-green-600', 'text-red-500');
+
+    if (code === 'PURE10') {
+      activeCoupon = { code: 'PURE10', discountPercent: 10 };
+      msgEl.classList.add('text-green-600');
+      msgEl.innerHTML = '✓ ১০% ডিসকাউন্ট সফলভাবে প্রয়োগ হয়েছে!';
+    } else if (code === 'REDAGRO') {
+      activeCoupon = { code: 'REDAGRO', discountFlat: 50 };
+      msgEl.classList.add('text-green-600');
+      msgEl.innerHTML = '✓ ৫০ টাকা ডিসকাউন্ট সফলভাবে প্রয়োগ হয়েছে!';
+    } else if (!code) {
+      msgEl.classList.add('text-red-500');
+      msgEl.textContent = 'দয়া করে একটি কুপন কোড লিখুন।';
+      return;
+    } else {
+      msgEl.classList.add('text-red-500');
+      msgEl.textContent = 'দুঃখিত, কুপন কোডটি সঠিক নয়। PURE10 ব্যবহার করুন।';
+      activeCoupon = null;
+    }
+    renderCart();
+  }
+
+  function renderCart() {
+    const cart = RedAgroCart.getCart();
+    const itemsContainer = document.getElementById('cart-items-list');
+    const emptyState = document.getElementById('empty-cart-state');
+    const footerActions = document.getElementById('cart-footer-actions');
+    const itemCountBadge = document.getElementById('cart-item-count-badge');
+    const proceedBtn = document.getElementById('proceed-checkout-btn');
+
+    itemCountBadge.textContent = `${RedAgroCart.getCartItemCount()} টি পণ্য`;
+
+    if (cart.length === 0) {
+      itemsContainer.innerHTML = '';
+      emptyState.classList.remove('hidden');
+      footerActions.classList.add('hidden');
+      proceedBtn.classList.add('opacity-50', 'pointer-events-none');
+    } else {
+      emptyState.classList.add('hidden');
+      footerActions.classList.remove('hidden');
+      proceedBtn.classList.remove('opacity-50', 'pointer-events-none');
+
+      let html = '';
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        html += `
+          <div class="item-row p-4 sm:p-6 flex flex-col sm:grid sm:grid-cols-12 gap-4 items-center">
+            
+            <!-- Details -->
+            <div class="col-span-6 w-full flex items-center gap-3.5">
+              <img src="${item.image || 'images/farm-foods.jpg'}" alt="${item.name}" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border border-gray-100 flex-shrink-0">
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] text-primary-700 bg-primary-50 px-2 py-0.5 rounded-full font-bold bangla inline-block mb-1">${item.category || 'পণ্য'}</span>
+                <h4 class="font-bold text-gray-900 text-sm sm:text-base bangla truncate">${item.name}</h4>
+                <p class="text-xs text-gray-500 bangla mt-0.5">${item.size || 'স্ট্যান্ডার্ড সাইজ'}</p>
+                <button onclick="removeItem('${item.id}', '${item.size || ''}')" class="text-red-500 hover:text-red-700 text-xs bangla mt-2 inline-flex items-center gap-1 sm:hidden">
+                  <i class="fa-solid fa-trash-can text-[10px]"></i> মুছে ফেলুন
+                </button>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="col-span-2 text-left sm:text-center w-full sm:w-auto flex justify-between sm:block">
+              <span class="sm:hidden text-xs text-gray-500 bangla">প্রতি পিস:</span>
+              <span class="font-bold text-sm text-gray-800">৳ ${item.price.toLocaleString('bn-BD')}</span>
+            </div>
+
+            <!-- Quantity Stepper -->
+            <div class="col-span-2 flex items-center justify-between sm:justify-center w-full sm:w-auto">
+              <span class="sm:hidden text-xs text-gray-500 bangla">পরিমাণ:</span>
+              <div class="flex items-center border border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden">
+                <button onclick="changeQty('${item.id}', -1, '${item.size || ''}')" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 text-sm font-bold">−</button>
+                <span class="w-9 text-center font-bold text-xs text-gray-800">${item.quantity}</span>
+                <button onclick="changeQty('${item.id}', 1, '${item.size || ''}')" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 text-sm font-bold">+</button>
+              </div>
+            </div>
+
+            <!-- Line Total & Delete -->
+            <div class="col-span-2 text-right w-full sm:w-auto flex justify-between sm:justify-end items-center gap-3">
+              <span class="sm:hidden text-xs text-gray-500 bangla">মোট মূল্য:</span>
+              <div class="flex items-center gap-3">
+                <span class="font-black text-primary-700 text-base">৳ ${itemTotal.toLocaleString('bn-BD')}</span>
+                <button onclick="removeItem('${item.id}', '${item.size || ''}')" class="hidden sm:flex text-gray-400 hover:text-red-600 transition-colors w-7 h-7 rounded-lg items-center justify-center hover:bg-red-50" title="মুছে ফেলুন">
+                  <i class="fa-solid fa-trash-can text-xs"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+      });
+      itemsContainer.innerHTML = html;
+    }
+
+    // Calculations
+    const subtotal = RedAgroCart.getCartSubtotal();
+    let shipping = (subtotal >= 1000 || subtotal === 0) ? 0 : (deliveryArea === 'dhaka' ? 60 : 120);
+
+    let discount = 0;
+    if (activeCoupon) {
+      if (activeCoupon.discountPercent) {
+        discount = Math.round((subtotal * activeCoupon.discountPercent) / 100);
+      } else if (activeCoupon.discountFlat) {
+        discount = Math.min(subtotal, activeCoupon.discountFlat);
+      }
+    }
+
+    const total = Math.max(0, subtotal + shipping - discount);
+
+    // Update summary UI
+    document.getElementById('summary-subtotal').textContent = `৳ ${subtotal.toLocaleString('bn-BD')}`;
+    document.getElementById('summary-shipping').innerHTML = shipping === 0 ? '<span class="text-green-600 font-bold">ফ্রি! 🚚</span>' : `৳ ${shipping.toLocaleString('bn-BD')}`;
+    
+    const discRow = document.getElementById('discount-row');
+    if (discount > 0) {
+      discRow.classList.remove('hidden');
+      document.getElementById('discount-code-name').textContent = activeCoupon.code;
+      document.getElementById('summary-discount').textContent = `- ৳ ${discount.toLocaleString('bn-BD')}`;
+    } else {
+      discRow.classList.add('hidden');
+    }
+
+    document.getElementById('summary-total').textContent = `৳ ${total.toLocaleString('bn-BD')}`;
+
+    // Free delivery progress bar
+    const freeShippingTarget = 1000;
+    const remaining = Math.max(0, freeShippingTarget - subtotal);
+    const percent = Math.min(100, Math.round((subtotal / freeShippingTarget) * 100));
+
+    const barEl = document.getElementById('free-shipping-bar');
+    const percentEl = document.getElementById('free-shipping-percent');
+    const textEl = document.getElementById('free-shipping-text');
+
+    if (barEl) barEl.style.width = `${percent}%`;
+    if (percentEl) percentEl.textContent = `${percent}%`;
+
+    if (subtotal >= freeShippingTarget) {
+      textEl.innerHTML = `<i class="fa-solid fa-circle-check text-green-500 text-base"></i> <span class="text-green-700">অভিনন্দন! আপনি এই অর্ডারে <strong>ফ্রি ডেলিভারি</strong> পাচ্ছেন!</span>`;
+      if (barEl) barEl.className = 'bg-green-500 h-2.5 rounded-full transition-all duration-500';
+    } else {
+      textEl.innerHTML = `<i class="fa-solid fa-truck-fast text-primary-600"></i> <span>আর মাত্র ৳ <strong>${remaining.toLocaleString('bn-BD')}</strong> টাকার পণ্য যোগ করলেই ডেলিভারি <strong>সম্পূর্ণ ফ্রি!</strong></span>`;
+      if (barEl) barEl.className = 'bg-primary-600 h-2.5 rounded-full transition-all duration-500';
+    }
+
+    RedAgroCart.updateCartBadges();
+  }
+
+  function changeQty(id, delta, size) {
+    RedAgroCart.updateQuantity(id, delta, size);
+    renderCart();
+  }
+
+  function removeItem(id, size) {
+    RedAgroCart.removeFromCart(id, size);
+    renderCart();
+  }
+
+  function clearCartConfirm() {
+    if (confirm('আপনি কি নিশ্চিত যে কার্টের সব পণ্য মুছে ফেলতে চান?')) {
+      RedAgroCart.clearCart();
+      renderCart();
+    }
+  }
+
+  function orderViaWhatsApp() {
+    const cart = RedAgroCart.getCart();
+    if (cart.length === 0) {
+      alert('আপনার কার্ট খালি! অনুগ্রহ করে পণ্য যোগ করুন।');
+      return;
+    }
+    const subtotal = RedAgroCart.getCartSubtotal();
+    let text = `*Red Agro কার্ট অর্ডার*\n\n`;
+    cart.forEach((i, idx) => {
+      text += `${idx + 1}. ${i.name} (${i.size || 'সাধারণ'}) x ${i.quantity} = ৳ ${(i.price * i.quantity)}\n`;
+    });
+    text += `\n*সাবটোটাল:* ৳ ${subtotal}\n`;
+    text += `*ডেলিভারি এলাকা:* ${deliveryArea === 'dhaka' ? 'ঢাকার ভিতরে' : 'ঢাকার বাইরে'}\n\nআমি এই অর্ডারটি কনফার্ম করতে চাই।`;
+    
+    const waUrl = `https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+  }
+
+  // Initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+  });
+  window.addEventListener('cartUpdated', renderCart);
+</script>
+</body>
+</html>

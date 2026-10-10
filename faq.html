@@ -64,12 +64,22 @@
         <a href="faq.html" class="text-sm font-semibold text-primary-600 bangla transition-colors">প্রশ্নোত্তর</a>
         <a href="index.html#advice" class="text-sm font-semibold text-gray-600 hover:text-primary-600 bangla transition-colors">যোগাযোগ</a>
       </div>
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700 transition-colors" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
         <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-full transition-all hover:scale-105 shadow-md shadow-green-500/20">
           <i class="fa-brands fa-whatsapp text-lg"></i> <span class="bangla">কথা বলুন</span>
         </a>
       </div>
-      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl p-2"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="text-gray-600 text-2xl p-2"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+      </div>
     </div>
   </div>
   
@@ -275,9 +285,12 @@
     <i class="fa-solid fa-store text-lg"></i>
     <span class="text-[11px] font-medium bangla">পণ্যসমূহ</span>
   </a>
-  <a href="about.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
-    <i class="fa-solid fa-shield-halved text-lg"></i>
-    <span class="text-[11px] font-medium bangla">আমাদের গল্প</span>
+  <a href="cart.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600 relative">
+    <div class="relative">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
+      <span class="cart-badge absolute -top-1 -right-2 bg-primary-600 text-white text-[9px] font-bold px-1 rounded-full min-w-[15px] text-center">0</span>
+    </div>
+    <span class="text-[11px] font-medium bangla">কার্ট</span>
   </a>
   <a href="faq.html" class="flex flex-col items-center gap-1 text-primary-600 font-bold">
     <i class="fa-solid fa-circle-question text-lg"></i>
@@ -325,6 +338,6 @@
     });
   });
 </script>
-
+<script src="js/cart.js"></script>
 </body>
 </html>

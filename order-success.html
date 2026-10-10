@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অর্ডার সম্পন্ন হয়েছে | Red Agro</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bangla { font-family: 'Hind Siliguri', sans-serif; }
+    @media print {
+      header, footer, .no-print { display: none !important; }
+      body { background: white; padding: 0; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden pb-20 md:pb-12">
+
+<!-- ═══ HEADER ═══ -->
+<header class="bg-white border-b border-gray-100 py-4 shadow-xs no-print">
+  <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-xl bg-primary-700 flex items-center justify-center shadow">
+        <i class="fa-solid fa-seedling text-white text-sm"></i>
+      </div>
+      <div>
+        <div class="font-black text-lg tracking-tight leading-none text-gray-900">Red <span class="text-primary-600">Agro</span></div>
+        <div class="text-[9px] bangla font-medium tracking-wide text-primary-700">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+      </div>
+    </a>
+    <a href="products.html" class="text-xs font-bold text-primary-700 hover:text-primary-800 bangla flex items-center gap-1.5">
+      <i class="fa-solid fa-store text-xs"></i> স্টোরে ফিরুন
+    </a>
+  </div>
+</header>
+
+<!-- ═══ ORDER CONFIRMATION CONTENT ═══ -->
+<main class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+  
+  <!-- Success Hero Banner -->
+  <div class="text-center mb-8">
+    <div class="relative w-20 h-20 sm:w-24 sm:h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg shadow-green-100 ring-8 ring-green-50 animate-bounce">
+      <i class="fa-solid fa-check text-4xl sm:text-5xl"></i>
+    </div>
+    <span class="text-xs font-bold uppercase tracking-wider text-green-700 bg-green-100 px-3 py-1 rounded-full bangla inline-block mb-2">অর্ডার সফলভাবে গৃহীত হয়েছে</span>
+    <h1 class="text-2xl sm:text-3xl font-black text-gray-900 bangla mb-2">ধন্যবাদ! আপনার অর্ডারটি আমরা পেয়েছি</h1>
+    <p class="text-gray-500 text-xs sm:text-sm bangla max-w-md mx-auto">আমাদের ফার্ম টিম শীঘ্রই তাজা পণ্য প্রস্তুত করে আপনার কাছে পাঠাবে।</p>
+    
+    <div class="mt-4 inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-2 rounded-2xl shadow-xs">
+      <span class="text-xs text-gray-500 bangla">অর্ডার আইডি:</span>
+      <strong id="display-order-id" class="text-sm font-mono text-primary-700 font-bold">#RA-2026-0000</strong>
+    </div>
+  </div>
+
+  <!-- Delivery Progress Tracker -->
+  <div class="bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-gray-100 mb-6">
+    <h3 class="text-sm font-bold text-gray-900 bangla mb-4">অর্ডার প্রসেসিং টাইমলাইন</h3>
+    <div class="grid grid-cols-4 gap-2 text-center text-[11px] sm:text-xs bangla">
+      <div class="space-y-2">
+        <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center mx-auto shadow-sm">
+          <i class="fa-solid fa-receipt text-xs"></i>
+        </div>
+        <p class="font-bold text-gray-900">অর্ডার গ্রহণ</p>
+        <p class="text-[10px] text-green-600 font-semibold">সম্পন্ন ✓</p>
+      </div>
+      <div class="space-y-2">
+        <div class="w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-box text-xs"></i>
+        </div>
+        <p class="font-bold text-gray-700">ফার্ম প্যাকেজিং</p>
+        <p class="text-[10px] text-gray-400">চলমান...</p>
+      </div>
+      <div class="space-y-2">
+        <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-truck-fast text-xs"></i>
+        </div>
+        <p class="font-bold text-gray-500">ডেলিভারিতে রওয়ানা</p>
+        <p class="text-[10px] text-gray-400">অপেক্ষমাণ</p>
+      </div>
+      <div class="space-y-2">
+        <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-house-chimney text-xs"></i>
+        </div>
+        <p class="font-bold text-gray-500">ডেলিভারি সম্পন্ন</p>
+        <p class="text-[10px] text-gray-400">১-৩ দিন</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Receipt Card -->
+  <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 mb-6">
+    
+    <!-- Receipt Header -->
+    <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+      <div>
+        <h2 class="font-black text-gray-900 text-base sm:text-lg bangla">অর্ডারের সারসংক্ষেপ ও রসিদ</h2>
+        <p id="display-order-date" class="text-xs text-gray-400 mt-0.5">তারিখ: --</p>
+      </div>
+      <button onclick="window.print()" class="no-print text-xs font-bold text-gray-600 hover:text-primary-600 bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-xl transition-colors bangla flex items-center gap-1.5">
+        <i class="fa-solid fa-print"></i> রসিদ প্রিন্ট
+      </button>
+    </div>
+
+    <!-- Customer Details Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-b border-gray-100 text-xs bangla">
+      <div>
+        <span class="text-gray-400 block mb-0.5">গ্রাহকের বিবরণ:</span>
+        <strong id="display-cust-name" class="text-gray-900 text-sm block">--</strong>
+        <span id="display-cust-phone" class="text-gray-600 block mt-0.5 font-mono">--</span>
+      </div>
+      <div>
+        <span class="text-gray-400 block mb-0.5">ডেলিভারি ঠিকানা:</span>
+        <p id="display-cust-address" class="text-gray-800 leading-relaxed">--</p>
+        <span id="display-cust-payment" class="inline-block mt-1 bg-green-50 text-green-700 px-2 py-0.5 rounded font-semibold text-[11px]">পেমেন্ট: ক্যাশ অন ডেলিভারি</span>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div class="py-4 border-b border-gray-100">
+      <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider bangla mb-3">অর্ডারকৃত পণ্যসমূহ:</h4>
+      <div id="display-order-items" class="divide-y divide-gray-50">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Price Calculation -->
+    <div class="pt-4 space-y-2 text-xs sm:text-sm bangla max-w-xs ml-auto">
+      <div class="flex justify-between text-gray-600">
+        <span>সাবটোটাল:</span>
+        <span id="display-subtotal" class="font-bold text-gray-900">৳ ০</span>
+      </div>
+      <div class="flex justify-between text-gray-600">
+        <span>ডেলিভারি চার্জ:</span>
+        <span id="display-shipping" class="font-bold text-gray-900">৳ ০</span>
+      </div>
+      <div class="flex justify-between items-center text-base sm:text-lg font-black pt-3 border-t border-gray-200 text-gray-900">
+        <span>মোট প্রদেয়:</span>
+        <span id="display-total" class="text-primary-700 text-xl font-black">৳ ০</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Immediate Actions & WhatsApp confirmation -->
+  <div class="bg-primary-50 border border-primary-100 rounded-3xl p-6 text-center no-print">
+    <div class="w-12 h-12 bg-green-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-md">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </div>
+    <h3 class="text-base sm:text-lg font-black text-gray-900 bangla mb-1">WhatsApp-এ এক ক্লিকে আপডেট পান</h3>
+    <p class="text-xs text-gray-600 bangla max-w-md mx-auto mb-4">আমাদের কাস্টমার কেয়ারে আপনার অর্ডার নম্বরটি নিশ্চিত করতে নিচের বাটনে চাপ দিন।</p>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a id="whatsapp-confirm-link" href="https://wa.me/8801XXXXXXXXX" target="_blank"
+         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm px-6 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all bangla">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>WhatsApp-এ অর্ডার নিশ্চিত করুন</span>
+      </a>
+
+      <a href="products.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-gray-800 hover:bg-gray-100 font-bold text-sm px-6 py-3.5 rounded-full border border-gray-200 transition-all bangla">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>আরও কেনাকাটা করুন</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-900 text-white py-8 border-t border-gray-800 mt-12 text-center text-xs text-gray-500 no-print">
+  <div class="max-w-4xl mx-auto px-4">
+    <p class="bangla text-gray-400">Red Agro — বিষমুক্ত খাবার ও ছাদবাগানের বিশ্বস্ত সঙ্গী 🌿</p>
+    <p class="text-gray-600 mt-1">হটলাইন: 01XXXXXXXXX · ইমেইল: support@redagro.com</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Read URL params or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderIdParam = urlParams.get('orderId');
+
+    let orderData = null;
+    try {
+      const stored = localStorage.getItem('red_agro_latest_order');
+      if (stored) {
+        orderData = JSON.parse(stored);
+      }
+    } catch(e) {
+      console.error(e);
+    }
+
+    const orderId = orderIdParam || (orderData && orderData.orderId) || '#RA-2026-9812';
+    document.getElementById('display-order-id').textContent = orderId;
+
+    if (orderData) {
+      const d = new Date(orderData.createdAt || Date.now());
+      document.getElementById('display-order-date').textContent = `তারিখ: ${d.toLocaleDateString('bn-BD')} (${d.toLocaleTimeString('bn-BD', {hour:'2-digit', minute:'2-digit'})})`;
+      
+      if (orderData.customer) {
+        document.getElementById('display-cust-name').textContent = orderData.customer.name || 'সম্মানিত গ্রাহক';
+        document.getElementById('display-cust-phone').textContent = orderData.customer.phone || '01XXXXXXXXX';
+        document.getElementById('display-cust-address').textContent = `${orderData.customer.address || ''}, ${orderData.customer.thana || ''}, ${orderData.customer.district || ''}`;
+      }
+
+      if (orderData.payment) {
+        let payText = 'পেমেন্ট: ক্যাশ অন ডেলিভারি (COD)';
+        if (orderData.payment.method === 'bkash') payText = `পেমেন্ট: বিকাশ (TrxID: ${orderData.payment.trxId || 'N/A'})`;
+        if (orderData.payment.method === 'nagad') payText = `পেমেন্ট: নগদ (TrxID: ${orderData.payment.trxId || 'N/A'})`;
+        document.getElementById('display-cust-payment').textContent = payText;
+      }
+
+      // Render items
+      const itemsContainer = document.getElementById('display-order-items');
+      if (orderData.items && orderData.items.length > 0) {
+        let itemsHtml = '';
+        orderData.items.forEach(item => {
+          itemsHtml += `
+            <div class="py-2.5 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <img src="${item.image || 'images/farm-foods.jpg'}" alt="" class="w-9 h-9 rounded-lg object-cover border border-gray-100">
+                <div>
+                  <span class="font-bold text-gray-900 bangla">${item.name}</span>
+                  <span class="text-gray-500 text-[11px] bangla block">${item.size || ''} × ${item.quantity}</span>
+                </div>
+              </div>
+              <div class="font-bold text-gray-900">
+                ৳ ${(item.price * item.quantity).toLocaleString('bn-BD')}
+              </div>
+            </div>
+          `;
+        });
+        itemsContainer.innerHTML = itemsHtml;
+      }
+
+      document.getElementById('display-subtotal').textContent = `৳ ${(orderData.subtotal || 0).toLocaleString('bn-BD')}`;
+      document.getElementById('display-shipping').textContent = (orderData.shipping && orderData.shipping.charge === 0) ? 'ফ্রি' : `৳ ${(orderData.shipping?.charge || 60).toLocaleString('bn-BD')}`;
+      document.getElementById('display-total').textContent = `৳ ${(orderData.total || 0).toLocaleString('bn-BD')}`;
+
+      // Build WhatsApp confirmation message
+      const waText = `হ্যালো Red Agro! আমি একটি নতুন অর্ডার সম্পন্ন করেছি।\n\n*অর্ডার আইডি:* ${orderId}\n*নাম:* ${orderData.customer?.name || ''}\n*ফোন:* ${orderData.customer?.phone || ''}\n*মোট বিল:* ৳ ${orderData.total}\n\nঅনুগ্রহ করে আমার অর্ডারটি নিশ্চিত করুন।`;
+      document.getElementById('whatsapp-confirm-link').href = `https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(waText)}`;
+    } else {
+      document.getElementById('display-order-date').textContent = `তারিখ: ${new Date().toLocaleDateString('bn-BD')}`;
+      document.getElementById('display-cust-name').textContent = 'মো: গ্রাহক';
+      document.getElementById('display-cust-phone').textContent = '01XXXXXXXXX';
+      document.getElementById('display-cust-address').textContent = 'ধানমন্ডি, ঢাকা';
+      document.getElementById('display-order-items').innerHTML = `
+        <div class="py-2 flex items-center justify-between text-xs">
+          <span>সুন্দরবনের খাঁটি মধু × 1</span>
+          <span class="font-bold">৳ ৪৫০</span>
+        </div>
+      `;
+      document.getElementById('display-subtotal').textContent = '৳ ৪৫০';
+      document.getElementById('display-shipping').textContent = '৳ ৬০';
+      document.getElementById('display-total').textContent = '৳ ৫১০';
+    }
+  });
+</script>
+</body>
+</html>

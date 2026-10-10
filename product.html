@@ -68,14 +68,24 @@
         <a href="index.html#about" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 bangla">আমাদের ফার্ম</a>
         <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700">Free Advice</a>
       </div>
-      <div class="hidden md:block">
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700 transition-colors" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
         <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all shadow-md hover:scale-105">
           <i class="fa-brands fa-whatsapp"></i> 01XXXXXXXXX
         </a>
       </div>
-      <button id="menu-btn" class="md:hidden text-gray-700 p-2">
-        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
-      </button>
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="text-gray-700 p-2">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-primary-100 px-4 pt-4 pb-6 space-y-3 shadow-lg">
@@ -219,12 +229,24 @@
         <span class="text-gray-400 text-sm bangla">মোট: <span id="total-price" class="text-primary-700 font-black">৳ ৪৫০</span></span>
       </div>
 
-      <!-- WhatsApp Order CTA -->
-      <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20(500g)%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%201%20টি।" id="whatsapp-order-btn" target="_blank" class="whatsapp-pulse flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-black text-lg px-6 py-4 rounded-2xl w-full transition-all shadow-xl shadow-green-500/30 mb-3">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-        <span class="bangla">WhatsApp এ অর্ডার করুন — এখনই</span>
-      </a>
-      <p class="text-center text-gray-400 text-xs mb-5 bangla">বাজারের বিষ থেকে পরিবারকে আজই বাঁচান · ৩০ মিনিটে রেসপন্স</p>
+      <!-- Action CTAs -->
+      <div class="space-y-3 mb-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button onclick="addProductToCart(false)" class="flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-black text-base px-6 py-3.5 rounded-2xl w-full transition-all shadow-lg hover:shadow-xl hover:scale-[1.01] bangla">
+            <i class="fa-solid fa-cart-plus text-lg"></i>
+            <span>কার্টে যোগ করুন</span>
+          </button>
+          <button onclick="addProductToCart(true)" class="flex items-center justify-center gap-2 bg-primary-800 hover:bg-primary-900 text-white font-black text-base px-6 py-3.5 rounded-2xl w-full transition-all shadow-lg hover:shadow-xl hover:scale-[1.01] bangla">
+            <i class="fa-solid fa-bolt text-amber-300 text-base"></i>
+            <span>এখনই কিনুন</span>
+          </button>
+        </div>
+        <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20(500g)%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%201%20টি।" id="whatsapp-order-btn" target="_blank" class="whatsapp-pulse flex items-center justify-center gap-2.5 bg-green-500 hover:bg-green-600 text-white font-bold text-base px-6 py-3.5 rounded-2xl w-full transition-all shadow-lg shadow-green-500/20">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          <span class="bangla">WhatsApp এ অর্ডার করুন</span>
+        </a>
+      </div>
+      <p class="text-center text-gray-400 text-xs mb-5 bangla">বাজারের বিষ থেকে পরিবারকে আজই বাঁচান · ক্যাশ অন ডেলিভারি সুবিধা</p>
 
       <!-- Safety Trust Strip -->
       <div class="grid grid-cols-3 gap-3 mb-6">
@@ -547,16 +569,22 @@
 </div>
 
 <!-- Mobile Sticky Order Bar -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-200 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] flex items-center justify-between gap-3">
-  <div>
-    <div class="text-[10px] text-gray-500 uppercase tracking-wider bangla">মোট মূল্য</div>
-    <div id="mobile-sticky-price" class="text-xl font-black text-primary-700 leading-none">৳ ৪৫০</div>
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-200 px-3 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] flex items-center justify-between gap-2">
+  <div class="flex-shrink-0">
+    <div class="text-[9px] text-gray-500 uppercase tracking-wider bangla">মোট মূল্য</div>
+    <div id="mobile-sticky-price" class="text-base font-black text-primary-700 leading-none">৳ ৪৫০</div>
   </div>
-  <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20(500g)%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%201%20টি।" id="mobile-sticky-order-btn" target="_blank"
-     class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm py-3 px-4 rounded-xl shadow-md transition-all">
-    <i class="fa-brands fa-whatsapp text-lg"></i>
-    <span class="bangla">WhatsApp এ অর্ডার</span>
-  </a>
+  <div class="flex items-center gap-2 flex-1 justify-end">
+    <button onclick="addProductToCart(false)" class="flex items-center justify-center gap-1.5 bg-primary-50 text-primary-700 border border-primary-200 hover:bg-primary-100 font-bold text-xs py-2.5 px-3 rounded-xl transition-all">
+      <i class="fa-solid fa-cart-plus text-xs"></i>
+      <span class="bangla">কার্ট</span>
+    </button>
+    <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20(500g)%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%201%20টি।" id="mobile-sticky-order-btn" target="_blank"
+       class="flex items-center justify-center gap-1.5 bg-green-500 hover:bg-green-600 text-white font-bold text-xs py-2.5 px-3.5 rounded-xl shadow-md transition-all">
+      <i class="fa-brands fa-whatsapp text-sm"></i>
+      <span class="bangla">WhatsApp</span>
+    </a>
+  </div>
 </div>
 
 <!-- Floating WhatsApp (Desktop) -->
@@ -658,6 +686,29 @@
     i.classList.toggle('fa-regular'); i.classList.toggle('fa-solid');
     i.classList.toggle('text-red-500');
   });
+
+  // Add product to Cart
+  function addProductToCart(directCheckout = false) {
+    const activeSizeBtn = document.querySelector('.size-btn.border-primary-500') || document.querySelector('.size-btn');
+    const sizeText = activeSizeBtn ? activeSizeBtn.querySelector('.bangla')?.textContent || '500g জার' : '500g জার';
+    
+    const product = {
+      id: 'honey',
+      name: 'সুন্দরবনের খাঁটি মধু',
+      size: sizeText,
+      price: basePrice,
+      image: 'images/farm-foods.jpg',
+      category: 'ফার্মের খাবার'
+    };
+    
+    if (window.RedAgroCart) {
+      window.RedAgroCart.addToCart(product, qty, !directCheckout);
+      if (directCheckout) {
+        window.location.href = 'checkout.html';
+      }
+    }
+  }
 </script>
+<script src="js/cart.js"></script>
 </body>
 </html>

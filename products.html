@@ -64,14 +64,24 @@
         <a href="faq.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
         <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">যোগাযোগ</a>
       </div>
-      <div class="hidden md:block">
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700 transition-colors" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
         <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all shadow-md hover:scale-105">
           <i class="fa-brands fa-whatsapp"></i> 01XXXXXXXXX
         </a>
       </div>
-      <button id="menu-btn" class="md:hidden text-gray-700 p-2">
-        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
-      </button>
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="text-gray-700 p-2">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-4 pb-6 space-y-1 shadow-lg">
@@ -664,16 +674,19 @@
     <span class="text-[10px] font-medium bangla">হোম</span>
   </a>
   <a href="products.html" class="flex flex-col items-center justify-center flex-1 py-1 text-primary-600 font-bold transition-colors">
-    <i class="fa-solid fa-seedling text-lg mb-0.5"></i>
+    <i class="fa-solid fa-store text-lg mb-0.5"></i>
     <span class="text-[10px] font-bold bangla">পণ্য</span>
+  </a>
+  <a href="cart.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors relative">
+    <div class="relative">
+      <i class="fa-solid fa-cart-shopping text-lg mb-0.5"></i>
+      <span class="cart-badge absolute -top-1 -right-2 bg-primary-600 text-white text-[9px] font-bold px-1 rounded-full min-w-[15px] text-center">0</span>
+    </div>
+    <span class="text-[10px] font-medium bangla">কার্ট</span>
   </a>
   <a href="about.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
     <i class="fa-solid fa-leaf text-lg mb-0.5"></i>
-    <span class="text-[10px] font-medium bangla">আমাদের গল্প</span>
-  </a>
-  <a href="faq.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
-    <i class="fa-solid fa-circle-question text-lg mb-0.5"></i>
-    <span class="text-[10px] font-medium bangla">FAQ</span>
+    <span class="text-[10px] font-medium bangla">গল্প</span>
   </a>
   <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center justify-center flex-1 py-1 text-green-600 hover:text-green-700 transition-colors">
     <div class="relative">
@@ -884,5 +897,6 @@
     document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 50);
   });
 </script>
+<script src="js/cart.js"></script>
 </body>
 </html>
