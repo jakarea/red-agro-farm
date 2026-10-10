@@ -43,23 +43,75 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden pb-20 md:pb-12">
 
-<!-- ═══ HEADER ═══ -->
-<header class="bg-white border-b border-gray-100 py-4 shadow-xs no-print">
-  <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-xl bg-primary-700 flex items-center justify-center shadow">
-        <i class="fa-solid fa-seedling text-white text-sm"></i>
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="no-print sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-primary-700 flex items-center justify-center shadow group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-seedling text-white text-base"></i>
+        </div>
+        <div>
+          <div class="font-black text-xl tracking-tight leading-none text-gray-900">Red <span class="text-primary-600">Agro</span></div>
+          <div class="text-[9px] bangla font-medium tracking-wide text-primary-700">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">হোম</a>
+        <a href="products.html" class="nav-link text-sm font-semibold text-primary-700 bangla">সব পণ্য</a>
+        <a href="about.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">আমাদের গল্প</a>
+        <a href="faq.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
+        <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">যোগাযোগ</a>
       </div>
-      <div>
-        <div class="font-black text-lg tracking-tight leading-none text-gray-900">Red <span class="text-primary-600">Agro</span></div>
-        <div class="text-[9px] bangla font-medium tracking-wide text-primary-700">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+
+      <!-- Right Actions -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative flex items-center gap-2 bg-primary-50 text-primary-700 px-3.5 py-2 rounded-xl font-bold text-sm border border-primary-200 hover:bg-primary-100 transition-all shadow-xs" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-base text-primary-700"></i>
+          <span class="bangla text-xs">কার্ট</span>
+          <span class="cart-badge bg-primary-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center leading-none">0</span>
+        </a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+           class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-all shadow hover:scale-105">
+          <i class="fa-brands fa-whatsapp"></i> 01XXXXXXXXX
+        </a>
       </div>
+
+      <!-- Mobile Header -->
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="p-2 text-gray-700 hover:text-primary-700">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pt-3 pb-6 space-y-1 shadow-lg">
+    <a href="index.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">হোম</a>
+    <a href="products.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">সব পণ্য</a>
+    <a href="cart.html" class="block py-2.5 text-sm text-primary-700 font-bold border-b border-gray-50 bangla flex items-center justify-between">
+      <span>🛒 শপিং কার্ট</span>
+      <span class="cart-badge bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
     </a>
-    <a href="products.html" class="text-xs font-bold text-primary-700 hover:text-primary-800 bangla flex items-center gap-1.5">
-      <i class="fa-solid fa-store text-xs"></i> স্টোরে ফিরুন
+    <a href="about.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">আমাদের গল্প</a>
+    <a href="faq.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
+    <a href="index.html#advice" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium bangla">যোগাযোগ ও পরামর্শ</a>
+    <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+       class="mt-3 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-2xl text-sm shadow">
+      <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp করুন
     </a>
   </div>
-</header>
+</nav>
 
 <!-- ═══ ORDER CONFIRMATION CONTENT ═══ -->
 <main class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
@@ -192,13 +244,118 @@
 
 </main>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="bg-gray-900 text-white py-8 border-t border-gray-800 mt-12 text-center text-xs text-gray-500 no-print">
-  <div class="max-w-4xl mx-auto px-4">
-    <p class="bangla text-gray-400">Red Agro — বিষমুক্ত খাবার ও ছাদবাগানের বিশ্বস্ত সঙ্গী 🌿</p>
-    <p class="text-gray-600 mt-1">হটলাইন: 01XXXXXXXXX · ইমেইল: support@redagro.com</p>
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="no-print bg-gray-900 text-gray-400 pt-16 pb-24 md:pb-12 border-t border-gray-800 mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="index.html" class="flex items-center gap-2.5 mb-4 group inline-flex">
+          <div class="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center shadow">
+            <i class="fa-solid fa-seedling text-white text-base"></i>
+          </div>
+          <div>
+            <div class="font-black text-xl tracking-tight leading-none text-white">Red <span class="text-primary-400">Agro</span></div>
+            <div class="text-[9px] bangla font-medium tracking-wide text-primary-300">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+          </div>
+        </a>
+        <p class="text-sm bangla leading-relaxed text-gray-400 mb-5">
+          বাজারের রাসায়নিক ও বিষাক্ত খাবার থেকে পরিবারকে সুরক্ষিত রাখুন। শতভাগ খাঁটি ফার্মের খাদ্য এবং সহজ ছাদবাগানের নির্ভরযোগ্য সমাধান।
+        </p>
+        <div class="flex gap-2.5">
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">প্রয়োজনীয় লিঙ্ক</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="index.html" class="hover:text-primary-400 transition-colors">হোমপেজ</a></li>
+          <li><a href="products.html" class="hover:text-primary-400 transition-colors">সকল পণ্যসমূহ</a></li>
+          <li><a href="cart.html" class="hover:text-primary-400 transition-colors">শপিং কার্ট</a></li>
+          <li><a href="about.html" class="hover:text-primary-400 transition-colors">আমাদের গল্প ও মিশন</a></li>
+          <li><a href="faq.html" class="hover:text-primary-400 transition-colors">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">পণ্য বিভাগ</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🍯 সুন্দরবনের খাঁটি মধু</a></li>
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🥄 খাঁটি গাওয়া ঘি ও তেল</a></li>
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🌾 সুগন্ধি কালোজিরা চাল</a></li>
+          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🌱 জৈব ভার্মিকম্পোস্ট সার</a></li>
+          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">যোগাযোগ ও সাপোর্ট</h4>
+        <ul class="space-y-3.5 text-sm bangla">
+          <li class="flex items-start gap-3">
+            <i class="fa-brands fa-whatsapp text-green-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-mono">01XXXXXXXXX</strong>
+              <span class="text-gray-500 text-xs">সকাল ৮টা – রাত ১০টা (সপ্তাহে ৭ দিন)</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-primary-400 text-sm mt-1"></i>
+            <span class="text-gray-300">support@redagro.com.bd</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-red-400 text-sm mt-1"></i>
+            <span class="text-gray-400 text-xs">ফার্ম ও বাগান: ঢাকা ও সাভার, বাংলাদেশ</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500 bangla">
+      <p>© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত · বিষমুক্ত খাবার, সুস্থ জীবন 🌿</p>
+      <div class="flex items-center gap-4">
+        <span>💵 ক্যাশ অন ডেলিভারি</span>
+        <span>•</span>
+        <span>🚚 দ্রুত ডেলিভারি</span>
+        <span>•</span>
+        <span>🛡️ ৭ দিনের রিপ্লেসমেন্ট</span>
+      </div>
+    </div>
   </div>
 </footer>
+
+<!-- ═══ FLOATING WHATSAPP ═══ -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+   class="no-print fixed bottom-20 right-4 md:bottom-6 md:right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all z-40"
+   title="WhatsApp-এ যোগাযোগ করুন">
+  <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i>
+</a>
+
+<!-- ═══ MOBILE BOTTOM NAVIGATION APP BAR ═══ -->
+<div class="no-print md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 px-3 py-2 z-50 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+  <a href="index.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-house text-lg"></i>
+    <span class="text-[11px] font-medium bangla">হোম</span>
+  </a>
+  <a href="products.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-store text-lg"></i>
+    <span class="text-[11px] font-medium bangla">পণ্যসমূহ</span>
+  </a>
+  <a href="cart.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600 relative">
+    <div class="relative">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
+      <span class="cart-badge absolute -top-1 -right-2 bg-primary-600 text-white text-[9px] font-bold px-1 rounded-full min-w-[15px] text-center">0</span>
+    </div>
+    <span class="text-[11px] font-medium bangla">কার্ট</span>
+  </a>
+  <a href="about.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-shield-halved text-lg"></i>
+    <span class="text-[11px] font-medium bangla">আমাদের গল্প</span>
+  </a>
+  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center gap-1 text-green-600">
+    <i class="fa-brands fa-whatsapp text-lg"></i>
+    <span class="text-[11px] font-medium bangla">অর্ডার</span>
+  </a>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -282,6 +439,21 @@
       document.getElementById('display-total').textContent = '৳ ৫১০';
     }
   });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (menuIcon) {
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-xmark');
+      }
+    });
+  }
 </script>
+<script src="js/cart.js"></script>
 </body>
 </html>

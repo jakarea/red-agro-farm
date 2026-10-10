@@ -249,21 +249,81 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="bg-gray-900 text-white pt-16 pb-24 md:pb-8 border-t border-gray-800">
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-gray-900 text-gray-400 pt-16 pb-24 md:pb-12 border-t border-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-          <i class="fa-solid fa-leaf text-white text-sm"></i>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="index.html" class="flex items-center gap-2.5 mb-4 group inline-flex">
+          <div class="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center shadow">
+            <i class="fa-solid fa-seedling text-white text-base"></i>
+          </div>
+          <div>
+            <div class="font-black text-xl tracking-tight leading-none text-white">Red <span class="text-primary-400">Agro</span></div>
+            <div class="text-[9px] bangla font-medium tracking-wide text-primary-300">বিষমুক্ত খাবার · সুস্থ জীবন</div>
+          </div>
+        </a>
+        <p class="text-sm bangla leading-relaxed text-gray-400 mb-5">
+          বাজারের রাসায়নিক ও বিষাক্ত খাবার থেকে পরিবারকে সুরক্ষিত রাখুন। শতভাগ খাঁটি ফার্মের খাদ্য এবং সহজ ছাদবাগানের নির্ভরযোগ্য সমাধান।
+        </p>
+        <div class="flex gap-2.5">
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
-        <span class="font-black text-xl tracking-tight text-white">Red<span class="text-primary-400">Agro</span></span>
       </div>
-      <div class="flex items-center gap-4 text-sm bangla text-gray-400">
-        <a href="about.html" class="hover:text-white transition-colors">আমাদের গল্প</a>
-        <a href="faq.html" class="hover:text-white transition-colors">প্রশ্নোত্তর</a>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">প্রয়োজনীয় লিঙ্ক</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="index.html" class="hover:text-primary-400 transition-colors">হোমপেজ</a></li>
+          <li><a href="products.html" class="hover:text-primary-400 transition-colors">সকল পণ্যসমূহ</a></li>
+          <li><a href="cart.html" class="hover:text-primary-400 transition-colors">শপিং কার্ট</a></li>
+          <li><a href="about.html" class="hover:text-primary-400 transition-colors">আমাদের গল্প ও মিশন</a></li>
+          <li><a href="faq.html" class="hover:text-primary-400 transition-colors">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+        </ul>
       </div>
-      <p class="text-gray-400 text-sm bangla">© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত।</p>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">পণ্য বিভাগ</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🍯 সুন্দরবনের খাঁটি মধু</a></li>
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🥄 খাঁটি গাওয়া ঘি ও তেল</a></li>
+          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🌾 সুগন্ধি কালোজিরা চাল</a></li>
+          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🌱 জৈব ভার্মিকম্পোস্ট সার</a></li>
+          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">যোগাযোগ ও সাপোর্ট</h4>
+        <ul class="space-y-3.5 text-sm bangla">
+          <li class="flex items-start gap-3">
+            <i class="fa-brands fa-whatsapp text-green-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-mono">01XXXXXXXXX</strong>
+              <span class="text-gray-500 text-xs">সকাল ৮টা – রাত ১০টা (সপ্তাহে ৭ দিন)</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-primary-400 text-sm mt-1"></i>
+            <span class="text-gray-300">support@redagro.com.bd</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-red-400 text-sm mt-1"></i>
+            <span class="text-gray-400 text-xs">ফার্ম ও বাগান: ঢাকা ও সাভার, বাংলাদেশ</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500 bangla">
+      <p>© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত · বিষমুক্ত খাবার, সুস্থ জীবন 🌿</p>
+      <div class="flex items-center gap-4">
+        <span>💵 ক্যাশ অন ডেলিভারি</span>
+        <span>•</span>
+        <span>🚚 দ্রুত ডেলিভারি</span>
+        <span>•</span>
+        <span>🛡️ ৭ দিনের রিপ্লেসমেন্ট</span>
+      </div>
     </div>
   </div>
 </footer>
