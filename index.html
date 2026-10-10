@@ -62,14 +62,15 @@
     .badge-amber { background:linear-gradient(135deg,#fbbf24,#d97706); }
 
     /* Stat cards */
-    .stat-card { background:white; border:1.5px solid #fca5a5; border-radius:1.25rem; padding:1.5rem; text-align:center; transition:box-shadow 0.3s; }
+    .stat-card { background:white; border:1.5px solid #fca5a5; border-radius:1.25rem; padding:1.1rem 0.85rem; text-align:center; transition:box-shadow 0.3s; }
+    @media(min-width:640px) { .stat-card { padding:1.5rem; } }
     .stat-card:hover { box-shadow:0 8px 30px rgba(239,68,68,0.12); }
 
     /* Feature pill */
     .feature-pill { display:inline-flex; align-items:center; gap:0.5rem; background:#f0fdf0; border:1px solid #bbf7d0; color:#15803d; font-size:0.75rem; font-weight:600; padding:0.35rem 0.85rem; border-radius:999px; }
   </style>
 </head>
-<body class="bg-white text-gray-800 antialiased">
+<body class="bg-white text-gray-800 antialiased overflow-x-hidden pb-16 md:pb-0">
 
 <!-- ═══ NAVBAR ═══ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-scrolled="false">
@@ -125,49 +126,66 @@
 <!-- ═══════════════════════════════════════════
      HERO  — Forest Green over photo
 ═══════════════════════════════════════════ -->
-<section id="hero" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+<section id="hero" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden py-24 sm:py-28 md:py-0">
 
-  <!-- Floating pills -->
-  <div class="absolute top-24 left-5 md:left-14 float-tag glass text-white text-xs font-semibold px-3 py-2 rounded-full flex items-center gap-2 shadow-lg">
+  <!-- Floating pills for desktop -->
+  <div class="hidden md:flex absolute top-24 left-5 md:left-14 float-tag glass text-white text-xs font-semibold px-3 py-2 rounded-full items-center gap-2 shadow-lg">
     <i class="fa-solid fa-triangle-exclamation text-red-300 text-xs"></i>
     <span class="bangla">বাজারে ফরমালিন সক্রিয়</span>
   </div>
-  <div class="absolute top-40 right-5 md:right-16 float-tag-2 glass text-white text-xs font-semibold px-3 py-2 rounded-full flex items-center gap-2 shadow-lg">
+  <div class="hidden md:flex absolute top-40 right-5 md:right-16 float-tag-2 glass text-white text-xs font-semibold px-3 py-2 rounded-full items-center gap-2 shadow-lg">
     <i class="fa-solid fa-biohazard text-orange-300 text-xs"></i>
     <span class="bangla">৬৮% সবজিতে কীটনাশক</span>
   </div>
-  <div class="absolute bottom-28 left-5 md:left-20 float-tag-3 glass text-white text-xs font-semibold px-3 py-2 rounded-full flex items-center gap-2 shadow-lg">
+  <div class="hidden md:flex absolute bottom-28 left-5 md:left-20 float-tag-3 glass text-white text-xs font-semibold px-3 py-2 rounded-full items-center gap-2 shadow-lg">
     <i class="fa-solid fa-leaf text-green-300 text-xs"></i>
     <span class="bangla">আমাদের ফার্ম ১০০% বিষমুক্ত</span>
   </div>
 
-  <div class="max-w-4xl mx-auto text-center px-4 relative z-10 pt-16">
+  <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 relative z-10 pt-10 sm:pt-16">
 
     <!-- Urgency pill -->
-    <div class="inline-flex items-center gap-2 bg-red-500/20 border border-red-300/30 text-red-200 text-[11px] font-bold px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
+    <div class="inline-flex items-center gap-2 bg-red-500/20 border border-red-300/30 text-red-200 text-[10px] sm:text-[11px] font-bold px-3.5 sm:px-4 py-1.5 rounded-full mb-5 sm:mb-8 backdrop-blur-sm">
       <span class="w-1.5 h-1.5 bg-red-400 rounded-full animate-ping inline-block"></span>
       <span class="bangla">আজই জানুন — কাল দেরি হয়ে যেতে পারে</span>
     </div>
 
-      <span class="block text-3xl md:text-5xl lg:text-6xl text-white/90 mb-2">আপনি তো সচেতন মানুষ —</span>
-      <span class="block text-3xl md:text-5xl lg:text-6xl text-red-400">তাহলে পরিবারকে বিষ খাওয়াচ্ছেন কেন, না জেনেই?</span>
+    <!-- Mobile pill bar (visible on mobile only so hero headline is unobstructed) -->
+    <div class="flex md:hidden flex-wrap items-center justify-center gap-1.5 mb-6 max-w-sm mx-auto">
+      <span class="glass text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+        <i class="fa-solid fa-triangle-exclamation text-red-300 text-[9px]"></i>
+        <span class="bangla">বাজারে ফরমালিন</span>
+      </span>
+      <span class="glass text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+        <i class="fa-solid fa-biohazard text-orange-300 text-[9px]"></i>
+        <span class="bangla">৬৮% সবজিতে কীটনাশক</span>
+      </span>
+      <span class="glass text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+        <i class="fa-solid fa-leaf text-green-300 text-[9px]"></i>
+        <span class="bangla">১০০% বিষমুক্ত ফার্ম</span>
+      </span>
+    </div>
+
+    <h1 class="font-black bangla leading-[1.25] mb-4 sm:mb-5">
+      <span class="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white/90 mb-1 sm:mb-2">আপনি তো সচেতন মানুষ —</span>
+      <span class="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-red-400">তাহলে পরিবারকে বিষ খাওয়াচ্ছেন কেন, না জেনেই?</span>
     </h1>
 
-    <p class="text-white/75 text-base md:text-lg max-w-2xl mx-auto mb-3 bangla leading-relaxed">
+    <p class="text-white/75 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-3 bangla leading-relaxed">
       বাজারের টসটসে লাল টমেটো, রঙিন আম, চকচকে মাছ — এর আড়ালে লুকিয়ে আছে <strong class="text-red-300">ফরমালিন, ক্যালসিয়াম কার্বাইড আর ৪০+ রকমের কীটনাশক,</strong> যেগুলো প্রতিদিন একটু একটু করে জমছে আপনার সন্তানের শরীরে।
     </p>
-    <p class="text-white/45 text-sm max-w-xl mx-auto mb-10 italic bangla">"The food that looks the safest on your plate might be the most dangerous thing in your home."</p>
+    <p class="text-white/45 text-xs sm:text-sm max-w-xl mx-auto mb-8 sm:mb-10 italic bangla">"The food that looks the safest on your plate might be the most dangerous thing in your home."</p>
 
     <!-- Dual CTA -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-8 w-full max-w-xs sm:max-w-none mx-auto">
       <a href="#two-paths" id="cta-grow"
-         class="group flex items-center gap-2.5 bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-4 rounded-full text-sm shadow-xl shadow-primary-900/30 transition-all hover:scale-105">
+         class="group flex items-center justify-center gap-2.5 bg-primary-500 hover:bg-primary-600 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm shadow-xl shadow-primary-900/30 transition-all hover:scale-105">
         <i class="fa-solid fa-seedling"></i>
         <span class="bangla">নিজেই চাষ শুরু করুন</span>
         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
       </a>
       <a href="#two-paths" id="cta-buy"
-         class="group flex items-center gap-2.5 glass text-white font-bold px-8 py-4 rounded-full text-sm hover:bg-white/20 transition-all">
+         class="group flex items-center justify-center gap-2.5 glass text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm hover:bg-white/20 transition-all">
         <i class="fa-solid fa-jar text-amber-300"></i>
         <span class="bangla">ফার্ম থেকে সরাসরি কিনুন</span>
         <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
@@ -474,20 +492,20 @@
       </div>
       <div class="relative">
         <div class="rounded-3xl overflow-hidden shadow-xl">
-          <img src="images/hero.jpg" alt="আমাদের ফার্ম" class="w-full h-96 object-cover object-top" />
+          <img src="images/hero.jpg" alt="আমাদের ফার্ম" class="w-full h-72 sm:h-80 md:h-96 object-cover object-top" />
         </div>
-        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-lg border border-primary-100 flex items-center gap-3">
-          <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center"><i class="fa-solid fa-leaf text-white text-sm"></i></div>
+        <div class="absolute bottom-3 left-3 md:-bottom-4 md:-left-4 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-primary-100 flex items-center gap-2.5 sm:gap-3">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-500 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-leaf text-white text-xs sm:text-sm"></i></div>
           <div>
-            <div class="font-black text-gray-900 text-sm bangla">শূন্য রাসায়নিক</div>
-            <div class="text-primary-600 text-xs bangla">আমাদের অঙ্গীকার</div>
+            <div class="font-black text-gray-900 text-xs sm:text-sm bangla">শূন্য রাসায়নিক</div>
+            <div class="text-primary-600 text-[10px] sm:text-xs bangla">আমাদের অঙ্গীকার</div>
           </div>
         </div>
-        <div class="absolute -top-4 -right-4 bg-amber-400 rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2">
-          <i class="fa-solid fa-medal text-amber-700 text-lg"></i>
+        <div class="absolute top-3 right-3 md:-top-4 md:-right-4 bg-amber-400 rounded-2xl px-3.5 py-2 sm:px-4 sm:py-3 shadow-lg flex items-center gap-2">
+          <i class="fa-solid fa-medal text-amber-700 text-base sm:text-lg"></i>
           <div>
-            <div class="font-black text-amber-900 text-sm bangla">৫০০+ পরিবার</div>
-            <div class="text-amber-700 text-xs">বিশ্বস্ত</div>
+            <div class="font-black text-amber-900 text-xs sm:text-sm bangla">৫০০+ পরিবার</div>
+            <div class="text-amber-700 text-[10px] sm:text-xs">বিশ্বস্ত</div>
           </div>
         </div>
       </div>
@@ -677,14 +695,14 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="grid md:grid-cols-2 gap-14 items-center">
       <div class="relative order-2 md:order-1">
-        <div class="rounded-3xl overflow-hidden h-96 shadow-xl">
+        <div class="rounded-3xl overflow-hidden h-64 sm:h-80 md:h-96 shadow-xl">
           <img src="images/hero.jpg" alt="আমাদের ফার্ম" class="w-full h-full object-cover object-top" />
         </div>
-        <div class="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3 border border-primary-100 shadow-md">
-          <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-user text-white text-sm"></i></div>
+        <div class="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 bg-white/95 backdrop-blur-sm rounded-2xl p-3 sm:p-4 flex items-center gap-3 border border-primary-100 shadow-md">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-user text-white text-xs sm:text-sm"></i></div>
           <div>
-            <div class="text-gray-900 font-bold text-sm bangla">আমাদের ফার্মার</div>
-            <div class="text-primary-600 text-xs bangla">৪ বছর ধরে সম্পূর্ণ জৈব পদ্ধতিতে চাষ করছি</div>
+            <div class="text-gray-900 font-bold text-xs sm:text-sm bangla">আমাদের ফার্মার</div>
+            <div class="text-primary-600 text-[10px] sm:text-xs bangla">৪ বছর ধরে সম্পূর্ণ জৈব পদ্ধতিতে চাষ করছি</div>
           </div>
         </div>
       </div>
@@ -859,10 +877,37 @@
   </div>
 </footer>
 
+<!-- Mobile App Bottom Navigation Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-2 py-2 flex items-center justify-around">
+  <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-primary-600 transition-colors">
+    <i class="fa-solid fa-house text-lg mb-0.5"></i>
+    <span class="text-[10px] font-bold bangla">হোম</span>
+  </a>
+  <a href="products.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-seedling text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">পণ্য</span>
+  </a>
+  <a href="about.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-leaf text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">আমাদের গল্প</span>
+  </a>
+  <a href="faq.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-circle-question text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">FAQ</span>
+  </a>
+  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center justify-center flex-1 py-1 text-green-600 hover:text-green-700 transition-colors">
+    <div class="relative">
+      <i class="fa-brands fa-whatsapp text-xl mb-0.5"></i>
+      <span class="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+    </div>
+    <span class="text-[10px] font-bold bangla">অর্ডার</span>
+  </a>
+</div>
+
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
-   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 wa-pulse">
-  <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+   class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 wa-pulse">
+  <i class="fa-brands fa-whatsapp text-white text-xl md:text-2xl"></i>
 </a>
 
 <script>

@@ -43,7 +43,7 @@
     }
   </style>
 </head>
-<body class="bg-gray-50 antialiased selection:bg-primary-200 selection:text-primary-900">
+<body class="bg-gray-50 antialiased selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden pb-16 md:pb-0">
 
 <!-- ═══ NAVBAR ═══ -->
 <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -51,10 +51,10 @@
     <div class="flex items-center justify-between h-16 md:h-20">
       <div class="flex items-center gap-3">
         <a href="index.html" class="flex items-center gap-2">
-          <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
-            <i class="fa-solid fa-leaf text-white text-xl"></i>
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
+            <i class="fa-solid fa-leaf text-white text-base sm:text-xl"></i>
           </div>
-          <span class="font-black text-2xl tracking-tight text-gray-900">Red<span class="text-primary-600">Agro</span></span>
+          <span class="font-black text-xl sm:text-2xl tracking-tight text-gray-900">Red<span class="text-primary-600">Agro</span></span>
         </a>
       </div>
       <div class="hidden md:flex items-center gap-6">
@@ -69,7 +69,7 @@
           <i class="fa-brands fa-whatsapp text-lg"></i> <span class="bangla">কথা বলুন</span>
         </a>
       </div>
-      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl p-2"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
     </div>
   </div>
   
@@ -88,15 +88,15 @@
 </nav>
 
 <!-- ═══ PAGE HEADER ═══ -->
-<div class="pt-24 md:pt-32 pb-16 md:pb-24 bg-primary-900 relative overflow-hidden">
+<div class="pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-24 bg-primary-900 relative overflow-hidden">
   <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l1.43 1.43-56.056 56.056-1.43-1.43L54.627 0zm-33.94 0l1.43 1.43-22.118 22.117-1.43-1.43L20.686 0zm33.941 33.941l1.43 1.43-22.118 22.117-1.43-1.43 22.118-22.117z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
   <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-primary-500 blur-3xl opacity-20 pointer-events-none"></div>
   <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10 text-center">
     <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 bangla">
       <i class="fa-solid fa-circle-question text-primary-300"></i> আপনার প্রশ্ন, আমাদের উত্তর
     </div>
-    <h1 class="text-4xl md:text-5xl font-black text-white mb-4 bangla">সাধারণ জিজ্ঞাসা (FAQ)</h1>
-    <p class="text-primary-100 bangla text-lg md:text-xl leading-relaxed">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 bangla">সাধারণ জিজ্ঞাসা (FAQ)</h1>
+    <p class="text-primary-100 bangla text-base sm:text-lg md:text-xl leading-relaxed">
       আমাদের পণ্য, ডেলিভারি এবং মান নিয়ে আপনার মনের সব দ্বিধা দূর করুন।
     </p>
   </div>
@@ -240,7 +240,7 @@
 </section>
 
 <!-- ═══ FOOTER ═══ -->
-<footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
+<footer class="bg-gray-900 text-white pt-16 pb-24 md:pb-8 border-t border-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-2">
@@ -257,6 +257,37 @@
     </div>
   </div>
 </footer>
+
+<!-- Floating WhatsApp (Mobile aware position) -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+   class="fixed bottom-20 right-4 md:bottom-6 md:right-6 bg-green-500 hover:bg-green-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all z-40"
+   title="WhatsApp-এ যোগাযোগ করুন">
+  <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i>
+</a>
+
+<!-- ═══ MOBILE BOTTOM NAVIGATION APP BAR (Mobile Only) ═══ -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 px-3 py-2 z-50 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+  <a href="index.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-house text-lg"></i>
+    <span class="text-[11px] font-medium bangla">হোম</span>
+  </a>
+  <a href="products.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-store text-lg"></i>
+    <span class="text-[11px] font-medium bangla">পণ্যসমূহ</span>
+  </a>
+  <a href="about.html" class="flex flex-col items-center gap-1 text-gray-500 hover:text-primary-600">
+    <i class="fa-solid fa-shield-halved text-lg"></i>
+    <span class="text-[11px] font-medium bangla">আমাদের গল্প</span>
+  </a>
+  <a href="faq.html" class="flex flex-col items-center gap-1 text-primary-600 font-bold">
+    <i class="fa-solid fa-circle-question text-lg"></i>
+    <span class="text-[11px] font-medium bangla">প্রশ্নোত্তর</span>
+  </a>
+  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center gap-1 text-green-600">
+    <i class="fa-brands fa-whatsapp text-lg"></i>
+    <span class="text-[11px] font-medium bangla">অর্ডার</span>
+  </a>
+</div>
 
 <script>
   // Mobile Menu Toggle

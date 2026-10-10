@@ -29,7 +29,7 @@
     .fade-in.show { opacity:1; transform:translateY(0); }
   </style>
 </head>
-<body class="bg-gray-50 antialiased selection:bg-primary-200 selection:text-primary-900">
+<body class="bg-gray-50 antialiased selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden pb-16 md:pb-0">
 
 <!-- ═══ NAVBAR ═══ -->
 <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -37,10 +37,10 @@
     <div class="flex items-center justify-between h-16 md:h-20">
       <div class="flex items-center gap-3">
         <a href="index.html" class="flex items-center gap-2">
-          <div class="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
-            <i class="fa-solid fa-leaf text-white text-xl"></i>
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
+            <i class="fa-solid fa-leaf text-white text-base sm:text-xl"></i>
           </div>
-          <span class="font-black text-2xl tracking-tight text-gray-900">Red<span class="text-primary-600">Agro</span></span>
+          <span class="font-black text-xl sm:text-2xl tracking-tight text-gray-900">Red<span class="text-primary-600">Agro</span></span>
         </a>
       </div>
       <div class="hidden md:flex items-center gap-6">
@@ -55,7 +55,7 @@
           <i class="fa-brands fa-whatsapp text-lg"></i> <span class="bangla">কথা বলুন</span>
         </a>
       </div>
-      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
+      <button id="menu-btn" class="md:hidden text-gray-600 text-2xl p-2"><i id="menu-icon" class="fa-solid fa-bars"></i></button>
     </div>
   </div>
   
@@ -74,21 +74,21 @@
 </nav>
 
 <!-- ═══ PAGE HEADER ═══ -->
-<div class="pt-24 md:pt-32 pb-16 md:pb-24 bg-primary-900 relative overflow-hidden">
+<div class="pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-24 bg-primary-900 relative overflow-hidden">
   <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l1.43 1.43-56.056 56.056-1.43-1.43L54.627 0zm-33.94 0l1.43 1.43-22.118 22.117-1.43-1.43L20.686 0zm33.941 33.941l1.43 1.43-22.118 22.117-1.43-1.43 22.118-22.117z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');"></div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-6 bangla">
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 sm:mb-6 bangla">
       <i class="fa-solid fa-book-open text-primary-300"></i> আমাদের কথা
     </div>
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 bangla leading-tight">কেন আমি মাটিতে নামলাম</h1>
-    <p class="text-primary-100 bangla text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6 bangla leading-tight">কেন আমি মাটিতে নামলাম</h1>
+    <p class="text-primary-100 bangla text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-8">
       বাজারের খাবার নিয়ে এক ভয় থেকে আমার শুরু। আজ আমার একটা খামার আছে, একটা খোলা খাতা আছে, আর একটা নিয়ম আছে: <strong class="text-white">যে খাবার কীভাবে ফলেছে আমি বলতে পারি না, সেটা আমি বিক্রি করব না।</strong> এই পেজে আমি বলেছি আমি কেন এটা করছি, কী করছি, কোন নিয়মে করছি, আর কোথায় যেতে চাই।
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#rules" class="bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-3.5 rounded-full transition-colors bangla shadow-lg">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-xs sm:max-w-none mx-auto">
+      <a href="#rules" class="bg-primary-500 hover:bg-primary-600 text-white font-bold px-6 sm:px-8 py-3.5 rounded-full transition-colors bangla shadow-lg text-sm">
         আমার নিয়মগুলো দেখুন ↓
       </a>
-      <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-3.5 rounded-full transition-colors bangla">
+      <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 sm:px-8 py-3.5 rounded-full transition-colors bangla text-sm">
         ফার্মে এসে নিজ চোখে দেখুন
       </a>
     </div>
@@ -396,7 +396,54 @@
   </div>
 </footer>
 
+<!-- Mobile App Bottom Navigation Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-2 py-2 flex items-center justify-around">
+  <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-house text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">হোম</span>
+  </a>
+  <a href="products.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-seedling text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">পণ্য</span>
+  </a>
+  <a href="about.html" class="flex flex-col items-center justify-center flex-1 py-1 text-primary-600 font-bold transition-colors">
+    <i class="fa-solid fa-leaf text-lg mb-0.5"></i>
+    <span class="text-[10px] font-bold bangla">আমাদের গল্প</span>
+  </a>
+  <a href="faq.html" class="flex flex-col items-center justify-center flex-1 py-1 text-gray-400 hover:text-primary-600 transition-colors">
+    <i class="fa-solid fa-circle-question text-lg mb-0.5"></i>
+    <span class="text-[10px] font-medium bangla">FAQ</span>
+  </a>
+  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center justify-center flex-1 py-1 text-green-600 hover:text-green-700 transition-colors">
+    <div class="relative">
+      <i class="fa-brands fa-whatsapp text-xl mb-0.5"></i>
+      <span class="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+    </div>
+    <span class="text-[10px] font-bold bangla">অর্ডার</span>
+  </a>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+   class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 wa-pulse">
+  <i class="fa-brands fa-whatsapp text-white text-xl md:text-2xl"></i>
+</a>
+
 <script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (menuIcon) {
+        menuIcon.classList.toggle('fa-bars');
+        menuIcon.classList.toggle('fa-xmark');
+      }
+    });
+  }
+
   // Fade-in observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -408,6 +455,5 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>

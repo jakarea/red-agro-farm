@@ -46,7 +46,7 @@
     .feature-pill { display:inline-flex;align-items:center;gap:0.5rem;background:#f0fdf0;border:1px solid #bbf7d0;color:#15803d;font-size:0.75rem;font-weight:600;padding:0.35rem 0.85rem;border-radius:999px; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden pb-24 md:pb-0">
 
 <!-- ═══ NAVBAR ═══ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/96 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
@@ -88,59 +88,59 @@
 </nav>
 
 <!-- ═══ FEAR AWARENESS BAR ═══ -->
-<div class="fixed top-16 left-0 right-0 z-40 bg-amber-50 border-b border-amber-200">
-  <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4 flex-wrap">
+<div class="relative mt-16 md:mt-0 md:fixed md:top-16 left-0 right-0 z-40 bg-amber-50 border-b border-amber-200">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
     <div class="flex items-center gap-2 text-xs text-amber-800">
-      <i class="fa-solid fa-triangle-exclamation text-amber-500 fear-pill flex-shrink-0"></i>
-      <span class="bangla">বাজারের মধুর <strong class="text-red-600">৭০%+ তে</strong> চিনির সিরাপ, গ্লুকোজ বা কৃত্রিম রং মেশানো থাকে।</span>
+      <i class="fa-solid fa-triangle-exclamation text-amber-500 fear-pill flex-shrink-0 text-xs"></i>
+      <span class="bangla text-[11px] sm:text-xs">বাজারের মধুর <strong class="text-red-600">৭০%+ তে</strong> চিনি ও কৃত্রিম রং মেশানো থাকে।</span>
     </div>
-    <span class="text-primary-700 text-xs font-bold bangla flex-shrink-0">✓ এই মধু ১০০% খাঁটি ও ফরমালিনমুক্ত</span>
+    <span class="text-primary-700 text-[10px] sm:text-xs font-bold bangla flex-shrink-0">✓ ১০০% খাঁটি ও ফরমালিনমুক্ত</span>
   </div>
 </div>
 
 <!-- ═══ BREADCRUMB ═══ -->
-<div class="pt-28 bg-white border-b border-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
-    <div class="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
+<div class="pt-3 md:pt-28 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3">
+    <div class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-400 flex-wrap">
       <a href="index.html" class="hover:text-primary-600 transition-colors bangla">হোম</a>
-      <i class="fa-solid fa-chevron-right text-xs"></i>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
       <a href="products.html" class="hover:text-primary-600 transition-colors">Products</a>
-      <i class="fa-solid fa-chevron-right text-xs"></i>
-      <a href="products.html?cat=foods" class="hover:text-primary-600 transition-colors bangla">পথ ২: ফার্মের খাবার</a>
-      <i class="fa-solid fa-chevron-right text-xs"></i>
-      <span class="text-gray-700 font-medium bangla">সুন্দরবনের খাঁটি মধু</span>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      <a href="products.html?cat=foods" class="hover:text-primary-600 transition-colors bangla">ফার্মের খাবার</a>
+      <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      <span class="text-gray-700 font-medium bangla">খাঁটি মধু</span>
     </div>
   </div>
 </div>
 
 <!-- ═══ PRODUCT DETAIL ═══ -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-  <div class="grid lg:grid-cols-2 gap-12 items-start">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+  <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
     <!-- ── IMAGE GALLERY ── -->
-    <div class="sticky top-32">
-      <div class="relative rounded-3xl overflow-hidden bg-white shadow-xl border border-gray-100 mb-4">
-        <img id="main-image" src="images/farm-foods.jpg" alt="সুন্দরবনের খাঁটি মধু" class="w-full h-96 object-cover" />
-        <div class="absolute top-4 left-4 flex flex-col gap-2">
-          <span class="bg-accent-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
+    <div class="lg:sticky lg:top-32">
+      <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100 mb-3 sm:mb-4">
+        <img id="main-image" src="images/farm-foods.jpg" alt="সুন্দরবনের খাঁটি মধু" class="w-full h-72 sm:h-80 md:h-96 object-cover" />
+        <div class="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-col gap-1.5">
+          <span class="bg-amber-400 text-amber-900 text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-md flex items-center gap-1">
             🌿 Farm Fresh · পথ ২
           </span>
-          <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md bangla">
+          <span class="bg-green-600 text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-md bangla">
             ✓ ফরমালিন ও ভেজালমুক্ত
           </span>
         </div>
-        <button class="absolute top-4 right-4 w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-md hover:text-red-500 transition-colors" id="wishlist-btn">
+        <button class="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:text-red-500 transition-colors" id="wishlist-btn">
           <i class="fa-regular fa-heart"></i>
         </button>
       </div>
-      <div class="flex gap-3">
-        <button class="thumbnail active w-20 h-20 rounded-xl overflow-hidden border-2 border-primary-500 flex-shrink-0" onclick="switchImage(this,'images/farm-foods.jpg')">
+      <div class="flex gap-2.5 sm:gap-3 overflow-x-auto pb-1">
+        <button class="thumbnail active w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 border-primary-500 flex-shrink-0" onclick="switchImage(this,'images/farm-foods.jpg')">
           <img src="images/farm-foods.jpg" class="w-full h-full object-cover" alt="" />
         </button>
-        <button class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 flex-shrink-0 hover:border-primary-400 transition-colors" onclick="switchImage(this,'images/hero.jpg')">
+        <button class="thumbnail w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 border-gray-200 flex-shrink-0 hover:border-primary-400 transition-colors" onclick="switchImage(this,'images/hero.jpg')">
           <img src="images/hero.jpg" class="w-full h-full object-cover" alt="" />
         </button>
-        <button class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 flex-shrink-0 hover:border-primary-400 transition-colors" onclick="switchImage(this,'images/gardening.jpg')">
+        <button class="thumbnail w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border-2 border-gray-200 flex-shrink-0 hover:border-primary-400 transition-colors" onclick="switchImage(this,'images/gardening.jpg')">
           <img src="images/gardening.jpg" class="w-full h-full object-cover object-top" alt="" />
         </button>
       </div>
@@ -546,13 +546,26 @@
   </div>
 </div>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/8801XXXXXXXXX?text=সুন্দরবনের%20খাঁটি%20মধু%20অর্ডার%20করতে%20চাই" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/50 transition-all hover:scale-110 whatsapp-pulse">
+<!-- Mobile Sticky Order Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-gray-200 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] flex items-center justify-between gap-3">
+  <div>
+    <div class="text-[10px] text-gray-500 uppercase tracking-wider bangla">মোট মূল্য</div>
+    <div id="mobile-sticky-price" class="text-xl font-black text-primary-700 leading-none">৳ ৪৫০</div>
+  </div>
+  <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20(500g)%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%201%20টি।" id="mobile-sticky-order-btn" target="_blank"
+     class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm py-3 px-4 rounded-xl shadow-md transition-all">
+    <i class="fa-brands fa-whatsapp text-lg"></i>
+    <span class="bangla">WhatsApp এ অর্ডার</span>
+  </a>
+</div>
+
+<!-- Floating WhatsApp (Desktop) -->
+<a href="https://wa.me/8801XXXXXXXXX?text=সুন্দরবনের%20খাঁটি%20মধু%20অর্ডার%20করতে%20চাই" target="_blank" class="hidden md:flex fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full items-center justify-center shadow-2xl shadow-green-500/50 transition-all hover:scale-110 whatsapp-pulse">
   <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
 </a>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-gray-400 py-8 mt-16">
+<footer class="bg-gray-800 text-gray-400 pt-8 pb-24 md:pb-8 mt-16">
   <div class="max-w-7xl mx-auto px-4 text-center">
     <div class="flex items-center justify-center gap-2 mb-3">
       <div class="w-7 h-7 rounded-lg bg-primary-600 flex items-center justify-center"><i class="fa-solid fa-seedling text-white text-xs"></i></div>
@@ -595,9 +608,17 @@
   function changeQty(d) {
     qty = Math.max(1, qty + d);
     document.getElementById('qty-display').textContent = qty;
-    document.getElementById('total-price').textContent = '৳ ' + (basePrice * qty).toLocaleString('bn-BD');
-    document.getElementById('whatsapp-order-btn').href =
-      `https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%20${qty}%20টি।`;
+    const formattedPrice = '৳ ' + (basePrice * qty).toLocaleString('bn-BD');
+    document.getElementById('total-price').textContent = formattedPrice;
+    
+    // Sync mobile sticky bar price
+    const mobPrice = document.getElementById('mobile-sticky-price');
+    if (mobPrice) mobPrice.textContent = formattedPrice;
+
+    const waUrl = `https://wa.me/8801XXXXXXXXX?text=আমি%20সুন্দরবনের%20খাঁটি%20মধু%20অর্ডার%20করতে%20চাই।%20পরিমাণ:%20${qty}%20টি।`;
+    document.getElementById('whatsapp-order-btn').href = waUrl;
+    const mobBtn = document.getElementById('mobile-sticky-order-btn');
+    if (mobBtn) mobBtn.href = waUrl;
   }
 
   // Size buttons
