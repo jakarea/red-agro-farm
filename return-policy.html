@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="apple-touch-icon" href="images/favicon.png" />
+  <title>রিটার্ন ও রিফান্ড পলিসি | Red Agro</title>
+  <meta name="description" content="Red Agro এর রিটার্ন, রিপ্লেসমেন্ট ও রিফান্ড নীতি — চারা, সরঞ্জাম ও ফার্মের খাবারের জন্য স্পষ্ট ও সহজ শর্ত।" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#f0fdf0',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+            amber:   { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706' },
+          },
+          fontFamily: { bangla:['"Hind Siliguri"','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family:'Inter',sans-serif; }
+    .bangla { font-family:'Hind Siliguri',sans-serif; }
+    html { scroll-behavior:smooth; }
+    .nav-link { position:relative; }
+    .nav-link::after { content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#22c55e;transition:width 0.3s ease; }
+    .nav-link:hover::after { width:100%; }
+    .badge-green { background:linear-gradient(135deg,#22c55e,#16a34a); }
+    .policy h2 { font-weight:800; color:#111827; font-size:1.05rem; margin:1.75rem 0 0.6rem; }
+    .policy p { color:#4b5563; font-size:0.9rem; line-height:1.85; margin-bottom:0.6rem; }
+    .policy ul { list-style:disc; padding-left:1.25rem; color:#4b5563; font-size:0.9rem; line-height:1.85; margin-bottom:0.6rem; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <a href="index.html" class="flex items-center flex-shrink-0">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[180px] sm:w-[220px] h-auto object-contain transition-transform hover:scale-105" />
+        </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">হোম</a>
+        <a href="products.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">সব পণ্য</a>
+        <a href="about.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">আমাদের গল্প</a>
+        <a href="faq.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
+        <a href="track-order.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">অর্ডার ট্র্যাক</a>
+        <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">যোগাযোগ</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700 transition-colors" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <a href="https://wa.me/8801410363256" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all shadow-md hover:scale-105">
+          <i class="fa-brands fa-whatsapp"></i> 01410-363256
+        </a>
+      </div>
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="text-gray-700 p-2">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pt-3 pb-6 space-y-1 shadow-lg">
+    <a href="index.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">হোম</a>
+    <a href="products.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">সব পণ্য</a>
+    <a href="cart.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla flex items-center justify-between">
+      <span>🛒 শপিং কার্ট</span>
+      <span class="cart-badge bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+    </a>
+    <a href="about.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">আমাদের গল্প</a>
+    <a href="faq.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
+    <a href="track-order.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">অর্ডার ট্র্যাক করুন</a>
+    <a href="index.html#advice" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium bangla">যোগাযোগ ও পরামর্শ</a>
+    <a href="https://wa.me/8801410363256" target="_blank"
+       class="mt-3 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-2xl text-sm shadow">
+      <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp করুন
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="pt-28 pb-10 bg-gradient-to-b from-primary-50 to-gray-50">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <div class="inline-flex w-14 h-14 rounded-2xl bg-primary-100 border border-primary-200 items-center justify-center mb-4">
+      <i class="fa-solid fa-rotate-left text-primary-600 text-xl"></i>
+    </div>
+    <h1 class="text-2xl sm:text-3xl font-black text-gray-900 mb-2 bangla">রিটার্ন, রিপ্লেসমেন্ট ও রিফান্ড পলিসি</h1>
+    <p class="text-gray-500 text-sm bangla leading-relaxed">সর্বশেষ হালনাগাদ: অক্টোবর ২০২৬ · আপনার অর্ডার প্রতিটির জন্য স্পষ্ট ও সহজ শর্ত</p>
+  </div>
+</header>
+
+<!-- ═══ CONTENT ═══ -->
+<main class="py-10">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 sm:p-10 policy bangla">
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-8">
+        <div class="p-4 bg-primary-50 rounded-2xl border border-primary-100 text-center">
+          <i class="fa-solid fa-screwdriver-wrench text-primary-600 text-lg mb-1"></i>
+          <p class="font-bold text-gray-900 text-xs">কৃষি সরঞ্জাম (পথ ১)</p>
+          <p class="text-gray-500 text-[11px] mt-0.5">অব্যবহৃত অবস্থায় ৭ দিনে রিটার্ন বা রিপ্লেসমেন্ট</p>
+        </div>
+        <div class="p-4 bg-primary-50 rounded-2xl border border-primary-100 text-center">
+          <i class="fa-solid fa-jar text-primary-600 text-lg mb-1"></i>
+          <p class="font-bold text-gray-900 text-xs">ফার্মের খাবার (পথ ২)</p>
+          <p class="text-gray-500 text-[11px] mt-0.5">সিল অক্ষত থাকলে ৭ দিনে সহজ রিটার্ন</p>
+        </div>
+      </div>
+
+      <h2>১. আমাদের প্রতিশ্রুতি</h2>
+      <p>Red Agro এর লক্ষ্য — আপনি যা অর্ডার করেছেন, ঠিক সেটাই সুস্থ ও অক্ষত অবস্থায় পৌঁছে দেওয়া। পণ্য পেয়ে সন্তুষ্ট না হলে নিচের নীতি অনুযায়ী রিপ্লেসমেন্ট বা ১০০% রিফান্ড পাবেন।</p>
+
+      <h2>২. পণ্যভিত্তিক রিটার্ন শর্ত</h2>
+      <ul>
+        <li><strong>কৃষি সরঞ্জাম (পথ ১):</strong> ব্যবহার না করা, অরিজিনাল প্যাকেজিংসহ ৭ দিনের মধ্যে রিটার্ন করা যাবে। কারখানার কোনো ত্রুটি (ভাঙা/অকেজো) থাকলে রিটার্ন শিপিং চার্জ Red Agro বহন করবে।</li>
+        <li><strong>ফার্মের খাঁটি খাবার (পথ ২):</strong> সিল/প্যাক অক্ষত থাকলে ডেলিভারির ৭ দিনের মধ্যে রিটার্ন করা যাবে। খোলা বা আংশিক ব্যবহৃত খাবারে স্বাস্থ্যগত নিরাপত্তার কারণে রিটার্ন প্রযোজ্য নয়।</li>
+      </ul>
+
+      <h2>৩. যেসব ক্ষেত্রে রিটার্ন প্রযোজ্য নয়</h2>
+      <ul>
+        <li>ডেলিভারির ৭ দিন পার হয়ে গেলে</li>
+        <li>পণ্য ব্যবহার, ভাঙা বা অরিজিনাল প্যাকেজিং নষ্ট হলে (সরঞ্জাম ও খাবারের ক্ষেত্রে)</li>
+        <li>কুরিয়ার/ডেলিভারি চার্জ আলাদাভাবে ফেরতযোগ্য নয় (ত্রুটিপূর্ণ পণ্য ছাড়া)</li>
+        <li>ফ্রি উপহার/প্রমো আইটেম আলাদাভাবে রিটার্নযোগ্য নয়</li>
+      </ul>
+
+      <h2>৪. রিটার্ন প্রক্রিয়া (৩ ধাপ)</h2>
+      <ul>
+        <li><strong>ধাপ ১:</strong> অর্ডার আইডি (যেমন RA-2026-1234) ও সমস্যার ছবি সহ আমাদের WhatsApp এ মেসেজ দিন (সকাল ৮টা – রাত ১০টা)।</li>
+        <li><strong>ধাপ ২:</strong> আমাদের টিম ২৪ ঘণ্টার মধ্যে রিভিউ করে সিদ্ধান্ত জানাব — রিপ্লেসমেন্ট নাকি রিফান্ড।</li>
+        <li><strong>ধাপ ৩:</strong> ঢাকা সিটিতে আমাদের প্রতিনিধি পণ্য বুঝে নেবেন; ঢাকার বাইরে কুরিয়ারে পাঠাতে হবে (ত্রুটিপূর্ণ পণ্যে কুরিয়ার চার্জ আমরা বহন করব)।</li>
+      </ul>
+
+      <h2>৫. রিফান্ড পদ্ধতি ও সময়</h2>
+      <ul>
+        <li>বিকাশ / নগদ / রকেট: রিটার্ন গৃহীত হওয়ার <strong>৩-৫ কার্যদিবসের</strong> মধ্যে একই নাম্বারে পাঠানো হবে।</li>
+        <li>ক্যাশ অন ডেলিভারি অর্ডারে: আপনার পছন্দের মোবাইল ব্যাংকিং নাম্বারে রিফান্ড দেওয়া হবে।</li>
+        <li>রিফান্ডের সময় পার হলেও টাকা না পেলে অর্ডার আইডি সহ WhatsApp এ জানান।</li>
+      </ul>
+
+      <h2>৬. ডেলিভারি-সংক্রান্ত সমস্যা</h2>
+      <ul>
+        <li>ডেলিভারির সময়: ঢাকা সিটিতে ১-২ কার্যদিবস, ঢাকার বাইরে ২-৪ কার্যদিবস।</li>
+        <li>নির্ধারিত সময়ে পণ্য না পেলে অর্ডার আইডি সহ জানান — আমরা কুরিয়ারের সাথে যোগাযোগ করে সমাধান করব।</li>
+        <li>প্যাকেজ ছেঁড়া/মারা অবস্থায় পেলে ডেলিভারি ম্যানের সামনেই খুলে দেখুন; সমস্যা থাকলে পণ্য না নিয়ে জানান।</li>
+      </ul>
+
+      <h2>৭. যোগাযোগ</h2>
+      <p>রিটার্ন/রিফান্ড সংক্রান্ত যেকোনো প্রশ্নে: WhatsApp <strong>01410-363256</strong> (সকাল ৮টা – রাত ১০টা) অথবা ইমেইল <strong>support@redagro.com.bd</strong>।</p>
+      <p class="text-xs text-gray-400 mt-8">Red Agro এই পলিসি যেকোনো সময় হালনাগাদ করার অধিকার সংরক্ষণ করে। হালনাগাদ এই পাতায়ই প্রকাশিত হবে।</p>
+    </div>
+
+    <div class="mt-6 bg-primary-600 rounded-3xl p-6 sm:p-8 text-center">
+      <h3 class="text-white font-black text-lg bangla mb-1">কোনো সমস্যা হয়েছে?</h3>
+      <p class="text-primary-100 text-sm bangla mb-4">অর্ডার আইডি সহ মেসেজ দিন — দ্রুত সমাধান পাবেন।</p>
+      <a href="https://wa.me/8801410363256?text=আমার%20রিটার্ন/রিফান্ড%20সংক্রান্ত%20একটি%20সমস্যা%20আছে।%20অর্ডার%20আইডি:" target="_blank"
+         class="inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-primary-50 font-bold px-7 py-3 rounded-full transition-all hover:scale-105 bangla shadow-xl">
+        <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i> WhatsApp এ জানান
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-gray-900 text-gray-400 pt-16 pb-12 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="index.html" class="inline-block mb-4">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[200px] sm:w-[220px] h-auto object-contain transition-transform hover:opacity-90" />
+        </a>
+        <p class="text-sm bangla leading-relaxed text-gray-400 mb-5">
+          বাজারের রাসায়নিক ও বিষাক্ত খাবার থেকে পরিবারকে সুরক্ষিত রাখুন। শতভাগ খাঁটি ফার্মের খাদ্য এবং সহজ ছাদবাগানের নির্ভরযোগ্য সমাধান।
+        </p>
+        <div class="flex gap-2.5">
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/8801410363256" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">প্রয়োজনীয় লিঙ্ক</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="index.html" class="hover:text-primary-400 transition-colors">হোমপেজ</a></li>
+          <li><a href="products.html" class="hover:text-primary-400 transition-colors">সকল পণ্যসমূহ</a></li>
+          <li><a href="cart.html" class="hover:text-primary-400 transition-colors">শপিং কার্ট</a></li>
+          <li><a href="track-order.html" class="hover:text-primary-400 transition-colors">অর্ডার ট্র্যাক করুন</a></li>
+          <li><a href="account.html" class="hover:text-primary-400 transition-colors">আমার একাউন্ট</a></li>
+          <li><a href="about.html" class="hover:text-primary-400 transition-colors">আমাদের গল্প ও মিশন</a></li>
+          <li><a href="faq.html" class="hover:text-primary-400 transition-colors">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+          <li><a href="return-policy.html" class="hover:text-primary-400 transition-colors">রিটার্ন ও রিফান্ড পলিসি</a></li>
+          <li><a href="terms.html" class="hover:text-primary-400 transition-colors">শর্তাবলী</a></li>
+          <li><a href="privacy.html" class="hover:text-primary-400 transition-colors">প্রাইভেসি পলিসি</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">পণ্য বিভাগ</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🛠 কৃষি সরঞ্জাম ও সাপোর্ট</a></li>
+</ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">যোগাযোগ ও সাপোর্ট</h4>
+        <ul class="space-y-3.5 text-sm bangla">
+          <li class="flex items-start gap-3">
+            <i class="fa-brands fa-whatsapp text-green-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-mono">01410-363256</strong>
+              <span class="text-gray-500 text-xs">সকাল ৮টা – রাত ১০টা (সপ্তাহে ৭ দিন)</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-primary-400 text-sm mt-1"></i>
+            <span class="text-gray-300">support@redagro.com.bd</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-red-400 text-sm mt-1"></i>
+            <span class="text-gray-400 text-xs">ফার্ম ও বাগান: ঢাকা ও সাভার, বাংলাদেশ</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500 bangla">
+      <p>© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত · বিষমুক্ত খাবার, সুস্থ জীবন 🌿</p>
+      <div class="flex items-center gap-4">
+        <span>💵 ক্যাশ অন ডেলিভারি</span>
+        <span>•</span>
+        <span>🚚 দ্রুত ডেলিভারি</span>
+        <span>•</span>
+        <span>🛡️ ৭ দিনের রিপ্লেসমেন্ট</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+    const icon = document.getElementById('menu-icon');
+    icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-xmark');
+  });
+</script>
+<script src="js/cart.js"></script>
+</body>
+</html>

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="apple-touch-icon" href="images/favicon.png" />
   <title>Red Agro | বিষমুক্ত খাবার, সুস্থ জীবন — নিজে চাষ বা আমাদের ফার্ম থেকে কিনুন</title>
   <meta name="description" content="Red Agro — বাজারের বিষাক্ত খাবার থেকে পরিবারকে বাঁচান। নিজের ছোট্ট জায়গায় চাষ শুরু করুন বা আমাদের ১০০% রাসায়নিকমুক্ত ফার্ম থেকে কিনুন।" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -75,18 +77,12 @@
 <!-- ═══ NAVBAR ═══ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-scrolled="false">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-16 sm:h-20">
 
       <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-2.5 group">
-        <div class="w-9 h-9 rounded-xl badge-green flex items-center justify-center shadow group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-seedling text-white text-base"></i>
-        </div>
-        <div>
-          <div class="nav-brand-text font-black text-xl tracking-tight leading-none">Red <span class="text-primary-400" id="agro-accent">Agro</span></div>
-          <div class="nav-brand-sub text-[9px] bangla font-medium tracking-wide">বিষমুক্ত খাবার · সুস্থ জীবন</div>
-        </div>
-      </a>
+      <a href="index.html" class="flex items-center flex-shrink-0">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[180px] sm:w-[220px] h-auto object-contain transition-transform hover:scale-105" />
+        </a>
 
       <!-- Nav links -->
       <div class="hidden md:flex items-center gap-7">
@@ -102,9 +98,9 @@
           <i class="fa-solid fa-cart-shopping text-lg"></i>
           <span class="cart-badge absolute -top-1 -right-1 bg-primary-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
         </a>
-        <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+        <a href="https://wa.me/8801410363256" target="_blank"
            class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-all shadow hover:shadow-md hover:scale-105">
-          <i class="fa-brands fa-whatsapp"></i> 01XXXXXXXXX
+          <i class="fa-brands fa-whatsapp"></i> 01410-363256
         </a>
       </div>
       <div class="flex items-center gap-1 md:hidden">
@@ -125,7 +121,7 @@
     <a href="about.html"    class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">আমাদের গল্প</a>
     <a href="faq.html"      class="block py-2.5 text-sm text-gray-600 border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
     <a href="#advice"       class="block py-2.5 text-sm text-gray-600 bangla">যোগাযোগ</a>
-    <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+    <a href="https://wa.me/8801410363256" target="_blank"
        class="mt-3 flex items-center justify-center gap-2 bg-green-500 text-white font-semibold py-3 rounded-full text-sm">
       <i class="fa-brands fa-whatsapp"></i> WhatsApp করুন
     </a>
@@ -374,13 +370,13 @@
 
     <div class="text-center mb-12">
       <span class="feature-pill mb-3">আপনার সমাধান</span>
-      <h2 class="text-3xl md:text-4xl font-black text-gray-900 bangla">বিষের চক্র থেকে মুক্তির<br/><span class="text-primary-600">দুটি নিরাপদ পথ</span></h2>
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 bangla">বিষের চক্র থেকে মুক্তির<br/><span class="text-primary-600">নিরাপদ পথ</span></h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-7">
+    <div class="grid md:grid-cols-1 gap-7 max-w-3xl mx-auto">
 
-      <!-- PATH A: Grow Your Own -->
-      <a href="products.html?cat=gardening"
+      <!-- PATH 1: Grow Your Own -->
+      <a href="products.html?cat=tools"
          class="path-lift group block bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm cursor-pointer">
         <div class="relative h-52 overflow-hidden">
           <img src="images/gardening.jpg" alt="চাষের সরঞ্জাম" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -395,52 +391,19 @@
         </div>
         <div class="p-6">
           <p class="text-gray-500 bangla text-sm leading-relaxed mb-5">
-            একবার কল্পনা করুন — আপনার ছোট্ট ব্যালকনি বা উঠোনটা এখন আর শুধু একটা ফাঁকা জায়গা না, এটা আপনার পরিবারের নিজস্ব খাদ্য উৎপাদনের জায়গা। কোনো রাসায়নিক নেই, কোনো অনিশ্চয়তা নেই — শুধু আপনার হাতে ফলানো টাটকা সবজি, সরাসরি আপনার থালায়। আপনি নিজেই এখন আপনার পরিবারের সুরক্ষাকবচ।
+            একবার কল্পনা করুন — আপনার ছোট্ট ব্যালকনি বা ছাদটা আপনার পরিবারের নিজস্ব খাদ্য উৎপাদনের জায়গা। কোনো ক্ষতিকর রাসায়নিক নেই — শুধু আপনার হাতে ফলানো টাটকা সবজি, সরাসরি আপনার থালায়।
           </p>
           <div class="grid grid-cols-2 gap-2 mb-5">
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> মাটি পরীক্ষার মিটার</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> স্বয়ংক্রিয় সেচ কিট</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> ফ্যাব্রিক গ্রো ব্যাগ</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> বিনামূল্যে পরামর্শ</div>
+            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> মাটি পরীক্ষার অ্যানালগ মিটার</div>
+            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> স্বয়ংক্রিয় ড্রিপ সেচ কিট</div>
+            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> হার্ভেস্ট উইন্ডো গ্রো ব্যাগ</div>
+            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-primary-500 text-xs"></i> প্রফেশনাল প্রুনিং শেয়ার্স</div>
           </div>
           <div class="flex items-center justify-between">
             <span class="text-primary-600 text-sm font-bold flex items-center gap-1 bangla group-hover:gap-2 transition-all">
               সরঞ্জাম দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
             </span>
-            <span class="badge-green text-white text-xs font-bold px-3 py-1 rounded-full bangla">১২+ পণ্য</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- PATH B: Buy from Farm -->
-      <a href="products.html?cat=foods"
-         class="path-lift group block bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm cursor-pointer">
-        <div class="relative h-52 overflow-hidden">
-          <img src="images/farm-foods.jpg" alt="ফার্মের খাবার" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-amber-900/70 via-amber-900/10 to-transparent"></div>
-          <div class="absolute top-4 left-4">
-            <span class="badge-amber text-white text-[11px] font-black px-3 py-1 rounded-full">পথ ২</span>
-          </div>
-          <div class="absolute bottom-4 left-4 right-4">
-            <h3 class="text-white font-black text-2xl bangla">আমাদের ফার্ম থেকে কিনুন</h3>
-            <p class="text-white/70 text-xs mt-0.5">Buy Direct · Zero Chemicals · Farm to Home</p>
-          </div>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-500 bangla text-sm leading-relaxed mb-5">
-            চাষের সময় নেই? এটা কোনো ব্যর্থতা না — বাস্তবতা। মাটি, সার বা কীটনাশক নিয়ে আপনাকে ভাবতেই হবে না। আমাদের ফার্মে যা ফলে, তা সরাসরি আপনার দরজায় পৌঁছে যায় — কোনো বাজার নেই, কোনো মধ্যস্থতাকারী নেই, শুধু বিশ্বাসযোগ্য খাবার, ঠিক সময়ে। আপনি ব্যস্ত থাকলেও, আপনার পরিবার নিরাপদ থাকবে।
-          </p>
-          <div class="grid grid-cols-2 gap-2 mb-5">
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-amber-500 text-xs"></i> সুন্দরবনের খাঁটি মধু</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-amber-500 text-xs"></i> দেশি গাওয়া ঘি</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-amber-500 text-xs"></i> জৈব হলুদ ও মশলা</div>
-            <div class="flex items-center gap-2 text-xs text-gray-600 bangla"><i class="fa-solid fa-check text-amber-500 text-xs"></i> ট্রেসযোগ্য উৎস</div>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-amber-600 text-sm font-bold flex items-center gap-1 bangla group-hover:gap-2 transition-all">
-              ফার্মের খাবার দেখুন <i class="fa-solid fa-arrow-right text-xs"></i>
-            </span>
-            <span class="badge-amber text-white text-xs font-bold px-3 py-1 rounded-full bangla">🌿 Farm Fresh</span>
+            <span class="badge-green text-white text-xs font-bold px-3 py-1 rounded-full bangla">৩৩টি উইনিং পণ্য</span>
           </div>
         </div>
       </a>
@@ -541,71 +504,26 @@
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
-      <div onclick="window.location.href='product.html?id=honey'" class="cursor-pointer group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm card-lift border border-gray-100">
-        <div class="h-44 sm:h-auto sm:w-48 flex-shrink-0 bg-cover bg-center relative overflow-hidden" style="background-image:url('images/farm-foods.jpg')">
-          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-          <div class="absolute top-3 left-3 flex flex-col gap-1">
-            <span class="bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla border border-white/30">পথ ২</span>
-          </div>
-        </div>
-        <div class="flex-1 p-4 flex flex-col justify-between">
-          <div>
-            <p class="text-[10px] text-amber-600 font-bold uppercase tracking-wide mb-0.5 bangla">খাঁটি মধু · ফরমালিনমুক্ত</p>
-            <h3 class="font-bold text-gray-900 text-sm bangla">সুন্দরবনের খাঁটি মধু</h3>
-            <p class="text-gray-400 text-xs bangla mt-0.5 mb-3">প্রাকৃতিক মৌচাক · চিনিমুক্ত</p>
-          </div>
-          <div class="flex items-center justify-between mt-2">
-            <span class="text-primary-600 font-black text-lg">৳ ৪৫০</span>
-            <a href="https://wa.me/8801XXXXXXXXX" onclick="event.stopPropagation()"
-               class="bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 transition-colors">
-              <i class="fa-brands fa-whatsapp"></i> <span class="bangla">অর্ডার</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div onclick="window.location.href='product.html?id=soil-meter'" class="cursor-pointer group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm card-lift border border-gray-100">
-        <div class="h-44 sm:h-auto sm:w-48 flex-shrink-0 bg-cover bg-center relative overflow-hidden" style="background-image:url('images/gardening.jpg')">
-          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-          <div class="absolute top-3 left-3"><span class="bg-primary-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১ — সরঞ্জাম</span></div>
-          <div class="absolute top-3 right-3"><span class="bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">⭐ জনপ্রিয়</span></div>
-        </div>
-        <div class="flex-1 p-4 flex flex-col justify-between">
-          <div>
-            <p class="text-[10px] text-primary-600 font-bold uppercase tracking-wide mb-0.5">Soil Testing Tool</p>
-            <h3 class="font-bold text-gray-900 text-sm">3-in-1 Soil Meter</h3>
-            <p class="text-gray-400 text-xs bangla mt-0.5 mb-3">pH · আর্দ্রতা · আলো পরিমাপ</p>
-          </div>
-          <div class="flex items-center justify-between mt-2">
-            <span class="text-primary-600 font-black text-lg">৳ ৪৫০</span>
-            <a href="https://wa.me/8801XXXXXXXXX" onclick="event.stopPropagation()"
-               class="bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 transition-colors">
-              <i class="fa-brands fa-whatsapp"></i> <span class="bangla">অর্ডার</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div onclick="window.location.href='product.html?id=ghee'" class="cursor-pointer group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm card-lift border border-gray-100">
-        <div class="h-44 sm:h-auto sm:w-48 flex-shrink-0 bg-cover bg-top relative overflow-hidden" style="background-image:url('images/farm-foods.jpg')">
+        <div class="h-44 sm:h-auto sm:w-48 flex-shrink-0 bg-cover bg-center relative overflow-hidden" style="background-image:url('images/soil-meter.jpg')">
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
           <div class="absolute top-3 left-3 flex flex-col gap-1">
-            <span class="bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🌿 Farm Fresh</span>
+            <span class="bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm bangla">৩৫% অফার</span>
           </div>
-          <div class="absolute top-3 right-3"><span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla border border-white/30">পথ ২</span></div>
+          <div class="absolute top-3 right-3"><span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla border border-white/30">পথ ১</span></div>
         </div>
         <div class="flex-1 p-4 flex flex-col justify-between">
           <div>
-            <p class="text-[10px] text-amber-600 font-bold uppercase tracking-wide mb-0.5 bangla">ঘি · ভেজালমুক্ত</p>
-            <h3 class="font-bold text-gray-900 text-sm bangla">দেশি গাওয়া ঘি</h3>
-            <p class="text-gray-400 text-xs bangla mt-0.5 mb-3">নিজের গাভীর দুধ থেকে তৈরি</p>
+            <p class="text-[10px] text-primary-600 font-bold uppercase tracking-wide mb-0.5 bangla">মৃত্তিকা পরীক্ষা · অ্যানালগ</p>
+            <h3 class="font-bold text-gray-900 text-sm bangla">৩-ইন-১ অ্যানালগ মৃত্তিকা টেস্টার</h3>
+            <p class="text-gray-400 text-xs bangla mt-0.5 mb-3">পিএইচ · আর্দ্রতা · আলো পরিমাপক</p>
           </div>
           <div class="flex items-center justify-between mt-2">
-            <span class="text-primary-600 font-black text-lg">৳ ৭৫০</span>
-            <a href="https://wa.me/8801XXXXXXXXX" onclick="event.stopPropagation()"
+            <div class="flex items-baseline gap-1.5">
+              <span class="text-gray-400 text-xs line-through bangla">৳ ৭৫০</span>
+              <span class="text-primary-600 font-black text-lg bangla">৳ ৪৯০</span>
+            </div>
+            <a href="https://wa.me/8801410363256" onclick="event.stopPropagation()"
                class="bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 transition-colors">
               <i class="fa-brands fa-whatsapp"></i> <span class="bangla">অর্ডার</span>
             </a>
@@ -616,7 +534,7 @@
       <div onclick="window.location.href='product.html?id=drip-kit'" class="cursor-pointer group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm card-lift border border-gray-100">
         <div class="h-44 sm:h-auto sm:w-48 flex-shrink-0 bg-cover bg-center relative overflow-hidden" style="background-image:url('images/gardening.jpg')">
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
-          <div class="absolute top-3 left-3"><span class="bg-primary-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ১ — সরঞ্জাম</span></div>
+          <div class="absolute top-3 left-3"><span class="bg-primary-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full bangla">পথ ২ — সরঞ্জাম</span></div>
           <div class="absolute top-3 right-3"><span class="bg-amber-400 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">🏆 Best Seller</span></div>
         </div>
         <div class="flex-1 p-4 flex flex-col justify-between">
@@ -627,7 +545,7 @@
           </div>
           <div class="flex items-center justify-between mt-2">
             <span class="text-primary-600 font-black text-lg">৳ ৩,৮০০</span>
-            <a href="https://wa.me/8801XXXXXXXXX" onclick="event.stopPropagation()"
+            <a href="https://wa.me/8801410363256" onclick="event.stopPropagation()"
                class="bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1 transition-colors">
               <i class="fa-brands fa-whatsapp"></i> <span class="bangla">অর্ডার</span>
             </a>
@@ -685,13 +603,9 @@
     </div>
 
     <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="products.html?cat=gardening"
+      <a href="products.html?cat=tools"
          class="inline-flex items-center gap-2 bg-white text-primary-700 hover:bg-primary-50 font-bold px-7 py-3.5 rounded-full transition-all hover:scale-105 text-sm bangla shadow-lg">
         <i class="fa-solid fa-seedling"></i> সরঞ্জাম দেখুন
-      </a>
-      <a href="products.html?cat=foods"
-         class="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-amber-900 font-bold px-7 py-3.5 rounded-full transition-all hover:scale-105 text-sm bangla shadow-lg">
-        <i class="fa-solid fa-jar"></i> ফার্মের খাবার
       </a>
     </div>
   </div>
@@ -745,7 +659,7 @@
             <div class="text-gray-400 text-xs bangla">পরিবার সুরক্ষিত</div>
           </div>
         </div>
-        <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+        <a href="https://wa.me/8801410363256" target="_blank"
            class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full transition-all hover:scale-105 shadow-lg text-sm bangla">
           <i class="fa-brands fa-whatsapp text-lg"></i> সরাসরি কথা বলুন
         </a>
@@ -823,13 +737,13 @@
     <p class="text-primary-100/80 bangla text-base mb-8">
       আপনার পরিস্থিতি সবার থেকে আলাদা — ব্যালকনিতে চাষ শুরু করবেন, নাকি সরাসরি ফার্ম থেকে নেবেন? আমরা আপনার কথা শুনব, আপনার জায়গা, সময়, পরিবারের চাহিদা বুঝে সঠিক পথটা বলে দেব। এটা আমাদের পক্ষ থেকে ছোট্ট একটা উপহার — বিনিময়ে কিছুই চাই না।
     </p>
-    <a href="https://wa.me/8801XXXXXXXXX?text=আমি%20বিষমুক্ত%20খাবার%20সম্পর্কে%20পরামর্শ%20চাই" target="_blank"
+    <a href="https://wa.me/8801410363256?text=আমি%20বিষমুক্ত%20খাবার%20সম্পর্কে%20পরামর্শ%20চাই" target="_blank"
        class="group inline-flex items-center gap-3 bg-white hover:bg-primary-50 text-primary-700 font-black px-10 py-4 rounded-full text-base shadow-2xl transition-all hover:scale-105 bangla">
       <i class="fa-brands fa-whatsapp text-green-500 text-2xl"></i>
       চলুন, কথা বলি →
       <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
     </a>
-    <p class="text-primary-200/60 text-xs mt-5 bangla">📞 01XXXXXXXXX · সকাল ৮টা – রাত ১০টা, সপ্তাহে ৭ দিন · কোনো বিক্রির চাপ থাকবে না, শুধু সত্যিকারের পরামর্শ।</p>
+    <p class="text-primary-200/60 text-xs mt-5 bangla">📞 01410-363256 · সকাল ৮টা – রাত ১০টা, সপ্তাহে ৭ দিন · কোনো বিক্রির চাপ থাকবে না, শুধু সত্যিকারের পরামর্শ।</p>
   </div>
 </section>
 
@@ -841,14 +755,8 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
       <div>
-        <a href="index.html" class="flex items-center gap-2.5 mb-4 group inline-flex">
-          <div class="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center shadow">
-            <i class="fa-solid fa-seedling text-white text-base"></i>
-          </div>
-          <div>
-            <div class="font-black text-xl tracking-tight leading-none text-white">Red <span class="text-primary-400">Agro</span></div>
-            <div class="text-[9px] bangla font-medium tracking-wide text-primary-300">বিষমুক্ত খাবার · সুস্থ জীবন</div>
-          </div>
+        <a href="index.html" class="inline-block mb-4">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[200px] sm:w-[220px] h-auto object-contain transition-transform hover:opacity-90" />
         </a>
         <p class="text-sm bangla leading-relaxed text-gray-400 mb-5">
           বাজারের রাসায়নিক ও বিষাক্ত খাবার থেকে পরিবারকে সুরক্ষিত রাখুন। শতভাগ খাঁটি ফার্মের খাদ্য এবং সহজ ছাদবাগানের নির্ভরযোগ্য সমাধান।
@@ -856,7 +764,7 @@
         <div class="flex gap-2.5">
           <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/8801410363256" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
       <div>
@@ -865,19 +773,21 @@
           <li><a href="index.html" class="hover:text-primary-400 transition-colors">হোমপেজ</a></li>
           <li><a href="products.html" class="hover:text-primary-400 transition-colors">সকল পণ্যসমূহ</a></li>
           <li><a href="cart.html" class="hover:text-primary-400 transition-colors">শপিং কার্ট</a></li>
+          <li><a href="track-order.html" class="hover:text-primary-400 transition-colors">অর্ডার ট্র্যাক করুন</a></li>
+          <li><a href="account.html" class="hover:text-primary-400 transition-colors">আমার একাউন্ট</a></li>
           <li><a href="about.html" class="hover:text-primary-400 transition-colors">আমাদের গল্প ও মিশন</a></li>
           <li><a href="faq.html" class="hover:text-primary-400 transition-colors">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+          <li><a href="return-policy.html" class="hover:text-primary-400 transition-colors">রিটার্ন ও রিফান্ড পলিসি</a></li>
+          <li><a href="terms.html" class="hover:text-primary-400 transition-colors">শর্তাবলী</a></li>
+          <li><a href="privacy.html" class="hover:text-primary-400 transition-colors">প্রাইভেসি পলিসি</a></li>
         </ul>
       </div>
       <div>
         <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">পণ্য বিভাগ</h4>
         <ul class="space-y-2.5 text-sm bangla">
-          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🍯 সুন্দরবনের খাঁটি মধু</a></li>
-          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🥄 খাঁটি গাওয়া ঘি ও তেল</a></li>
-          <li><a href="products.html?cat=foods" class="hover:text-primary-400 transition-colors">🌾 সুগন্ধি কালোজিরা চাল</a></li>
-          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🌱 জৈব ভার্মিকম্পোস্ট সার</a></li>
-          <li><a href="products.html?cat=gardening" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
-        </ul>
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🛠 কৃষি সরঞ্জাম ও সাপোর্ট</a></li>
+</ul>
       </div>
       <div>
         <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">যোগাযোগ ও সাপোর্ট</h4>
@@ -885,7 +795,7 @@
           <li class="flex items-start gap-3">
             <i class="fa-brands fa-whatsapp text-green-400 text-base mt-0.5"></i>
             <div>
-              <strong class="text-white block font-mono">01XXXXXXXXX</strong>
+              <strong class="text-white block font-mono">01410-363256</strong>
               <span class="text-gray-500 text-xs">সকাল ৮টা – রাত ১০টা (সপ্তাহে ৭ দিন)</span>
             </div>
           </li>
@@ -934,7 +844,7 @@
     <i class="fa-solid fa-leaf text-lg mb-0.5"></i>
     <span class="text-[10px] font-medium bangla">গল্প</span>
   </a>
-  <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="flex flex-col items-center justify-center flex-1 py-1 text-green-600 hover:text-green-700 transition-colors">
+  <a href="https://wa.me/8801410363256" target="_blank" class="flex flex-col items-center justify-center flex-1 py-1 text-green-600 hover:text-green-700 transition-colors">
     <div class="relative">
       <i class="fa-brands fa-whatsapp text-xl mb-0.5"></i>
       <span class="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
@@ -944,7 +854,7 @@
 </div>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+<a href="https://wa.me/8801410363256" target="_blank"
    class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 transition-all hover:scale-110 wa-pulse">
   <i class="fa-brands fa-whatsapp text-white text-xl md:text-2xl"></i>
 </a>
@@ -964,7 +874,7 @@
     })
   );
 
-  // Transparent-to-white navbar on scroll
+  // Transparent-to-glass navbar on scroll
   const navbar = document.getElementById('navbar');
   const navItems = navbar.querySelectorAll('.nav-item');
   const brandSub = navbar.querySelector('.nav-brand-sub');
@@ -974,21 +884,13 @@
     const scrolled = window.scrollY > 60;
     navbar.setAttribute('data-scrolled', scrolled);
     if (scrolled) {
-      navbar.classList.add('bg-white','shadow-md','border-b','border-gray-100');
+      navbar.classList.add('bg-white/85','backdrop-blur-md','shadow-md','border-b','border-gray-200/50');
       navbar.classList.remove('bg-transparent');
       navItems.forEach(el => { el.classList.remove('text-white','text-white/80'); el.classList.add('text-gray-600'); });
-      if (brandSub) { brandSub.classList.remove('text-white/60'); brandSub.classList.add('text-primary-600'); }
-      navbar.querySelector('.nav-brand-text').classList.remove('text-white');
-      navbar.querySelector('.nav-brand-text').classList.add('text-gray-900');
-      if(agroAccent) { agroAccent.classList.remove('text-primary-300'); agroAccent.classList.add('text-primary-400'); }
     } else {
-      navbar.classList.remove('bg-white','shadow-md','border-b','border-gray-100');
+      navbar.classList.remove('bg-white/85','backdrop-blur-md','shadow-md','border-b','border-gray-200/50');
       navbar.classList.add('bg-transparent');
       navItems.forEach(el => { el.classList.add('text-white/80'); el.classList.remove('text-gray-600'); });
-      if (brandSub) { brandSub.classList.add('text-white/60'); brandSub.classList.remove('text-primary-600'); }
-      navbar.querySelector('.nav-brand-text').classList.add('text-white');
-      navbar.querySelector('.nav-brand-text').classList.remove('text-gray-900');
-      if(agroAccent) { agroAccent.classList.add('text-primary-300'); agroAccent.classList.remove('text-primary-400'); }
     }
   }
   window.addEventListener('scroll', updateNav);

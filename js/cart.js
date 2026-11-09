@@ -10,22 +10,13 @@
   // Seed default cart items if user has never visited
   const DEFAULT_SEED_ITEMS = [
     {
-      id: 'honey',
-      name: 'সুন্দরবনের খাঁটি মধু',
-      size: '500g Jar',
-      price: 450,
+      id: 'soil-meter',
+      name: '৩-ইন-১ অ্যানালগ মৃত্তিকা টেস্টার',
+      size: 'প্রতি পিস',
+      price: 490,
       quantity: 1,
-      image: 'images/farm-foods.jpg',
-      category: 'ফার্মের খাবার'
-    },
-    {
-      id: 'vermicompost',
-      name: 'প্রিমিয়াম ভার্মিকম্পোস্ট সার',
-      size: '5kg Bag',
-      price: 280,
-      quantity: 2,
-      image: 'images/gardening.jpg',
-      category: 'চাষের সরঞ্জাম'
+      image: 'images/soil-meter.jpg',
+      category: 'কৃষি সরঞ্জাম'
     }
   ];
 

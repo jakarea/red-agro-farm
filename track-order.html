@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="apple-touch-icon" href="images/favicon.png" />
+  <title>অর্ডার ট্র্যাক করুন | Red Agro</title>
+  <meta name="description" content="আপনার Red Agro অর্ডারের অবস্থা দেখুন — অর্ডার আইডি দিয়ে সার্চ করুন।" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#f0fdf0',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+            amber:   { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706' },
+          },
+          fontFamily: { bangla:['"Hind Siliguri"','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family:'Inter',sans-serif; }
+    .bangla { font-family:'Hind Siliguri',sans-serif; }
+    html { scroll-behavior:smooth; }
+    .nav-link { position:relative; }
+    .nav-link::after { content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:#22c55e;transition:width 0.3s ease; }
+    .nav-link:hover::after { width:100%; }
+    .badge-green { background:linear-gradient(135deg,#22c55e,#16a34a); }
+    .step-done { background:#16a34a; color:#fff; border-color:#16a34a; }
+    .step-pending { background:#fff; color:#9ca3af; border-color:#e5e7eb; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <a href="index.html" class="flex items-center flex-shrink-0">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[180px] sm:w-[220px] h-auto object-contain transition-transform hover:scale-105" />
+        </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">হোম</a>
+        <a href="products.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">সব পণ্য</a>
+        <a href="about.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">আমাদের গল্প</a>
+        <a href="faq.html" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">প্রশ্নোত্তর</a>
+        <a href="track-order.html" class="nav-link text-sm font-semibold text-primary-700 bangla">অর্ডার ট্র্যাক</a>
+        <a href="index.html#advice" class="nav-link text-sm font-medium text-gray-600 hover:text-primary-700 transition-colors bangla">যোগাযোগ</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700 transition-colors" title="শপিং কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <a href="https://wa.me/8801410363256" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all shadow-md hover:scale-105">
+          <i class="fa-brands fa-whatsapp"></i> 01410-363256
+        </a>
+      </div>
+      <div class="flex items-center gap-1 md:hidden">
+        <a href="cart.html" class="relative p-2 text-gray-700 hover:text-primary-700" title="কার্ট">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">0</span>
+        </a>
+        <button id="menu-btn" class="text-gray-700 p-2">
+          <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 pt-3 pb-6 space-y-1 shadow-lg">
+    <a href="index.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">হোম</a>
+    <a href="products.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">সব পণ্য</a>
+    <a href="cart.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla flex items-center justify-between">
+      <span>🛒 শপিং কার্ট</span>
+      <span class="cart-badge bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+    </a>
+    <a href="about.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">আমাদের গল্প</a>
+    <a href="faq.html" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium border-b border-gray-50 bangla">প্রশ্নোত্তর</a>
+    <a href="track-order.html" class="block py-2.5 text-sm text-primary-700 font-bold border-b border-gray-50 bangla">অর্ডার ট্র্যাক করুন</a>
+    <a href="index.html#advice" class="block py-2.5 text-sm text-gray-700 hover:text-primary-700 font-medium bangla">যোগাযোগ ও পরামর্শ</a>
+    <a href="https://wa.me/8801410363256" target="_blank"
+       class="mt-3 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-2xl text-sm shadow">
+      <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp করুন
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="pt-28 pb-8 bg-gradient-to-b from-primary-50 to-gray-50">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+    <div class="inline-flex w-14 h-14 rounded-2xl bg-primary-100 border border-primary-200 items-center justify-center mb-4">
+      <i class="fa-solid fa-truck-fast text-primary-600 text-xl"></i>
+    </div>
+    <h1 class="text-2xl sm:text-3xl font-black text-gray-900 mb-2 bangla">অর্ডার ট্র্যাক করুন</h1>
+    <p class="text-gray-500 text-sm bangla leading-relaxed">অর্ডার করার সময় পাওয়া আইডিটি লিখুন (যেমন: RA-2026-1234)</p>
+  </div>
+</header>
+
+<!-- ═══ SEARCH ═══ -->
+<main class="pb-16">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6">
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-5 sm:p-7 -mt-2">
+      <form id="track-form" class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"></i>
+          <input id="track-input" type="text" placeholder="RA-2026-1234" autocomplete="off"
+                 class="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-gray-200 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 outline-none text-sm font-mono transition-all" />
+        </div>
+        <button type="submit" class="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm px-7 py-3.5 rounded-2xl transition-all shadow-lg hover:shadow-xl bangla flex-shrink-0">
+          <i class="fa-solid fa-location-crosshairs"></i> ট্র্যাক করুন
+        </button>
+      </form>
+      <p class="text-gray-400 text-xs bangla mt-3 mb-0"><i class="fa-solid fa-circle-info mr-1"></i> টিপ: অর্ডার সার্চ হয় এই ডিভাইস/ব্রাউজারে সংরক্ষিত অর্ডার থেকে। অন্য ডিভাইসে অর্ডার করে থাকলে অর্ডার আইডি সহ <a href="https://wa.me/8801410363256" target="_blank" class="text-primary-600 font-semibold">WhatsApp</a> এ জানান।</p>
+    </div>
+
+    <!-- ── NOT FOUND ── -->
+    <div id="track-notfound" class="hidden mt-6 bg-white rounded-3xl shadow-sm border border-gray-100 p-8 text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-3">
+        <i class="fa-solid fa-magnifying-glass-minus text-red-400 text-xl"></i>
+      </div>
+      <h2 class="font-black text-gray-900 text-lg bangla mb-1">অর্ডার পাওয়া যায়নি</h2>
+      <p class="text-gray-500 text-sm bangla leading-relaxed mb-5">
+        অর্ডার আইডিটি আবার যাচাই করুন। সমস্যা থাকলে অর্ডার আইডি সহ WhatsApp এ মেসেজ দিন — আমরা সাথে সাথে দেখে নিচ্ছি।
+      </p>
+      <a id="notfound-wa" href="https://wa.me/8801410363256?text=আমার%20অর্ডার%20আইডি:%20" target="_blank"
+         class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-all shadow-md bangla">
+        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp এ জানান
+      </a>
+    </div>
+
+    <!-- ── ORDER RESULT ── -->
+    <div id="track-result" class="hidden mt-6 space-y-5">
+
+      <!-- Summary card -->
+      <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 sm:p-8">
+        <div class="flex items-start justify-between gap-3 flex-wrap mb-5">
+          <div>
+            <p class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-1">অর্ডার আইডি</p>
+            <p id="res-order-id" class="font-black text-primary-700 text-xl font-mono"></p>
+            <p id="res-date" class="text-gray-400 text-xs bangla mt-1"></p>
+          </div>
+          <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full bangla flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-check"></i> অর্ডার গৃহীত
+          </span>
+        </div>
+
+        <!-- Status timeline -->
+        <div class="grid grid-cols-4 gap-2 mb-6">
+          <div class="text-center">
+            <div class="w-8 h-8 mx-auto rounded-full step-done flex items-center justify-center text-xs font-bold border-2 mb-1.5"><i class="fa-solid fa-check"></i></div>
+            <p class="text-[10px] sm:text-xs font-semibold text-gray-700 bangla">গৃহীত</p>
+          </div>
+          <div class="text-center">
+            <div class="w-8 h-8 mx-auto rounded-full step-pending flex items-center justify-center text-xs font-bold border-2 mb-1.5"><i class="fa-brands fa-whatsapp"></i></div>
+            <p class="text-[10px] sm:text-xs text-gray-400 bangla">নিশ্চিতকরণ</p>
+          </div>
+          <div class="text-center">
+            <div class="w-8 h-8 mx-auto rounded-full step-pending flex items-center justify-center text-xs font-bold border-2 mb-1.5"><i class="fa-solid fa-truck"></i></div>
+            <p class="text-[10px] sm:text-xs text-gray-400 bangla">ডেলিভারি</p>
+          </div>
+          <div class="text-center">
+            <div class="w-8 h-8 mx-auto rounded-full step-pending flex items-center justify-center text-xs font-bold border-2 mb-1.5"><i class="fa-solid fa-box-open"></i></div>
+            <p class="text-[10px] sm:text-xs text-gray-400 bangla">সম্পন্ন</p>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 flex items-start gap-2.5 mb-6">
+          <i class="fa-brands fa-whatsapp text-green-600 mt-0.5"></i>
+          <p class="text-xs text-amber-800 bangla leading-relaxed m-0">
+            <strong>পরবর্তী ধাপ:</strong> অর্ডার নিশ্চিত করতে অর্ডার আইডি সহ WhatsApp এ মেসেজ দিন। নিশ্চিত হওয়ার পর ডেলিভারির সব আপডেট সেখানেই পাবেন।
+          </p>
+        </div>
+
+        <!-- Items -->
+        <p class="font-bold text-gray-900 text-sm bangla mb-3">অর্ডারের পণ্যসমূহ</p>
+        <div id="res-items" class="space-y-3"></div>
+
+        <!-- Totals -->
+        <div class="border-t border-gray-100 mt-5 pt-4 space-y-1.5 text-sm">
+          <div class="flex justify-between text-gray-500 bangla"><span>সাবটোটাল</span><span id="res-subtotal" class="font-semibold"></span></div>
+          <div class="flex justify-between text-gray-500 bangla"><span>ডেলিভারি চার্জ</span><span id="res-shipping" class="font-semibold"></span></div>
+          <div class="flex justify-between text-gray-900 font-black text-base pt-1.5 bangla"><span>মোট</span><span id="res-total" class="text-primary-700"></span></div>
+        </div>
+
+        <!-- Delivery info -->
+        <div class="border-t border-gray-100 mt-5 pt-4">
+          <p class="font-bold text-gray-900 text-sm bangla mb-2">ডেলিভারি তথ্য</p>
+          <p id="res-address" class="text-gray-500 text-xs bangla leading-relaxed"></p>
+          <p id="res-payment" class="text-gray-400 text-xs bangla mt-1.5"></p>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <a id="res-wa" href="#" target="_blank"
+         class="flex items-center justify-center gap-2.5 bg-green-500 hover:bg-green-600 text-white font-bold text-sm px-6 py-4 rounded-2xl transition-all shadow-lg shadow-green-500/20 bangla">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        <span>এই অর্ডারটি WhatsApp এ নিশ্চিত করুন</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-gray-900 text-gray-400 pt-16 pb-12 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <a href="index.html" class="inline-block mb-4">
+          <img src="images/red-agro-logo.png" alt="Red Agro" class="w-[200px] sm:w-[220px] h-auto object-contain transition-transform hover:opacity-90" />
+        </a>
+        <p class="text-sm bangla leading-relaxed text-gray-400 mb-5">
+          বাজারের রাসায়নিক ও বিষাক্ত খাবার থেকে পরিবারকে সুরক্ষিত রাখুন। শতভাগ খাঁটি ফার্মের খাদ্য এবং সহজ ছাদবাগানের নির্ভরযোগ্য সমাধান।
+        </p>
+        <div class="flex gap-2.5">
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 bg-gray-800 hover:bg-primary-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/8801410363256" target="_blank" class="w-9 h-9 bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white rounded-xl flex items-center justify-center transition-all text-sm shadow-xs"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">প্রয়োজনীয় লিঙ্ক</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="index.html" class="hover:text-primary-400 transition-colors">হোমপেজ</a></li>
+          <li><a href="products.html" class="hover:text-primary-400 transition-colors">সকল পণ্যসমূহ</a></li>
+          <li><a href="cart.html" class="hover:text-primary-400 transition-colors">শপিং কার্ট</a></li>
+          <li><a href="track-order.html" class="hover:text-primary-400 transition-colors">অর্ডার ট্র্যাক করুন</a></li>
+          <li><a href="account.html" class="hover:text-primary-400 transition-colors">আমার একাউন্ট</a></li>
+          <li><a href="about.html" class="hover:text-primary-400 transition-colors">আমাদের গল্প ও মিশন</a></li>
+          <li><a href="faq.html" class="hover:text-primary-400 transition-colors">সাধারণ জিজ্ঞাসা (FAQ)</a></li>
+          <li><a href="return-policy.html" class="hover:text-primary-400 transition-colors">রিটার্ন ও রিফান্ড পলিসি</a></li>
+          <li><a href="terms.html" class="hover:text-primary-400 transition-colors">শর্তাবলী</a></li>
+          <li><a href="privacy.html" class="hover:text-primary-400 transition-colors">প্রাইভেসি পলিসি</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">পণ্য বিভাগ</h4>
+        <ul class="space-y-2.5 text-sm bangla">
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🪴 ড্রিপ ইরিগেশন ও গ্রোব্যাগ</a></li>
+          <li><a href="products.html?cat=tools" class="hover:text-primary-400 transition-colors">🛠 কৃষি সরঞ্জাম ও সাপোর্ট</a></li>
+</ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-4 text-xs uppercase tracking-widest bangla">যোগাযোগ ও সাপোর্ট</h4>
+        <ul class="space-y-3.5 text-sm bangla">
+          <li class="flex items-start gap-3">
+            <i class="fa-brands fa-whatsapp text-green-400 text-base mt-0.5"></i>
+            <div>
+              <strong class="text-white block font-mono">01410-363256</strong>
+              <span class="text-gray-500 text-xs">সকাল ৮টা – রাত ১০টা (সপ্তাহে ৭ দিন)</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-primary-400 text-sm mt-1"></i>
+            <span class="text-gray-300">support@redagro.com.bd</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-red-400 text-sm mt-1"></i>
+            <span class="text-gray-400 text-xs">ফার্ম ও বাগান: ঢাকা ও সাভার, বাংলাদেশ</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500 bangla">
+      <p>© ২০২৬ Red Agro. সর্বস্বত্ব সংরক্ষিত · বিষমুক্ত খাবার, সুস্থ জীবন 🌿</p>
+      <div class="flex items-center gap-4">
+        <span>💵 ক্যাশ অন ডেলিভারি</span>
+        <span>•</span>
+        <span>🚚 দ্রুত ডেলিভারি</span>
+        <span>•</span>
+        <span>🛡️ ৭ দিনের রিপ্লেসমেন্ট</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+    const icon = document.getElementById('menu-icon');
+    icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-xmark');
+  });
+
+  const bn = n => n.toLocaleString('bn-BD');
+
+  function findOrder(query) {
+    const q = query.trim().toUpperCase().replace(/^#/, '');
+    try {
+      const all = JSON.parse(localStorage.getItem('red_agro_orders') || '[]');
+      let order = all.find(o => o.orderId === q);
+      if (!order) {
+        const latest = JSON.parse(localStorage.getItem('red_agro_latest_order') || 'null');
+        if (latest && latest.orderId === q) order = latest;
+      }
+      return order || null;
+    } catch (e) {
+      console.error('Order lookup failed', e);
+      return null;
+    }
+  }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' }) +
+        ' · ' + new Date(iso).toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
+    } catch (e) { return ''; }
+  }
+
+  function paymentLabel(method, trxId) {
+    const names = { cod: 'ক্যাশ অন ডেলিভারি', bkash: 'বিকাশ', nagad: 'নগদ', rocket: 'রকেট' };
+    const label = names[method] || method;
+    return trxId ? `${label} · TrxID: ${trxId}` : label;
+  }
+
+  function renderOrder(order) {
+    document.getElementById('res-order-id').textContent = '#' + order.orderId;
+    document.getElementById('res-date').textContent = fmtDate(order.createdAt);
+    document.getElementById('res-subtotal').textContent = '৳ ' + bn(order.subtotal);
+    document.getElementById('res-shipping').textContent = order.shipping && order.shipping.charge === 0 ? 'ফ্রি' : '৳ ' + bn(order.shipping ? order.shipping.charge : 0);
+    document.getElementById('res-total').textContent = '৳ ' + bn(order.total);
+
+    const items = order.items || [];
+    document.getElementById('res-items').innerHTML = items.map(it => `
+      <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl">
+        <div class="w-12 h-12 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200" style="background-image:url('${it.image || 'images/hero.jpg'}')"></div>
+        <div class="flex-1 min-w-0">
+          <p class="font-bold text-gray-900 text-sm bangla truncate">${it.name}</p>
+          <p class="text-gray-400 text-xs bangla">${it.size || ''} × ${bn(it.qty || 1)}</p>
+        </div>
+        <div class="font-bold text-primary-700 text-sm whitespace-nowrap">৳ ${bn((it.price || 0) * (it.qty || 1))}</div>
+      </div>
+    `).join('');
+
+    const c = order.customer || {};
+    document.getElementById('res-address').innerHTML =
+      `<strong class="text-gray-700">${c.name || ''}</strong> · ${c.phone || ''}<br>` +
+      [c.address, c.thana, c.district].filter(Boolean).join(', ');
+    document.getElementById('res-payment').textContent = 'পেমেন্ট: ' + paymentLabel(order.payment && order.payment.method, order.payment && order.payment.trxId);
+
+    const msg = encodeURIComponent(`হ্যালো Red Agro! আমার অর্ডারটি নিশ্চিত করতে চাই।\n\n*অর্ডার আইডি:* ${order.orderId}\n*নাম:* ${c.name || ''}\n*ফোন:* ${c.phone || ''}\n*মোট বিল:* ৳ ${order.total}`);
+    const waUrl = `https://wa.me/8801410363256?text=${msg}`;
+    document.getElementById('res-wa').href = waUrl;
+    document.getElementById('notfound-wa').href = `https://wa.me/8801410363256?text=${encodeURIComponent('আমার অর্ডার আইডি: ' + query)}`;
+
+    document.getElementById('track-result').classList.remove('hidden');
+    document.getElementById('track-notfound').classList.add('hidden');
+    document.getElementById('track-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function track(query) {
+    if (!query.trim()) { document.getElementById('track-input').focus(); return; }
+    const order = findOrder(query);
+    if (order) {
+      renderOrder(order);
+    } else {
+      document.getElementById('notfound-wa').href = `https://wa.me/8801410363256?text=${encodeURIComponent('আমার অর্ডার আইডি: ' + query)}`;
+      document.getElementById('track-notfound').classList.remove('hidden');
+      document.getElementById('track-result').classList.add('hidden');
+      document.getElementById('track-notfound').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  document.getElementById('track-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    track(document.getElementById('track-input').value);
+  });
+
+  // Deep link: track-order.html?id=RA-2026-1234
+  (function () {
+    const id = new URLSearchParams(location.search).get('id');
+    if (id) {
+      document.getElementById('track-input').value = id;
+      track(id);
+    }
+  })();
+</script>
+<script src="js/cart.js"></script>
+</body>
+</html>
